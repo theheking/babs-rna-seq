@@ -1,36 +1,8 @@
 ---
 layout: page
-title: Week 1
+title: Week 1A Exploring Datasets
 subtitle: Exploring our Datasets and Examining Data on the NCBI SRA Database – Project Organization and Management for Genomics
 ---
-
-
-Toggle navigation [![Data Carpentry logo](/organization-genomics/assets/img/dc-icon-black.svg) ](http://datacarpentry.org)[Home](/organization-genomics/)
-
-*   [Code of Conduct](/organization-genomics/CODE_OF_CONDUCT.html)
-*   [Setup](/organization-genomics/setup.html)
-*   [Episodes](/organization-genomics/)
-    *   [Data Tidiness](/organization-genomics/01-tidiness/index.html)
-    *   [Planning for NGS Projects](/organization-genomics/02-project-planning/index.html)
-    *   [Examining Data on the NCBI SRA Database](/organization-genomics/03-ncbi-sra/index.html)
-    
-    *   [All in one page (Beta)](/organization-genomics/aio.html)
-*   [Extras](/organization-genomics/)
-    *   [Reference](/organization-genomics/reference.html)
-    *   [About](/organization-genomics/about/index.html)
-    *   [Data](/organization-genomics/data/index.html)
-    *   [Discussion](/organization-genomics/discuss/index.html)
-    *   [Figures](/organization-genomics/figures/index.html)
-    *   [Instructor Notes](/organization-genomics/guide/index.html)
-    *   [Old NCBI](/organization-genomics/old-ncbi/index.html)
-*   [License](/organization-genomics/LICENSE.html)
-*   [Improve this page](https://github.com/datacarpentry/organization-genomics/edit/gh-pages/_episodes/03-ncbi-sra.md)
-
-### [previous episode](/organization-genomics/02-project-planning/index.html)
-
-### [Project Organization and Management for Genomics](/organization-genomics/)
-
-### [lesson home](/organization-genomics/)
 
 Examining Data on the NCBI SRA Database
 =======================================
