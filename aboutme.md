@@ -44,4 +44,3 @@ o	Introduction to R
 o	https://datacarpentry.org/genomics-r-intro/
  
  
-![image](https://user-images.githubusercontent.com/36276388/210190260-2791ecfc-c01b-415a-82ed-4c4256f561d4.png)
