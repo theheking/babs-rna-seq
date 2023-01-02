@@ -10,21 +10,22 @@
 ############################
 
 # Name of website
-title: My Website
+title: BABS 3291
 
 # Your name to show in the footer
-author: Some Person
+author: Helen King
 
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
 
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Course Structure: "aboutme"
+  Practical Overview:
+    - Intro: "https://beautifuljekyll.com"
+    - Week 1: "https://beautifuljekyll.com"
+    - Week 2: "https://www.markdowntutorial.com/"
+  Additional Infomation: "https://deanattali.com"
 
 ################
 # --- Logo --- #
@@ -32,7 +33,8 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/avatar-icon.png"
+# avatar: "/assets/img/avatar-icon.png"
+avatar: "/assets/img/crocdundee.jpg"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
@@ -48,15 +50,15 @@ round-avatar: true
 
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
-social-network-links:
-  email: "someone@example.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
-  patreon: DeanAttali
-  youtube: c/daattali
-#  medium: yourname
+# social-network-links:
+#   email: "someone@example.com"
+#   rss: true  # remove this line if you don't want to show an RSS link at the bottom
+#   facebook: deanattali
+#   github: daattali
+#   twitter: daattali
+#   patreon: DeanAttali
+#   youtube: c/daattali
+# #  medium: yourname
 #  reddit: yourname
 #  linkedin: daattali
 #  xing: yourname
@@ -79,22 +81,22 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: This website is a virtual proof that I'm awesome
+rss-description: This website is the BABS course
 
 ###########################
 # --- General options --- #
 ###########################
 
 # Select which social network share links to show in posts
-share-links-active:
-  twitter: true
-  facebook: true
-  linkedin: true
-  vk: false
+# share-links-active:
+#   twitter: true
+#   facebook: true
+#   linkedin: true
+#   vk: false
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+# url-pretty: "MyWebsite.com"
 
 # Excerpt word length - Truncate the excerpt of each post on the feed page to the specified number of words
 excerpt_length: 50
@@ -114,7 +116,7 @@ edit_page_button: true
 # Allow sub-menu items (second-level navigation menu items) to be longer than the top-level menu
 # If this setting is off, then long sub-menu words might get cut off
 # See https://github.com/daattali/beautiful-jekyll/issues/765 to understand the issue this setting can solve
-navbar-var-length: false
+navbar-var-length: True
 
 # The keywords to associate with your website, for SEO purposes
 #keywords: "my,list,of,keywords"
@@ -247,7 +249,7 @@ date_format: "%B %-d, %Y"
 #################################################################################
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Toronto"
+timezone: "Australia/Sydney"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
