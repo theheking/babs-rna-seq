@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Week 1A Intro to Shell - Introducting the Shell 
-subtitle: Exploring our Datasets and Examining Data on the NCBI SRA Database – Project Organization and Management for Genomics
 ---
+
 Introducing the Shell
 =====================
 
