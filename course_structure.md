@@ -6,42 +6,41 @@ subtitle: Overview
 ---
 
 # Packages Needed
-SRA Toolkit
-Fastqc
-multiqc 
-trimmomatic 
-Kallisto
-R
-o	Tximport
-o	DESeq2
+- SRA Toolkit
+- Fastqc
+- multiqc 
+- trimmomatic 
+- Kallisto
+- R
+ - Tximport
+ - DESeq2
  
  
 ## Pipeline Steps
-o	Examining data on SRA Database
-o	https://datacarpentry.org/organization-genomics/03-ncbi-sra/index.html
-o	Download from SRA using fastq-dump 
-o	Examining Read quality 
+-	Examining data on SRA Database
+ -	https://datacarpentry.org/organization-genomics/03-ncbi-sra/index.html
+-	Download from SRA using fastq-dump 
+-	Examining Read quality 
 - FASTQC for quality control metrics
 - summarise FASTQC with multiqc
-o	https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html
-o	Trimming and Filtering 
-- Trim reads using trimmomatic 
-o	https://datacarpentry.org/wrangling-genomics/03-trimming/index.html
-o	Pseudalignment using kallisto
-o	Pseudoalignment vs alignment
-o	<<kallisto.pdf>>
-o	<<kallisto and pseudoalignment.pdf>>
+ -	https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html
+-		Trimming and Filtering  
+ - Trim reads using trimmomatic 
+ - https://datacarpentry.org/wrangling-genomics/03-trimming/index.html
+-	Pseudalignment using kallisto
+ -	Pseudoalignment vs alignment
+ - kallisto.pdf and kallisto and pseudoalignment.pdf
  
-o	Import DESeq2 into RNA-seq 
-o	https://ycl6.gitbook.io/guide-to-rna-seq-analysis/differential-expression-analysis/differential-gene-expression/dge-analysis-with-salmon-input
-o	https://lashlock.github.io/compbio/R_presentation.html
+-	Import DESeq2 into RNA-seq 
+ -	https://ycl6.gitbook.io/guide-to-rna-seq-analysis/differential-expression-analysis/differential-gene-expression/dge-analysis-with-salmon-input
+ -	https://lashlock.github.io/compbio/R_presentation.html
  
  
-o	Introduction to shell 
-o	https://datacarpentry.org/shell-genomics/
-o	https://linuxjourney.com/lesson/the-shell
-o	Introduction to R
-o	https://datacarpentry.org/genomics-r-intro/
+-	Introduction to shell 
+ -	https://datacarpentry.org/shell-genomics/
+ -	https://linuxjourney.com/lesson/the-shell
+-	Introduction to R
+ -	https://datacarpentry.org/genomics-r-intro/
  
  
  
