@@ -28,12 +28,12 @@ navbar-links:
     - Week 1A 4 Redirection: "practical_overview/Week1A_4_Redirection"
     - Week 1A 5 Writing Scripts: "practical_overview/Week1A_5_Writing_Scripts_workingwithdata"
     - Week 1A 6 Organisation of Folders: "practical_overview/Week1A_6_Organisation"
-    - Week 1B Setting Up on Katana: "practical_overview/Week1A_6_Organisation"
+    - Week 1B Setting Up on Katana: "practical_overview/Week1B_SettingUpOnKatana"
     - Week 2 Examining Data on the NCBI SRA Database: "practical_overview/Week2"
-    - Week 3 Using FASTQC and MultiQC to produce quality report	: "practical_overview/Week3"
-    - Week 4 Using Trimmomatic for Trimming and Filtering : "practical_overview/Week4"
-    - Week 5 Pseudalignment using kallisto: "practical_overview/Week5"
-    - Week 6 Using DESeq For Differential Expression Analysis: "practical_overview/Week6"
+    - Week 3 Using FASTQC and MultiQC to produce quality report	: "practical_overview/Week3_FASTQC"
+    - Week 4 Using Trimmomatic for Trimming and Filtering : "practical_overview/Week4_Trimming"
+    - Week 5 Pseudalignment using kallisto: "practical_overview/Week5_Alignment"
+    - Week 6 Using DESeq For Differential Expression Analysis: "practical_overview/Week6_Differential_Expression"
 
   Key Information: "key_info"
 
