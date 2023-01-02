@@ -25,7 +25,7 @@ Terminal output will be in the same format, without the leading $.
 >>  You will find questions and extra activities scattered throughout the instructions. These are not assessed but will help you to understand the processes and associated theory lectures.
 
 
-***These contain general reusable hints and tips rather than specific topic commands etc. ***
+*** These contain general reusable hints and tips rather than specific topic commands etc. ***
 
 
 
