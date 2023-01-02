@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1A Exploring Datasets
+title: Week 2 Exploring Datasets
 subtitle: Exploring our Datasets and Examining Data on the NCBI SRA Database – Project Organization and Management for Genomics
 ---
 
@@ -141,17 +141,9 @@ Tenaillon O, Barrick JE, Ribeck N, Deatherage DE, Blanchard JL, Dasgupta A, Wu G
 > *   You are likely to put your own data on a public repository.
 >     
 
-### [previous episode](/organization-genomics/02-project-planning/index.html)
-
-### [lesson home](/organization-genomics/)
 
 * * *
 
 Licensed under CC-BY 4.0 2018–2022 by [The Carpentries](https://carpentries.org/)  
 Licensed under CC-BY 4.0 2016–2018 by [Data Carpentry](http://datacarpentry.org)
 
-[Edit on GitHub](https://github.com/datacarpentry/organization-genomics/edit/gh-pages/_episodes/03-ncbi-sra.md) / [Contributing](https://github.com/datacarpentry/organization-genomics/blob/gh-pages/CONTRIBUTING.md) / [Source](https://github.com/datacarpentry/organization-genomics/) / [Cite](https://github.com/datacarpentry/organization-genomics/blob/gh-pages/CITATION) / [Contact](/cdn-cgi/l/email-protection#c7b3a2a6aa87a4a6b5b7a2a9b3b5aea2b4e9a8b5a0)
-
-_Using [The Carpentries theme](https://github.com/carpentries/carpentries-theme/) — Site last built on: 2022-12-06 19:59:01 +0000._
-
-var \_paq = window.\_paq = window.\_paq || \[\]; /\* tracker methods like "setCustomDimension" should be called before "trackPageView" \*/ \_paq.push(\["setDocumentTitle", document.domain + "/" + document.title\]); \_paq.push(\["setDomains", \["\*.lessons.carpentries.org","\*.datacarpentry.github.io","\*.datacarpentry.org","\*.librarycarpentry.github.io","\*.librarycarpentry.org","\*.swcarpentry.github.io"\]\]); \_paq.push(\["setDoNotTrack", true\]); \_paq.push(\["disableCookies"\]); \_paq.push(\['trackPageView'\]); \_paq.push(\['enableLinkTracking'\]); (function() { var u="https://carpentries.matomo.cloud/"; \_paq.push(\['setTrackerUrl', u+'matomo.php'\]); \_paq.push(\['setSiteId', '1'\]); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')\[0\]; g.async=true; g.src='//cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s); })(); anchors.add();
