@@ -29,7 +29,7 @@ navbar-links:
     - Week 1A 5 Writing Scripts: "practical_overview/Week1A_5_Writing_Scripts_workingwithdata"
     - Week 1A 6 Organisation of Folders: "practical_overview/Week1A_6_Organisation"
     - Week 1B Setting Up on Katana: "practical_overview/Week1B_SettingUpOnKatana"
-    - Week 2 Examining Data on the NCBI SRA Database: "practical_overview/Week2"
+    - Week 2 Examining Data on the NCBI SRA Database: "practical_overview/Week2_Exploring_Dataset"
     - Week 3 Using FASTQC and MultiQC to produce quality report	: "practical_overview/Week3_FASTQC"
     - Week 4 Using Trimmomatic for Trimming and Filtering : "practical_overview/Week4_Trimming"
     - Week 5 Pseudalignment using kallisto: "practical_overview/Week5_Alignment"
