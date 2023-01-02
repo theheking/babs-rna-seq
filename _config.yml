@@ -20,12 +20,12 @@ author: Helen King
 ###############################################
 
 navbar-links:
-  Course Structure: "aboutme"
+  Course Structure: "course_structure"
   Practical Overview:
-    - Intro: "https://beautifuljekyll.com"
-    - Week 1: "https://beautifuljekyll.com"
-    - Week 2: "https://www.markdowntutorial.com/"
-  Additional Infomation: "https://deanattali.com"
+    - Intro: "practical_overview/intro"
+    - Week 1: "practical_overview/week1"
+    - Week 2: "practical_overview/week2"
+  Key Information: "key_info"
 
 ################
 # --- Logo --- #
