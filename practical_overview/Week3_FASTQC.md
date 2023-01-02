@@ -33,7 +33,7 @@ When working with high-throughput sequencing data, the raw reads you get off of 
 
 An example of the workflow we will be using for our variant calling analysis is provided below with a brief description of each step.
 
-![workflow](../img/variant_calling_workflow.png)
+![workflow](../assets/img/variant_calling_workflow.png)
 
 1.  Quality control - Assessing quality using FastQC
 2.  Quality control - Trimming and/or filtering reads (if necessary)
@@ -89,7 +89,7 @@ Quality control
 
 We will now assess the quality of the sequence reads contained in our fastq files.
 
-![workflow_qc](../img/var_calling_workflow_qc.png)
+![workflow_qc](../assets/img/var_calling_workflow_qc.png)
 
 Details on the FASTQ format
 ---------------------------
@@ -303,7 +303,7 @@ In real life, you will not be assessing the quality of your reads by visually in
 
 FastQC has a number of features which can give you a quick impression of any problems your data may have, so you can take these issues into consideration before moving forward with your analyses. Rather than looking at quality scores for each individual read, FastQC looks at quality collectively across all reads within a sample. The image below shows one FastQC-generated plot that indicates a very high quality sample:
 
-![good_quality](../img/good_quality1.8.png)
+![good_quality](../assets/img/good_quality1.8.png)
 
 The x-axis displays the base position in the read, and the y-axis shows quality scores. In this example, the sample contains reads that are 40 bp long. This is much shorter than the reads we are working with in our workflow. For each position, there is a box-and-whisker plot showing the distribution of quality scores for all reads at that position. The horizontal red line indicates the median quality score and the yellow box shows the 1st to 3rd quartile range. This means that 50% of reads have a quality score that falls within the range of the yellow box at that position. The whiskers show the absolute range, which covers the lowest (0th quartile) to highest (4th quartile) values.
 
@@ -311,7 +311,7 @@ For each position in this sample, the quality values do not drop much lower than
 
 Now let’s take a look at a quality plot on the other end of the spectrum.
 
-![bad_quality](../img/bad_quality1.8.png)
+![bad_quality](../assets/img/bad_quality1.8.png)
 
 Here, we see positions within the read in which the boxes span a much wider range. Also, quality scores drop quite low into the “bad” range, particularly on the tail end of the reads. The FastQC tool produces several other diagnostic plots to assess sample quality, in addition to the one plotted above.
 
