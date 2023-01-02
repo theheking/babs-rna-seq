@@ -1,16 +1,16 @@
-###
-
-| ![](RackMultipart20230102-1-ssjimi_html_2a17415f52006587.gif) |
-
- |
- |
-| --- | --- | --- |
+---
+layout: post
+title: Updates
+subtitle: Excerpt from Soulshaping by Jeff Brown
+cover-img: /assets/img/path.jpg
+thumbnail-img: /assets/img/thumb.png
+share-img: /assets/img/path.jpg
+tags: [books, test]
+---
 
 # Practical Handbook
 
 Version 1.0
-
-![Picture 8](RackMultipart20230102-1-ssjimi_html_e621248dcdc98f56.gif) ![](RackMultipart20230102-1-ssjimi_html_2e1d749d9fea873a.png) ![](RackMultipart20230102-1-ssjimi_html_75ac7f7a5a74c474.gif) ![](RackMultipart20230102-1-ssjimi_html_d30b0067d12711e1.png)
 
 TERM 1, 2022
 
@@ -18,7 +18,6 @@ FACULTY OF SCIENCE
 
 School of Biotechnology and Biomolecular Sciences
 
-![](RackMultipart20230102-1-ssjimi_html_2e49155b3f5ba289.png)
 
 Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution. The material in this handbook is designed to help guide you through the prac. However, as will quickly become apparent, it is impossible to be comprehensive and so you should complement this handout with the resources provided through Teams/Moodle, online help, and any other source of inspiration/advice that works for you.
 
