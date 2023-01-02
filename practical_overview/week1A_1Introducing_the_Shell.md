@@ -1,4 +1,3 @@
-                                    Introducing the Shell – Introduction to the Command Line for Genomics
 ---
 layout: page
 title: Week 1A Intro to Shell - Introducting the Shell 
