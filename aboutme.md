@@ -1,16 +1,47 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: RNA-seq Tutorial Outline
+subtitle: Temporary Overview
 ---
 
-My name is Inigo Montoya. I have the following qualities:
 
-- I rock a great mustache
-- I'm extremely loyal to my family
-
-What else do you need?
-
-### My story
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+# Packages Needed
+SRA Toolkit
+Fastqc
+multiqc 
+trimmomatic 
+Kallisto
+R
+o	Tximport
+o	DESeq2
+ 
+ 
+## Pipeline Steps
+o	Examining data on SRA Database
+o	https://datacarpentry.org/organization-genomics/03-ncbi-sra/index.html
+o	Download from SRA using fastq-dump 
+o	Examining Read quality 
+- FASTQC for quality control metrics
+- summarise FASTQC with multiqc
+o	https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html
+o	Trimming and Filtering 
+- Trim reads using trimmomatic 
+o	https://datacarpentry.org/wrangling-genomics/03-trimming/index.html
+o	Pseudalignment using kallisto
+o	Pseudoalignment vs alignment
+o	<<kallisto.pdf>>
+o	<<kallisto and pseudoalignment.pdf>>
+ 
+o	Import DESeq2 into RNA-seq 
+o	https://ycl6.gitbook.io/guide-to-rna-seq-analysis/differential-expression-analysis/differential-gene-expression/dge-analysis-with-salmon-input
+o	https://lashlock.github.io/compbio/R_presentation.html
+ 
+ 
+o	Introduction to shell 
+o	https://datacarpentry.org/shell-genomics/
+o	https://linuxjourney.com/lesson/the-shell
+o	Introduction to R
+o	https://datacarpentry.org/genomics-r-intro/
+ 
+ 
+![image](https://user-images.githubusercontent.com/36276388/210190260-2791ecfc-c01b-415a-82ed-4c4256f561d4.png)
