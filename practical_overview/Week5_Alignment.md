@@ -139,27 +139,30 @@ These data (for mouse, and many other organisims) are available from public data
 Index transcriptome
 We will now use Kallisto's indexing function to prepare the transcriptome for analysis. The "Index" is a lookup table for the transcriptome that allows it to be more easily searched by Kallisto. First let's organize our files by creating a new directory to hold our kallisto work.
 
-mkdir -p /home/gea_user/rna-seq-project/kallisto
+` mkdir -p /home/gea_user/rna-seq-project/kallisto` 
 Next run the indexing command. This prepares the transcriptome so that we can peudoalign reads to it.
 
-kallisto index --index="Mus_musculus.GRCm38_index" /home/gea_user/rna-seq-project/transcriptome/Mus_musculus.GRCm38.cdna.all.fa.gz
+` kallisto index --index="Mus_musculus.GRCm38_index" /home/gea_user/rna-seq-project/transcriptome/Mus_musculus.GRCm38.cdna.all.fa.gz `
+
 We now have a transcriptome index which can now be used for pseudoalignment, we'll move it into the transcriptome folder:
 
-mv Mus_musculus.GRCm38_index /home/gea_user/rna-seq-project/transcriptome/
+` mv Mus_musculus.GRCm38_index /home/gea_user/rna-seq-project/transcriptome/ `
 We also will need the mouse GTF file, a file containing coordinates and descriptions for all gene names and locations - we will also download this from Ensembl.
 
-wget ftp://ftp.ensembl.org/pub/release-97/gtf/mus_musculus/Mus_musculus.GRCm38.97.chr.gtf.gz
+` wget ftp://ftp.ensembl.org/pub/release-97/gtf/mus_musculus/Mus_musculus.GRCm38.97.chr.gtf.gz `
 We will make a folder called annotations and save that there as well.
 
-mkdir -p /home/gea_user/rna-seq-project/kallisto/annotations
-mv Mus_musculus.GRCm38.97.chr.gtf.gz /home/gea_user/rna-seq-project/kallisto/annotations
+` mkdir -p /home/gea_user/rna-seq-project/kallisto/annotations
+mv Mus_musculus.GRCm38.97.chr.gtf.gz /home/gea_user/rna-seq-project/kallisto/annotations `
 Finally we also need a textfile that has the name of each mouse chromosome (e.g. 1, 2, 3, ... X, Y, MT) and the length of each chromosome, This will be used for visualization. The information will be downloaded and then edited using bash commands.
 
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.26_GRCm38.p6/GCF_000001635.26_GRCm38.p6_assembly_report.txt
-head -n64 GCF_000001635.26_GRCm38.p6_assembly_report.txt|tail -n21|cut -f1,9 > /home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv
+` wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.26_GRCm38.p6/GCF_000001635.26_GRCm38.p6_assembly_report.txt
+head -n64 GCF_000001635.26_GRCm38.p6_assembly_report.txt|tail -n21|cut -f1,9 > /home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv `
+
 We can see this edited list of chromosome numbers and lengths here:
 
-cat /home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv
+` cat /home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv `
+
 Quantify reads
 In this final step, we will run Kallisto on all of our files to quantify the reads. We will write a for loop to do this. Let's see once again our trimmed reads
 
@@ -167,8 +170,9 @@ Exercise 3: Pseudoaligning reads with Kallisto
 Working with data you trimmed yourself
 If you used trimmomatic to trim your reads, run the next cell (otherwise skip to the cell for fastp reads)
 
-cd /home/gea_user/rna-seq-project/trimmed-reads
-ls
+` cd /home/gea_user/rna-seq-project/trimmed-reads
+ls  `
+
 We don't want the small_trimmed.fastq.gz file to be part of our analysis, so we will delete it
 
 rm small_trimmed.fastq.gz
@@ -178,7 +182,7 @@ ls
 Working with data pre-trimmed data
 All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). We need to run Kallisto separately on each of our 6 files so we will use a for loop.
 
-for file in *_trimmed.fastq.gz; do output=$(basename --suffix=.fastq.gz_trimmed.fastq.gz $file)_quant; kallisto quant\
+` for file in *_trimmed.fastq.gz; do output=$(basename --suffix=.fastq.gz_trimmed.fastq.gz $file)_quant; kallisto quant\
  --single\
  --threads=8\
  --index=/home/gea_user/rna-seq-project/transcriptome/Mus_musculus.GRCm38_index\
@@ -189,34 +193,48 @@ for file in *_trimmed.fastq.gz; do output=$(basename --suffix=.fastq.gz_trimmed.
  --genomebam\
  --gtf=/home/gea_user/rna-seq-project/kallisto/annotations/Mus_musculus.GRCm38.97.chr.gtf.gz\
  --chromosomes=/home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv\
- $file; done
+ $file; done `
+ 
 Lets move our results to an appropriate directory and view the directories containing our analyses:
 
-mkdir -p /home/gea_user/rna-seq-project/kallisto/analyzed
-mv *_quant /home/gea_user/rna-seq-project/kallisto/analyzed
-cd /home/gea_user/rna-seq-project/kallisto/analyzed
-ls
+` mkdir -p /home/gea_user/rna-seq-project/kallisto/analyzed
+ mv *_quant /home/gea_user/rna-seq-project/kallisto/analyzed
+ cd /home/gea_user/rna-seq-project/kallisto/analyzed
+ ls `
+
 Each of these directories containes several files, lets remind ourselves what each of these directories contain:
 
-SRA Sample	Sample Name	Folder Name
-SRS1794108	High-Fat Diet Control 1	SRR5017135_trimmed.fastq.gz_quant
-SRS1794110	High-Fat Diet Control 2	SRR5017137_trimmed.fastq.gz_quant
-SRS1794106	High-Fat Diet Control 3	SRR5017133_trimmed.fastq.gz_quant
-SRS1794105	High-Fat Diet Tumor 1	SRR5017132_trimmed.fastq.gz_quant
-SRS1794101	High-Fat Diet Tumor 2	SRR5017128_trimmed.fastq.gz_quant
-SRS1794111	High-Fat Diet Tumor 3	SRR5017138_trimmed.fastq.gz_quant
+| SRA Sample | Sample Name             | Folder Name                       |
+| ---------- | ----------------------- | --------------------------------- |
+| SRS1794108 | High-Fat Diet Control 1 | SRR5017135_trimmed.fastq.gz_quant |
+| SRS1794110 | High-Fat Diet Control 2 | SRR5017137_trimmed.fastq.gz_quant |
+| SRS1794106 | High-Fat Diet Control 3 | SRR5017133_trimmed.fastq.gz_quant |
+| SRS1794105 | High-Fat Diet Tumor 1   | SRR5017132_trimmed.fastq.gz_quant |
+| SRS1794101 | High-Fat Diet Tumor 2   | SRR5017128_trimmed.fastq.gz_quant |
+| SRS1794111 | High-Fat Diet Tumor 3   | SRR5017138_trimmed.fastq.gz_quant |
+
 Let's look at the files in the High-Fat Diet Control 1
 
-cd /home/gea_user/rna-seq-project/kallisto/analyzed/SRR5017135_trimmed.fastq.gz_quant
-ls
+  ` cd /home/gea_user/rna-seq-project/kallisto/analyzed/SRR5017135_trimmed.fastq.gz_quant
+   ls`
+
 This file contains a list of abundances (counts) for the Regular Diet Control sequences from SRR5017139
 
-head -n 100 abundance.tsv
+  ` head -n 100 abundance.tsv`
   
   
 
   
-  
+> Question
+
+What are some of the constraints we have to work within when doing an RNA-Seq experiment (e.g. the difference between the ideal experiment and the real-world experiment?)
+In addition to FastQ reads, what are some other datasets needed to do RNA-Seq using Kallisto?
+Use an analogy to explain Kallisto pseudoalignment
+Bonus
+
+Using the referenced papers and other research materials you can find, what are some other software tools that could be used as an alternative to Kallisto in RNA-Seq? Do they require the same datasets as Kallisto does in order to run?
+
+
   
   
   
