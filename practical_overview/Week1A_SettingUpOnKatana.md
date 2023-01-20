@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Week 1B Intro to Shell - Setting Up on Katana
+title: Week 1A Intro to Shell - Setting Up on Katana
 ---
 
 Setting Up on Katana
 =====================
-# 2.The BABS teaching UNIX server
+# The BABS teaching UNIX server
 
 In this prac, we are going to work how many "real" bioinformaticians actually work: we are going to use a remote server for the computationally intensive bits and a user-friendly machine (Windows or Mac) to visualise and analyse the results downstream. We have a UNIX server set up for the prac:
 
@@ -20,7 +20,7 @@ For many of you, this is your first time using UNIX. Fear not! You will pick up 
  3.    Use  **rm -i**  to provide an additional safety check against rogue deletion.
  4.     **Make sure that you keep good notes. ** Ultimately, it should be fairly straight-forward to regenerate anything from the starting data, provided you have adequate records of how you made it in the first place. This is one of the primary goals of keeping a lab book.
 
-## 2.1.Setting up the UNSW VPN
+## 1.Setting up the UNSW VPN
 
 To access the servers off-campus, you will need to set up the UNSW Virtual Private Network (VPN), which gives you access to University resources off-campus as if you were on-campus. Details to set this up can be found here: [https://www.myit.unsw.edu.au/services/students/remote-access-vpn](https://www.myit.unsw.edu.au/services/students/remote-access-vpn). Please contact UNSW IT if you have questions or experience problems with the VPN. If you have recurring issues, please let the course coordinator know. You do not need the VPN if using a UNSW machine on campus. (Recommended where possible.)
 
@@ -36,7 +36,7 @@ It is not possible to write this handbook with clear instructions for all combin
 
 You log on to the server using your **zID** and **zPass** and a program that lets you connect via a "secure shell (SSH)". On UNSW machines, we use a program called **Putty**. It's a free, standalone executable that you can download from https://www.putty.org/, or copy a downloaded version onto a windows computer and it should run fine. You If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access.
 
-### 2.2.1.Logging on the server with putty
+### 2.1.Logging on the server with putty
 
 On a UNSW machine, Putty is available from the start menu under PuTTY. This will open up the main putty window. In the **Host Name** box type: babsteaching.babs.unsw.edu.au. To save yourself having to type this again, you can **Save** the session as BABS3291 and later **Load** it. (If you change terminal settings, you can save these too.)
 
@@ -52,13 +52,13 @@ Click **Yes**. The main terminal window will now open, prompting you to login as
 
 **NOTE:** For security reasons, you will not see anything appear on-screen when typing your password. Trust that it is registering and hit **ENTER** when complete.
 
-### 2.2.2.Logging off
+### 2.2.Logging off
 
 To log off the server, simply close the Putty window or type:
 
 $ exit
 
-### 2.2.3.Logging on from Mac OSX
+### 2.3.Logging on from Mac OSX
 
 To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing zID with your own **zID** ):
 
@@ -82,11 +82,11 @@ Whenever working with servers, there is always the risk that something will go w
 
 3. To re-attached the screen "myname" after logging back on: screen -dr myname
 
-## 2.3.Getting to grips with UNIX
+## 3.Getting to grips with UNIX
 
 This section will walk you through the basics of using UNIX and provide some sources for additional help. If you are already familiar with UNIX, feel free to skim through this section without doing all the exercises. However, you should still set up your home directory as directed. We'll worry about getting data on/off the server later.
 
-### 2.3.1.Setting up the your home directory
+### 3.1.Setting up the your home directory
 
 The first task is to familiarise yourself with the system and to create a good directory structure to organise your work. For some of you, this will be easy and straight-forward. For others, you will be learning your first UNIX and it will take longer. Don't worry: there is plenty of time over the nine weeks.
 
