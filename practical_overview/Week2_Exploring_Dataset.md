@@ -144,7 +144,18 @@ The SRA does not support direct download of fastq files from its webpage. Howeve
 We do not recommend downloading large numbers of sequencing files this way. For that, the NCBI has made a software package called the `sra-toolkit`. However, for a couple files, it’s often easier to go through the ENA.
 
 
+<title>Import transcriptome data</title>
+First, we will download the mouse transcriptome data from [Ensembl](http://useast.ensembl.org/Mus_musculus/Info/Index). The mouse transcriptome is available on [this page](ftp://ftp.ensembl.org/pub/release-97/fasta/mus_musculus/cdna/). The > wget command will allow us to download the transcriptome from Ensembl. This may take a minute or two - make sure the download completes before moving on - you shoul get a message saying
 
+    > ‘Mus_musculus.GRCm38.cdna.all.fa.gz’ saved [51982200].
+
+    > wget ftp://ftp.ensembl.org/pub/release-97/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz
+    
+Let's also organize our downloaded data; we will make a new directory (transcriptome) in our rna-seq-project folder and use the mv command to move the transcriptome data we downloaded in the step above.
+
+    > mkdir -p /home/gea_user/rna-seq-project/transcriptome && mv Mus_musculus.GRCm38.cdna.all.fa.gz /home/gea_user/rna-seq-project/transcriptome
+
+<title> </title>
 Where to learn more
 -------------------
 
