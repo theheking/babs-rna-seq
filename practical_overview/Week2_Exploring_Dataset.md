@@ -19,17 +19,40 @@ Examining Data on the NCBI SRA Database
 >     
 > 
 > **Objectives**
-> 
+>
+> *   Understand the biological limitations of RNA-seq. 
+>
 > *   Be aware that public genomic data is available.
 >     
 > *   Understand how to access and download this data.
->     
+>
 
 In our experiments we usually think about generating our own sequencing data. However, almost all analyses use reference data, and you may want to use it to compare your results or annotate your data with publicly available data. You may also want to do a full project or set of analyses using publicly available data. This data is a great, and essential, resource for genomic data analysis.
 
 When you come to publish a paper including your sequencing data, most journals and funders require that you place your data on a public repository. Sharing your data makes it more likely that your work will be re-used and cited. It helps to prepare for this early!
 
 There are many repositories for public data. Some model organisms or fields have specific databases, and there are ones for particular types of data. Two of the most comprehensive public repositories are provided by the [National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov) and the [European Bioinformatics Institute (EMBL-EBI)](https://www.ebi.ac.uk/). The NCBI’s [Sequence Read Archive (SRA)](https://trace.ncbi.nlm.nih.gov/Traces/sra/) is the database we will be using for this lesson, but the EMBL-EBI’s Nucleotide Archive (ENA) is also useful. The general processes are similar for any database.
+
+
+An overview of RNA-sequencing data
+------------------------------------
+In a perfect world, RNA-Seq might work something like this:
+
+1. We know the location of every single gene in the genome (even genes that are identical duplicates of each other).
+2. At any given time, we can get an exact readout of how many mRNAs a gene has produced (transcription) and for protein coding mRNA transcripts we know how much protein was yielded.
+3. Given 1 and 2, we can clearly tell if gene transcription is different between two different samples (e.g. normal tissue and cancerous).
+
+Unfortunately, here are just some of the ways a real world experiment fails to meet our ideal expectations:
+
+1. We don’t know the location of every gene in the genome (often we think we know most of them though!).
+2. Genomes contain gene duplications (identical or near identical copies). Since our DNA sequencing reads are often around 100 nucleotides we may have difficulty telling where a read came from (and thus how to count it).
+3. Even if we have an idea of how much RNA is being produced, we don’t know how much of it ends up making a protein.
+
+![OVerview](../assets/img/overview_rna_seq.png)
+
+Overview of the experimental steps in a RNA-seq protocol. The cDNA library is generated from isolated RNA targets, sequenced and the reads are mapped against a reference genome or transcriptome. Downstream data analysis depends on the goal of the experiment and can include, among other things, assessing differential expression, variant calling or genome annotation.
+
+
 
 Accessing the original archived data
 ------------------------------------
@@ -120,6 +143,8 @@ The SRA does not support direct download of fastq files from its webpage. Howeve
 
 We do not recommend downloading large numbers of sequencing files this way. For that, the NCBI has made a software package called the `sra-toolkit`. However, for a couple files, it’s often easier to go through the ENA.
 
+
+
 Where to learn more
 -------------------
 
@@ -132,6 +157,7 @@ References
 ----------
 
 Tenaillon O, Barrick JE, Ribeck N, Deatherage DE, Blanchard JL, Dasgupta A, Wu GC, Wielgoss S, Cruveiller S, Médigue C, Schneider D, Lenski RE. Tempo and mode of genome evolution in a 50,000-generation experiment (2016) Nature. 536(7615): 165–170. [Paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/), [Supplemental materials](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4988878/#) Data on NCBI SRA: [https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP064605](https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP064605) Data on EMBL-EBI ENA: [https://www.ebi.ac.uk/ena/data/view/PRJNA295606](https://www.ebi.ac.uk/ena/data/view/PRJNA295606)
+
 
 > Key Points
 > ----------
