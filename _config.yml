@@ -24,18 +24,7 @@ navbar-links:
   Practical Overview:
     - Sample Datasets: "practical_overview/sample_datasets"
     - Week 1A Setting Up on Katana: "practical_overview/Week1A_SettingUpOnKatana"
-    - Week 1B 1 Introducing the Shell: "practical_overview/Week1B_1_Introducing_the_Shell"
-    - Week 1B 2 Navigating Files and Directories: "practical_overview/Week1B_2_Navigating_Files_And_Directories"
-    - Week 1B 3 Working with Files and Directories: "practical_overview/Week1B_3_Working_Files_Directories"
-    - Week 1B 4 Redirection: "practical_overview/Week1B_4_Redirection"
-    - Week 1B 5 Writing Scripts: "practical_overview/Week1B_5_Writing_Scripts_workingwithdata"
-    - Week 1B 6 Organisation of Folders: "practical_overview/Week1B_6_Organisation"
-    - Week 2 Examining Data on the NCBI SRA Database: "practical_overview/Week2_Exploring_Dataset"
-    - Week 3 Using FASTQC and MultiQC to produce quality report	: "practical_overview/Week3_FASTQC"
-    - Week 4 Using Trimmomatic for Trimming and Filtering : "practical_overview/Week4_Trimming"
-    - Week 5 Pseudalignment using kallisto: "practical_overview/Week5_Alignment"
-    - Week 6 Using DESeq For Differential Expression Analysis: "practical_overview/Week6_Differential_Expression"
-
+   
   Key Information: "key_info"
 
 ################
