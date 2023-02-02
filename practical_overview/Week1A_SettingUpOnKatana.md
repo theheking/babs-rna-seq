@@ -40,19 +40,19 @@ You log on to the server using your **zID** and **zPass** and a program that let
 
 On a UNSW machine, Putty is available from the start menu under PuTTY. This will open up the main putty window. In the **Host Name** box type: babsteaching.babs.unsw.edu.au. To save yourself having to type this again, you can **Save** the session as BABS3291 and later **Load** it. (If you change terminal settings, you can save these too.)
 
-![img]("../assets/img/1.png")
-![images]("../assets/img/2.png")
+![img](../assets/img/1.png)
+![images](../assets/img/2.png)
 
 
 (NB. The screenshot shows connection to backup edwardsstudents01.babs.unsw.edu.au server and saves the session as BABS3151 for a different course.)
 
 Hit **Open** and putty will try to connect to the server. The first time you try this, it will recognise the server as a new connection and check that you are sure (precise details may vary):
 
-![img2]("../assets/img/3.png")
+![img2](../assets/img/3.png)
 
 Click **Yes**. The main terminal window will now open, prompting you to login as: . Enter your **zID** and (press **ENTER** ) then enter your **zPass** when prompted. (If this does not work, check your VPN is working.)
 
-![img3]("../assets/img/4.png")
+![img3](../assets/img/4.png)
 
 **NOTE:** For security reasons, you will not see anything appear on-screen when typing your password. Trust that it is registering and hit **ENTER** when complete.
 
