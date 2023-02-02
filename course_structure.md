@@ -3,16 +3,14 @@ layout: page
 title: Course Structure
 ---
 
+| **Component**               | **HPW** | **Weeks** | **Time**  | **Day** | **Location**          |
+| --------------------------- | ------- | --------- | --------- | ------- | --------------------- |
+| Lecture 1                   | 1       | 1-5,7-10  | 0900-1000 | Tue     | MS Teams              |
+| Lecture 2                   | 1       | 1-5,7-10  | 1100-1200 | Thu     | MS Teams              |
+| Lecture 3                   | 1       | 1-5,7-10  | 1100-1200 | Fri     | MS Teams              |
+| Practical (Computer labs)   | 2       | 1-5,7-10  | 1400-1600 | Thu     | MS Teams / E26 Lab 11 |
+| Tutorial/Practical (Online) | 2       | 1-5,7-10  | 0900-1100 | Fri     | MS Teams              |
 
-| **Summary of Course Structure (for details see ‘Course Schedule’)** |
-| ------------------------------------------------------------------- |
-| **Component**                                                       | **HPW** | **Weeks** | **Time** | **Day** | **Location** |
-| Lecture 1                                                           | 1 | 1-5,7-10 | 0900-1000 | Tue | MS Teams |
-| Lecture 2                                                           | 1 | 1-5,7-10 | 1100-1200 | Thu | MS Teams |
-| Lecture 3                                                           | 1 | 1-5,7-10 | 1100-1200 | Fri | MS Teams |
-| Practical (Computer labs)                                           | 2 | 1-5,7-10 | 1400-1600 | Thu | MS Teams / E26 Lab 11 |
-| Tutorial/Practical (Online)                                         | 2 | 1-5,7-10 | 0900-1100 | Fri | MS Teams |
-| **TOTAL**                                                           | **7** | Students with clashes should contact the BSB Student Office. |
 
 
 #Practical and Tutorial Schedule
