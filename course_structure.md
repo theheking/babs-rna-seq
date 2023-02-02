@@ -13,9 +13,12 @@ title: Course Structure
 
 
 
-#Practical and Tutorial Schedule
+# Practical and Tutorial Schedule
+
 Prac/Tutorial sessions will be delivered synchronously as a combination of online and face-to-face live sessions with support from lecturers and demonstrators. Presentations will be recorded for reference
+
 ![Practical and Tutorial Schedule](../assets/img/practical.png)
+
 
 Attendance in practicals & tutorials is compulsory unless otherwise announced or prior arrangements have been made.
 
