@@ -60,13 +60,17 @@ Click **Yes**. The main terminal window will now open, prompting you to login as
 
 To log off the server, simply close the Putty window or type:
 
+```
 $ exit
+```
 
 ### Logging on from Mac OSX
 
 To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing zID with your own **zID** ):
 
+```
 $ ssh zID@katana.restech.unsw.edu.au
+```
 
 Enter your **zPass** when prompted. (If it doesn't work, check that you replaced zID with your own **zID**!)
 
