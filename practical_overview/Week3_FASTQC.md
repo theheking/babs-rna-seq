@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Week 3 Assessing Read Quality
-subtitle: Using FASTQC and MultiQC to produce quality report
+subtitle: Using FASTQC and MultiQC to produce quality report adapted from Data Carpentry course
 ---
 Assessing Read Quality
 ======================
@@ -24,7 +24,8 @@ Assessing Read Quality
 > *   Interpret a FastQC plot summarizing per-base quality across all reads.
 >     
 > *   Use `for` loops to automate operations on multiple files.
->     
+> 
+> *   How to use multiqc to make web based summary file for QC metrics
 
 Bioinformatic workflows
 =======================
@@ -41,47 +42,55 @@ An example of the workflow we will be using for our variant calling analysis is 
 4.  Perform post-alignment clean-up
 5.  Variant calling
 
-These workflows in bioinformatics adopt a plug-and-play approach in that the output of one tool can be easily used as input to another tool without any extensive configuration. Having standards for data formats is what makes this feasible. Standards ensure that data is stored in a way that is generally accepted and agreed upon within the community. The tools that are used to analyze data at different stages of the workflow are therefore built under the assumption that the data will be provided in a specific format.
+Standard data formats are essential and used throughout bioinfomatics.
 
 Starting with data
 ==================
 
-Often times, the first step in a bioinformatic workflow is getting the data you want to work with onto a computer where you can work with it. If you have outsourced sequencing of your data, the sequencing center will usually provide you with a link that you can use to download your data. Today we will be working with publicly available sequencing data.
+Ramaciotti Centre for Genomics and other sequencing centers will usually provide you will a link for data download. Today we will be working with publicly available sequencing data. However, we are using data that has been dowloaded onto the cluster beforehand, and split by chromosome to make it less computationally demanding to run through the entire pipeline. 
 
-We are studying a population of _Escherichia coli_ (designated Ara-3), which were propagated for more than 50,000 generations in a glucose-limited minimal medium. We will be working with three samples from this experiment, one from 5,000 generations, one from 15,000 generations, and one from 50,000 generations. The population changed substantially during the course of the experiment, and we will be exploring how with our variant calling workflow.
+You will be utilising one of the datasets from: https://theheking.github.io/babs-rna-seq/practical_overview/sample_datasets/
+For each dataset, there is a control and disease condition. I am using the dataset below and analysisng the differential expression between cerebellum and heart human datasets. 
 
-The data are paired-end, so we will download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA “provides a comprehensive record of the world’s nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation.” The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today.
+|               | Description                                                                   | Website GSE                                                                                                                | Paper                                                       | Paper Website                                                                              | Control Sample | Test Sample |
+| ------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------- | ----------- |
+| Human tissues | A data looking at the evolution of gene expression levels in mammalian organs | [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30352](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30352) | The evolution of gene expression levels in mammalian organs | [https://www.nature.com/articles/nature10532](https://www.nature.com/articles/nature10532) | Cerebellum     | Heart       |
+
+The data is single-end sequenced.
+
+## What is the difference between single and paired end reads?
+With paired-end sequencing, both ends of the fragment are sequenced. With single-end seuqecing, only one end is of a fragment is sequenced.
+
+
+If the data is paired-end, you will have to download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA “provides a comprehensive record of the world’s nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation.” The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today.
 
 To download the data, run the commands below.
 
 Here we are using the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 
-It will take about 15 minutes to download the files.
+It will take about 5 minutes to download the files.
 
-    mkdir -p ~/dc_workshop/data/untrimmed_fastq/
-    cd ~/dc_workshop/data/untrimmed_fastq
+    mkdir -p ~/data/untrimmed_fastq/
+    cd ~/data/untrimmed_fastq
     
-    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
-    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
-    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_1.fastq.gz
-    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_2.fastq.gz
-    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fastq.gz
-    curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz
+    wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
+    wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
     
 
-> Faster option
+> For your download 
 > -------------
 > 
-> If your workshop is short on time or the venue’s internet connection is weak or unstable, learners can avoid needing to download the data and instead use the data files provided in the `.backup/` directory.
-> 
->     $ cp ~/.backup/untrimmed_fastq/*fastq.gz .
+> To download your dataset. 
+>     $ DIRECTORY="GSE30352"
+>     $ CHROMOSOME="chr1_" 
+>     $ scp /srv/scratch/cking/BABS3291/FINAL_FASTQ/${DIRECTORY}/*${CHROMOSOME}*fastq.gz .
 >     
 > 
-> This command creates a copy of each of the files in the `.backup/untrimmed_fastq/` directory that end in `fastq.gz` and places the copies in the current working directory (signified by `.`).
+> This command creates a copy of each of the files in the directory that end in `fastq.gz` and places the copies in the current working directory (signified by `.`).
 
-The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let’s unzip one of the files so that we can look at the fastq format.
+The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. To unzip one of the files - you can look at the fastq format.
 
-    $ gunzip SRR2584863_1.fastq.gz
+    $ gunzip SRR2584863_1.fastq.gz #do not do this!!!
     
 
 Quality control
@@ -114,29 +123,24 @@ Always begins with a ‘+’ and sometimes the same info in line 1
 
 4
 
-Has a string of characters which represent the quality scores; must have same number of characters as line 2
+Has a string of characters which represent the quality scores; must have same number of characters as line 2 (https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm) 
+
 
 We can view the first complete read in one of the files our dataset by using `head` to look at the first four lines.
 
-    $ head -n 4 SRR2584863_1.fastq
-    
-
-    @SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/1
-    TTCACATCCTGACCATTCAGTTGAGCAAAATAGTTCTTCAGTGCCTGTTTAACCGAGTCACGCAGGGGTTTTTGGGTTACCTGATCCTGAGAGTTAACGGTAGAAACGGTCAGTACGTCAGAATTTACGCGTTGTTCGAACATAGTTCTG
-    +
-    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:[email protected]@[email protected]>C3>@5(8&>C:9?8+89<4(:83825C(:A#########################
+    $ zcat SRR2584863_1.fastq.gz | head -n 4
     
 
 Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality score, the numerical score is converted into a code where each individual character represents the numerical quality score for an individual nucleotide. For example, in the line above, the quality score line is:
 
-    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:[email protected]@[email protected]>C3>@5(8&>C:9?8+89<4(:83825C(:A#########################
+    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD8+89<4(:83825C(:A#########################
     
 
 The numerical value assigned to each of these characters depends on the sequencing platform that generated the reads. The sequencing machine used to generate our data uses the standard Sanger quality PHRED score encoding, using Illumina version 1.8 onwards. Each character is assigned a quality score between 0 and 41 as shown in the chart below.
 
-    Quality encoding: !"#$%&'()*+,-./0123456789:;<=>[email protected]
-                       |         |         |         |         |
-    Quality score:    01........11........21........31........41
+    Quality encoding: !"#$%&'()*+,-./0123456789:;<=>
+                      |     |     |      |        |
+    Quality score:   01....11.....21.....31......41
     
 
 Each quality score represents the probability that the corresponding nucleotide call is incorrect. This quality score is logarithmically based, so a quality score of 10 reflects a base call accuracy of 90%, but a quality score of 20 reflects a base call accuracy of 99%. These probability values are the results from the base calling algorithm and depend on how much signal was captured for the base incorporation.
@@ -146,7 +150,7 @@ Looking back at our read:
     @SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/1
     TTCACATCCTGACCATTCAGTTGAGCAAAATAGTTCTTCAGTGCCTGTTTAACCGAGTCACGCAGGGGTTTTTGGGTTACCTGATCCTGAGAGTTAACGGTAGAAACGGTCAGTACGTCAGAATTTACGCGTTGTTCGAACATAGTTCTG
     +
-    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:[email protected]@[email protected]>C3>@5(8&>C:9?8+89<4(:83825C(:A#########################
+    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACC3>@5(8&>C:9?8+89<4(:83825C(:A#########################
     
 
 we can now see that there is a range of quality scores, but that the end of the sequence is very poor (`#` = a quality score of 2).
@@ -154,21 +158,9 @@ we can now see that there is a range of quality scores, but that the end of the 
 > Exercise
 > --------
 > 
-> What is the last read in the `SRR2584863_1.fastq` file? How confident are you in this read?
+> What is the last read in your file? How confident are you in this read?
+> Hint use command: tail
 > 
-> > Solution
-> > --------
-> > 
-> >     $ tail -n 4 SRR2584863_1.fastq
-> >     
-> > 
-> >     @SRR2584863.1553259 HWI-ST957:245:H73R4ADXX:2:2216:21048:100894/1
-> >     CTGCAATACCACGCTGATCTTTCACATGATGTAAGAAAAGTGGGATCAGCAAACCGGGTGCTGCTGTGGCTAGTTGCAGCAAACCATGCAGTGAACCCGCCTGTGCTTCGCTATAGCCGTGACTGATGAGGATCGCCGGAAGCCAGCCAA
-> >     +
-> >     CCCFFFFFHHHHGJJJJJJJJJHGIJJJIJJJJIJJJJIIIIJJJJJJJJJJJJJIIJ[email protected]BDDDDDD>AA>?B?<@[email protected]?BDA?
-> >     
-> > 
-> > This read has more consistent quality at its end than the first read that we looked at, but still has a range of quality scores, most of them high. We will look at variations in position-based quality in just a moment.
 
 At this point, lets validate that all the relevant tools are installed. If you are using the AWS AMI then these _should_ be preinstalled.
 
