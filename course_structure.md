@@ -21,14 +21,10 @@ Prac/Tutorial sessions will be delivered synchronously as a combination of onlin
 
 
 Attendance in practicals & tutorials is compulsory unless otherwise announced or prior arrangements have been made.
-
-| _Assessment task_                                                                                                         | _Duration_ | _Weight_ | _Date_               |
-| ------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------------------- |
-| Final exam                                                                                                                | 2 hours    | 30%      | Check exam timetable |
-| **EXAMINATION TOTAL**                                                                                                     |            | _30%_    |                      |  |
-| _Assessment task_                                                                                                         | _Duration_ | _Weight_ | _Release date_       | _Due date_ |
-| Oral presentation of your dataset and why it is important to scientific research                                          | _4 weeks_  | _20%_    | _16-Feb (Wk 1)_      | _16-Mar 14:00 (Wk 5)_ |
-| Written assignment-short (1 page) essay about your dataset citing research articles                                       | _5 weeks_  | _20%_    | _16-Feb (Wk 1)_      | _24-Mar 14:00 (Wk 6)_ |
-| Bioinformatics practical: Report paper on your original data analysis including a 1 page discussion on future directions. | _7 weeks_  | _30%_    | _23-Mar (Wk 6)_      | _21-Apr 14:00 (Week 10)_ |
-| **COURSEWORK TOTAL**                                                                                                      |            | _70%_    |                      |  |
-
+| Assessment task                   | Weight | Deadline                  |
+| --------------------------------- | ------ | ------------------------- |
+| 1 (a)RNA-seq datasetTalk          | 10%    | Thu16-Mar(Week 5)         |
+| 1 (b) RNA-seq dataset Short essay | 20%    | Fri 24-Mar 1400 (Week 6)  |
+| 2 Bioinformatics Practical Report | 40%    | Fri 21-Apr 1400 (Week 10) |
+| Coursework                        | 70%    |                           |
+| Final exam                        | 30%    | See Exam Timetable        |
