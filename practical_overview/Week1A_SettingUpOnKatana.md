@@ -18,7 +18,7 @@ For many of you, this is your first time using UNIX. As with all bioinformatics,
  1.    Keep  **backup copies**  of important files.
  2.    Be  **very careful**  with the command rm ("remove", i.e. delete) and any commands to move/create files that might over-write something important (mv, cp and redirecting output with \> and \>\>).
  3.    Use  **rm -i**  to provide an additional safety check against rogue deletion.
- 4.     **Make sure that you keep good notes. ** Ultimately, it should be fairly straight-forward to regenerate anything from the starting data, provided you have adequate records of how you made it in the first place. This is one of the primary goals of keeping a lab book.
+ 4.     Make sure that you keep good notes. Ultimately, it should be fairly straight-forward to regenerate anything from the starting data, provided you have adequate records of how you made it in the first place. This is one of the primary goals of keeping a lab book.
 
 ## Setting up the UNSW VPN
 
