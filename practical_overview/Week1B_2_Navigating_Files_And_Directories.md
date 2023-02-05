@@ -37,18 +37,16 @@ Moving around the file system
 
 We’ve learned how to use `pwd` to find our current location within our file system. We’ve also learned how to use `cd` to change locations and `ls` to list the contents of a directory. Now we’re going to learn some additional commands for moving around within our file system.
 
-Use the commands we’ve learned so far to navigate to the `shell_data/untrimmed_fastq` directory, if you’re not already there.
+Use the commands we’ve learned so far to navigate to the `data` directory, if you’re not already there.
 
-    $ cd
-    $ cd shell_data
-    $ cd untrimmed_fastq
+    $ cd [your scratch directory]
+    $ cd data
     
 
 What if we want to move back up and out of this directory and to our top level directory? Can we type `cd shell_data`? Try it and see what happens.
 
     $ cd shell_data
     
-
     -bash: cd: shell_data: No such file or directory
     
 
@@ -61,17 +59,10 @@ We have a special command to tell the computer to move us back or up one directo
 
 Now we can use `pwd` to make sure that we are in the directory we intended to navigate to, and `ls` to check that the contents of the directory are correct.
 
-    $ pwd
-    
-
-    /home/dcuser/shell_data
-    
+    $ pwd    
 
     $ ls
-    
-
-    sra_metadata  untrimmed_fastq
-    
+     
 
 From this output, we can see that `..` did indeed take us back one level in our file system.
 
@@ -79,13 +70,14 @@ You can chain these together like so:
 
     $ ls ../../
     
+- What does this show?
 
-prints the contents of `/home`.
+
 
 > Finding hidden directories
 > --------------------------
 > 
-> First navigate to the `shell_data` directory. There is a hidden directory within this directory. Explore the options for `ls` to find out how to see hidden directories. List the contents of the directory and identify the name of the text file in that directory.
+> First navigate to your home directory. There is a hidden directory within this directory. Explore the options for `ls` to find out how to see hidden directories. List the contents of the directory and identify the name of the text file in that directory.
 > 
 > Hint: hidden files and folders in Unix start with `.`, for example `.my_hidden_directory`
 > 
@@ -101,24 +93,14 @@ prints the contents of `/home`.
 > > 
 > >     $ ls -a
 > >     
-> > 
-> >     .  ..  .hidden	sra_metadata  untrimmed_fastq
-> >     
-> > 
-> > The name of the hidden directory is `.hidden`. We can navigate to that directory using `cd`.
-> > 
-> >     $ cd .hidden
 > >     
 > > 
 > > And then list the contents of the directory using `ls`.
 > > 
 > >     $ ls
 > >     
-> > 
-> >     youfoundit.txt
 > >     
 > > 
-> > The name of the text file is `youfoundit.txt`.
 
 In most commands the flags can be combined together in no particular order to obtain the desired results/output.
 
@@ -134,73 +116,21 @@ By default, the `ls` commands lists the contents of the working directory (i.e. 
     $ cd
     
 
-Then enter the command:
-
-    $ ls shell_data
-    
-
-    sra_metadata  untrimmed_fastq
-    
-
-This will list the contents of the `shell_data` directory without you needing to navigate there.
-
-The `cd` command works in a similar way.
-
-Try entering:
-
-    $ cd
-    $ cd shell_data/untrimmed_fastq
-    
-
-This will take you to the `untrimmed_fastq` directory without having to go through the intermediate directory.
-
-> Navigating practice
-> -------------------
-> 
-> Navigate to your home directory. From there, list the contents of the `untrimmed_fastq` directory.
-> 
-> > Solution
-> > --------
-> > 
-> >     $ cd
-> >     $ ls shell_data/untrimmed_fastq/
-> >     
-> > 
-> >     SRR097977.fastq  SRR098026.fastq 
-> >     
-
 Full vs. Relative Paths
 -----------------------
 
 The `cd` command takes an argument which is a directory name. Directories can be specified using either a _relative_ path or a full _absolute_ path. The directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy. Navigate to the home directory, then enter the `pwd` command.
 
-    $ cd  
+    $ cd data
     $ pwd  
     
 
-You will see:
-
-    /home/dcuser
-    
-
-This is the full name of your home directory. This tells you that you are in a directory called `dcuser`, which sits inside a directory called `home` which sits inside the very top directory in the hierarchy. The very top of the hierarchy is a directory called `/` which is usually referred to as the _root directory_. So, to summarize: `dcuser` is a directory in `home` which is a directory in `/`. More on `root` and `home` in the next section.
-
 Now enter the following command:
 
-    $ cd /home/dcuser/shell_data/.hidden
+    $ cd [scratch location]/data
     
 
-This jumps forward multiple levels to the `.hidden` directory. Now go back to the home directory.
-
-    $ cd
-    
-
-You can also navigate to the `.hidden` directory using:
-
-    $ cd shell_data/.hidden
-    
-
-These two commands have the same effect, they both take us to the `.hidden` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a `/`. A relative path does not.
+These two commands have the same effect, they both take us to the `data` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a `/`. A relative path does not.
 
 A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now.
 
@@ -208,61 +138,18 @@ You can usually use either a full path or a relative path depending on what is m
 
 Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.
 
-> Relative path resolution
-> ------------------------
-> 
-> Using the filesystem diagram below, if `pwd` displays `/Users/thing`, what will `ls ../backup` display?
-> 
-> 1.  `../backup: No such file or directory`
-> 2.  `2012-12-01 2013-01-08 2013-01-27`
-> 3.  `2012-12-01/ 2013-01-08/ 2013-01-27/`
-> 4.  `original pnas_final pnas_sub`
-> 
-> ![File System for Challenge Questions](../fig/filesystem-challenge.svg)
-> 
-> > Solution
-> > --------
-> > 
-> > 1.  No: there _is_ a directory `backup` in `/Users`.
-> > 2.  No: this is the content of `Users/thing/backup`, but with `..` we asked for one level further up.
-> > 3.  No: see previous explanation. Also, we did not specify `-F` to display `/` at the end of the directory names.
-> > 4.  Yes: `../backup` refers to `/Users/backup`.
 
-### Navigational Shortcuts
-
-The root directory is the highest level directory in your file system and contains files that are important for your computer to perform its daily work. While you will be using the root (`/`) at the beginning of your absolute paths, it is important that you avoid working with data in these higher-level directories, as your commands can permanently alter files that the operating system needs to function. In many cases, trying to run commands in `root` directories will require special permissions which are not discussed here, so it’s best to avoid them and work within your home directory. Dealing with the `home` directory is very common. The tilde character, `~`, is a shortcut for your home directory. In our case, the `root` directory is **two** levels above our `home` directory, so `cd` or `cd ~` will take you to `/home/dcuser` and `cd /` will take you to `/`. Navigate to the `shell_data` directory:
-
-    $ cd
-    $ cd shell_data
-    
-
-Then enter the command:
-
-    $ ls ~
-    
-
-    R  r_data  shell_data
-    
-
-This prints the contents of your home directory, without you needing to type the full path.
-
-The commands `cd`, and `cd ~` are very useful for quickly navigating back to your home directory. We will be using the `~` character in later lessons to specify our home directory.
 
 > Key Points
 > ----------
 > 
-> *   The `/`, `~`, and `..` characters represent important navigational shortcuts.
+> *   The `/`, `.`, and `..` characters represent important navigational shortcuts.
 >     
 > *   Hidden files and directories start with `.` and can be viewed using `ls -a`.
 >     
 > *   Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
 >     
 
-### [previous episode](/shell-genomics/01-introduction/index.html)
-
-### [next episode](/shell-genomics/03-working-with-files/index.html)
-
 * * *
 
-Licensed under CC-BY 4.0 2018–2021 by The Carpentries  
-Licensed under CC-BY 4.0 2016–2018 by [Data Carpentry](http://datacarpentry.org)
+Adapted from the Data Carpentry Intro to Command Line -shell genomics https://datacarpentry.org/shell-genomics/
