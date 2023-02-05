@@ -90,5 +90,5 @@ Whenever working with servers, there is always the risk that something will go w
 
 3. To re-attached the screen "myname" after logging back on: screen -dr myname
 
-
+Adapted from Handbook by RJ Ewdards
 
