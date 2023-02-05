@@ -21,6 +21,8 @@ Prac/Tutorial sessions will be delivered synchronously as a combination of onlin
 
 
 Attendance in practicals & tutorials is compulsory unless otherwise announced or prior arrangements have been made.
+
+
 | Assessment task                   | Weight | Deadline                  |
 | --------------------------------- | ------ | ------------------------- |
 | 1 (a)RNA-seq datasetTalk          | 10%    | Thu16-Mar(Week 5)         |
