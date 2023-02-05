@@ -28,3 +28,5 @@ Attendance in practicals & tutorials is compulsory unless otherwise announced or
 | 2 Bioinformatics Practical Report | 40%    | Fri 21-Apr 1400 (Week 10) |
 | Coursework                        | 70%    |                           |
 | Final exam                        | 30%    | See Exam Timetable        |
+
+
