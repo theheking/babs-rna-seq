@@ -55,10 +55,10 @@ How to access the shell
 
 On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you’ll need to download a separate program to access the shell.
 
-To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is Katana where the login instructions are Week 1A
+To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is Katana where the login instructions are Week 1A.
 
-How to access the remote server
--------------------------------
+Clear Screen
+-------------
 
 This provides a lot of information about the remote server that you’re logging into. We’re not going to use most of this information for our workshop, so you can clear your screen using the `clear` command.
 
@@ -81,9 +81,9 @@ The part of the operating system that manages files and directories is called th
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
-Basic Commands
-==================
-    
+Basic Commands - Where am I?
+============================
+
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.
 
 Let’s find out where we are by running a command called `pwd` (which stands for “print working directory”). At any moment, our **current working directory** is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is `/home/dcuser`, which is the top level directory within our cloud system:
@@ -98,22 +98,29 @@ Let’s look at how our file system is organized. We can see what files and subd
 `ls` prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns. 
 
 
-> Basic Commands
-> ------------
+> Basic Commands - Navigating to your directory 
+> ----------------------------------------------
 
-On the Katana HPC, you will have two locations 
+On the Katana HPC, you will have two locations: 
+
+1) Home directory - which is the location where you are when you login
+    - Small space, keep scripts or other small files here.
+2) Scratch - where to keep large files 
+    - Your scratch is /srv/scratch/[insert your zID here]
+    - Large space, regularly cleaned of old files 
 
 The command to change locations in our file system is `cd`, followed by a directory name to change our working directory. `cd` stands for “change directory”.
 
 Let’s say we want to navigate to the directory we saw above. We can use the following command to get there:
 
     $ cd 
+    
+- Please navigate to your scratch space above.
 
 We can make the `ls` output more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
 
     $ ls -F
         
-
 Anything with a “/” after it is a directory. Things with a “\*” after them are programs. If there are no decorations, it’s a file.
 
 `ls` has lots of other options. To find out what they are, we can type:
@@ -147,13 +154,19 @@ then enter:
     $ cd she<tab>
     
 
-The shell will fill in the rest of the directory name for `shell_data`.
+> Basic Commands - Make a Directory Downloading Trial Data
+> ----------------------------------------------------------
 
-Now change directories to `untrimmed_fastq` in `shell_data`
+Here we are using the -p option for mkdir. This option allows mkdir to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 
-    $ cd shell_data
-    $ cd untrimmed_fastq
-    
+It will take about 5 minutes to download the files.
+    $   mkdir -p /data/
+    $   cd data
+
+    $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
+    $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
+
+
 
 Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
 
@@ -162,23 +175,20 @@ For example, if we now try to list the files which names start with `SR` by usin
     $ ls SR<tab>
     
 
-The shell auto-completes your command to `SRR09`, because all file names in the directory begin with this prefix. When you hit Tab again, the shell will list the possible choices.
+The shell auto-completes your command to `SRR2589044`, because all file names in the directory begin with this prefix. When you hit Tab again, the shell will list the possible choices.
 
     $ ls SRR09<tab><tab>
     
-
-    SRR097977.fastq  SRR098026.fastq
-    
-
 Tab completion can also fill in the names of programs, which can be useful if you remember the beginning of a program name.
 
     $ pw<tab><tab>
-    
 
     pwck      pwconv    pwd       pwdx      pwunconv
     
 
 Displays the name of every program that starts with `pw`.
+
+
 
 Summary
 -------
@@ -192,7 +202,7 @@ In the next few episodes, we’ll be expanding on these skills and seeing how us
 > 
 > *   The shell gives you the ability to work more efficiently by using keyboard commands rather than a GUI.
 >     
-> *   Useful commands for navigating your file system include: `ls`, `pwd`, and `cd`.
+> *   Useful commands for navigating your file system include: `ls`, `mkdir`, `wget`, `pwd`, and `cd`.
 >     
 > *   Most commands take options (flags) which begin with a `-`.
 >     
@@ -200,7 +210,6 @@ In the next few episodes, we’ll be expanding on these skills and seeing how us
 >     
 
 * * *
+Adapted from the Data Carpentry Intro to Command Line -shell genomics  https://datacarpentry.org/shell-genomics/
 
-Licensed under CC-BY 4.0 2018–2021 by The Carpentries  
-Licensed under CC-BY 4.0 2016–2018 by [Data Carpentry](http://datacarpentry.org)
 
