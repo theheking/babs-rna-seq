@@ -3,8 +3,8 @@ layout: page
 title: Week 1A Intro to Shell - Writing Scripts and Working with Data
 ---
 
-Writing Scripts and Working with Data
-=====================================
+Writing Scripts and Submitting Jobs to Katana 
+=============================================
 
 > Overview
 > --------
@@ -47,7 +47,8 @@ Let’s change our working directory to `data` using `cd`, then run `vim` to cre
     
 
 You should see something like this:
-<<<INSERT SOMETHING>>>>
+![Vim Command](../assets/img/vim_command.png)
+![Vim Open Doc](../assets/img/new_vimreadme.png)
 
 
 The text at the bottom of the screen shows the keyboard shortcuts for performing various tasks in `nano`. We will talk more about how to interpret this information soon.
@@ -56,10 +57,6 @@ The text at the bottom of the screen shows the keyboard shortcuts for performing
 > -------------
 > 
 > When we say, “`vim` is a text editor. On Unix systems (such as Linux and Mac OS X), many programmers use [Emacs](https://www.gnu.org/software/emacs/) or [Vim](https://www.vim.org/) (both of which require more time to learn), or a graphical editor such as [Gedit](https://projects.gnome.org/gedit/). On Windows, you may wish to use [Notepad++](https://notepad-plus-plus.org/). Windows also has a built-in editor called `notepad` that can be run from the command line in the same way as `nano` for the purposes of this lesson.
-> 
-
-<<<INSERT SOMETHING ON HOW TO NAVIGATE>>>>
-
 
 Now you’ve written a file. You can take a look at it with `less` or `cat`, or open it up again and edit it with `vim`.
 
@@ -69,12 +66,35 @@ Now you’ve written a file. You can take a look at it with `less` or `cat`, or 
 > Open `README.txt` and add the date to the top of the file and save the file.
 >
 
-    
-    
-    <<<INSERT SOMETHING ON HOW TO REQUEST SOMESPACE>>>>
 
-    
-    
+Katana - How to start an interative job
+-----------------------------------------
+For a more in depth understanding of Katana (https://unsw-restech.github.io/using_katana/). We will not be going into a deep dive of high performance computers. In essence, compute nodes are just high performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires
+
+The head node is not particularly powerful, and is shared by all logged-in users. Never run computational intense jobs there!!
+
+Different clusters use use different tools to manage resources and schedule jobs. Katana uses OpenPBS to control access to compute nodes.
+
+The "polite" thing to do is to request an interactive node, or submit a job. For small jobs that you are troubleshooting, form an interactive session. An interactive job or interactive session is a session on a compute node with the required physical resources for the period of time requested. To request an interactive job, add the -I flag (capital i) to qsub. Default sessions will have 1 CPU core, 1GB and 1 hour
+
+![QSUB](../assets/img/qsub.png)
+
+For example, the following two commands. The first provides a default session, the second provides a session with two CPU core and 8GB memory for three hours. You can tell when an interactive job has started when you see the name of the server change from katana1 or katana2 to the name of the server your job is running on. In these cases it’s k181 and k201 respectively.    
+
+>   $ qsub -I
+>   qsub: waiting for job 313704.kman.restech.unsw.edu.au to start
+>   qsub: job 313704.kman.restech.unsw.edu.au ready
+
+
+>   $ qsub -I -l select=1:ncpus=2:mem=8gb,walltime=3:00:00
+>   qsub: waiting for job 1234.kman.restech.unsw.edu.au to start
+>   qsub: job 1234.kman.restech.unsw.edu.au ready
+
+
+Jobs are constrained by the resources that are requested. In the previous example the first job - running on k181 - would be terminated after 1 hour or if a command within the session consumed more than 8GB memory. The job (and therefore the session) can also be terminated by the user with CTRL-D or the logout command.
+
+
+
 Writing scripts
 ---------------
 
@@ -144,8 +164,32 @@ Now we see that it says `-rwxr-xr-x`. The `x`’s that are there now tell us we 
 
 The script should run the same way as before, but now we’ve created our very own computer program!
 
-    
-        <<<INSERT SOMETHING ON HOW TO SUBMIT JOB ON TO CLUSTER>>>>
+
+
+Katana - How to start an batch job
+-------------------------------------------
+A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Katana.
+
+You must now edit your bad-reads-script.sh to have the same format as below.
+
+> #!/bin/bash
+> grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
+
+This script can be now be submitted to the cluster with qsub and it will become a job and be assigned to a queue. 
+
+> qsub ./bad-reads-script.sh
+
+As with interactive jobs, the -l (lowercase L) flag can be used to specify resource requirements for the job:
+
+> qsub -l select=1:ncpus=1:mem=4gb,walltime=12:00:00 ./bad-reads-script.sh
+
+
+You can also rewrite your original script to include the job requests within the script like below:
+
+> #!/bin/bash
+> #PBS -l select=1:ncpus=1:mem=4gb
+> #PBS -l walltime=12:00:00
+> grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
 
 
 Transferring Data Between your Local Machine and Katana (there and back again)
@@ -183,6 +227,8 @@ e.g ***On my Mac computer**** scp zID@katana.restech.unsw.edu.au:"somewhere/nice
 > ----------
 > 
 > *   Scripts are a collection of commands executed together.
+> 
+> *    How to submit interactive jobs
 >     
 > *   Transferring information to and from virtual and local computers.
 >     
