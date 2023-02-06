@@ -83,14 +83,14 @@ The "polite" thing to do is to request an interactive node, or submit a job. For
 
 For example, the following two commands. The first provides a default session, the second provides a session with two CPU core and 8GB memory for three hours. You can tell when an interactive job has started when you see the name of the server change from katana1 or katana2 to the name of the server your job is running on. In these cases it’s k181 and k201 respectively.    
 
->   $ qsub -I
->   qsub: waiting for job 313704.kman.restech.unsw.edu.au to start
->   qsub: job 313704.kman.restech.unsw.edu.au ready
+    $ qsub -I
+    qsub: waiting for job 313704.kman.restech.unsw.edu.au to start
+    qsub: job 313704.kman.restech.unsw.edu.au ready
 
 
->   $ qsub -I -l select=1:ncpus=2:mem=8gb,walltime=3:00:00
->   qsub: waiting for job 1234.kman.restech.unsw.edu.au to start
->   qsub: job 1234.kman.restech.unsw.edu.au ready
+    $ qsub -I -l select=1:ncpus=2:mem=8gb,walltime=3:00:00
+    qsub: waiting for job 1234.kman.restech.unsw.edu.au to start
+    qsub: job 1234.kman.restech.unsw.edu.au ready
 
 
 Jobs are constrained by the resources that are requested. In the previous example the first job - running on k181 - would be terminated after 1 hour or if a command within the session consumed more than 8GB memory. The job (and therefore the session) can also be terminated by the user with CTRL-D or the logout command.
@@ -174,24 +174,24 @@ A batch job is a script that runs autonomously on a compute node. The script mus
 
 You must now edit your bad-reads-script.sh to have the same format as below.
 
-> #!/bin/bash
-> grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
+    #!/bin/bash
+    grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
 
 This script can be now be submitted to the cluster with qsub and it will become a job and be assigned to a queue. 
 
-> qsub ./bad-reads-script.sh
+    $ qsub ./bad-reads-script.sh
 
 As with interactive jobs, the -l (lowercase L) flag can be used to specify resource requirements for the job:
 
-> qsub -l select=1:ncpus=1:mem=4gb,walltime=12:00:00 ./bad-reads-script.sh
+    $ qsub -l select=1:ncpus=1:mem=4gb,walltime=12:00:00 ./bad-reads-script.sh
 
 
 You can also rewrite your original script to include the job requests within the script like below:
 
-> #!/bin/bash
-> #PBS -l select=1:ncpus=1:mem=4gb
-> #PBS -l walltime=12:00:00
-> grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
+    #!/bin/bash
+    #PBS -l select=1:ncpus=1:mem=4gb
+    #PBS -l walltime=12:00:00
+    grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
 
 
 Transferring Data Between your Local Machine and Katana (there and back again)
