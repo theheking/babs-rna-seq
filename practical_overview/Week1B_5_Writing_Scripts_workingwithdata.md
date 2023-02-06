@@ -9,14 +9,16 @@ Writing Scripts and Submitting Jobs to Katana
 > Overview
 > --------
 > 
-> **Teaching:** 20 min  
+> **Teaching:** 10 min  
 > **Exercises:** 20 min
 > 
 > **Questions**
 > 
 > *   How can we automate a commonly used set of commands?
->     
-> 
+>
+> *   How can we submit a job to the HPC?
+
+
 > **Objectives**
 > 
 > *   Use the `vim` text editor to modify text files.
