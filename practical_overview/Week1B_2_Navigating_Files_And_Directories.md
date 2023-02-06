@@ -72,6 +72,7 @@ You can chain these together like so:
     
 - What does this show?
 
+![Permissions breakdown](../assets/img/filesystem-challenge.svg)
 
 
 > Finding hidden directories
