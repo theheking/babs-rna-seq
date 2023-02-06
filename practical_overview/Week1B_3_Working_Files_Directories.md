@@ -223,7 +223,7 @@ View the current permissions on a file using the `-l` (long) flag for the `ls` c
 
 The first part of the output for the `-l` flag gives you information about the file’s current permissions. There are ten slots in the permissions list. The first character in this list is related to file type, not permissions, so we’ll ignore it for now. The next three characters relate to the permissions that the file owner has, the next three relate to the permissions for group members, and the final three characters specify what other users outside of your group can do with the file. We’re going to concentrate on the three positions that deal with your permissions (as the file owner).
 
-![Permissions breakdown](../assets/img/rwx_figure.png)
+![Permissions breakdown](../assets/img/rwx_figure.svg)
 
 Here the three positions that relate to the file owner are `rw-`. The `r` means that you have permission to read the file, the `w` indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `-`, indicating that you don’t have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored.
 
