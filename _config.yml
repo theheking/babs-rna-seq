@@ -24,8 +24,11 @@ navbar-links:
   Practical Overview:
     - Sample Datasets: "practical_overview/sample_datasets"
     - Week 1A Setting Up on Katana: "practical_overview/Week1A_SettingUpOnKatana"
-    - Week 1B Introducing the Shell: "practical_overview/Week1B_1_Introducing_the_Shell"
-
+    - Week 1B 1) Introducing the Shell: "practical_overview/Week1B_1_Introducing_the_Shell"
+    - Week 1B 2) Navigating Files and Directories: "practical_overview/Week1B_2_Navigating_Files_And_Directories"
+    - Week 1B 3) Writing Scripts and Working with Data: "practical_overview/Week1B_3_Working_Files_Directories"
+    - Week 1B 4) Redirection: "practical_overview/Week1B_4_Redirection"
+    
   Key Information: "key_info"
 
 ################
