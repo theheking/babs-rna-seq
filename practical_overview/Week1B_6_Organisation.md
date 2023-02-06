@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Week 1A Intro to Shell - Project Organization
+title: Week 1B Intro to Shell - Project Organization
 ---
 
-Project Organization
-====================
+ADDITIONAL: Project Organization
+================================
 
 > Overview
 > --------
@@ -25,7 +25,7 @@ Project Organization
 >     
 > *   Explain what types of files should go in your `docs`, `data`, and `results` directories.
 >     
-> *   Use the `history` command and a text editor like `nano` to document your work on your project.
+> *   Use the `history` command and a text editor like `vim` to document your work on your project.
 >     
 
 Getting your project started
@@ -234,7 +234,3 @@ References
 >     
 > *   Always save a write-protected copy of your raw data.
 >     
-
-### [previous episode](/shell-genomics/05-writing-scripts/index.html)
-
-### [lesson home](/shell-genomics/)
