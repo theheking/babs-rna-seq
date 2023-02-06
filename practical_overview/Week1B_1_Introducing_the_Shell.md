@@ -158,6 +158,7 @@ then enter:
 > ----------------------------------------------------------
 
 Here we are using the -p option for mkdir. This option allows mkdir to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
+ `wget` is short for “world wide web get”, and it’s basic function is to _download_ web pages or data at a web address.
 
 It will take about 5 minutes to download the files.
     $   mkdir -p /data/
