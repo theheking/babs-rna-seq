@@ -3,8 +3,11 @@ layout: page
 title: Sample Datasets
 subtitle: Table Displaying the Different Datasets Available for Use in the Practical
 ---
- Outer pipes  Cell padding 
-No sorting
+
+
+
+
+
 | Groups        | Dataset                | GSE       | Description                                                                                                                                                       | Website GSE                                                                                                                  | Paper                                                                                                                                                     | Paper Website                                                                                                                                                                                                                                                                | Control Sample                         | Test Sample                            |
 | ------------- | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | -------------------------------------- |
 | Model Dataset | Human tissues          | GSE30352  | A data looking at the evolution of gene expression levels in mammalian organs                                                                                     | [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30352](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30352)   | The evolution of gene expression levels in mammalian organs                                                                                               | [https://www.nature.com/articles/nature10532](https://www.nature.com/articles/nature10532)                                                                                                                                                                                   | Cerebellum                             | Heart                                  |
