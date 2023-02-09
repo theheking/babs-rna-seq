@@ -58,6 +58,7 @@ For each dataset, there is a control and disease condition. I am using the datas
 
 The data is single-end sequenced.
 
+**Recap** 
 ## What is the difference between single and paired end reads?
 With paired-end sequencing, both ends of the fragment are sequenced. With single-end seuqecing, only one end is of a fragment is sequenced.
 
