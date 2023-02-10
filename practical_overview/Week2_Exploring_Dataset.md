@@ -56,6 +56,9 @@ Unfortunately, here are just some of the ways a real world experiment fails to m
 Overview of the experimental steps in a RNA-seq protocol. The cDNA library is generated from isolated RNA targets, sequenced and the reads are mapped against a reference genome or transcriptome. Downstream data analysis depends on the goal of the experiment and can include, among other things, assessing differential expression, variant calling or genome annotation.
 
 
+## What is the difference between single and paired end reads?
+With paired-end sequencing, both ends of the fragment are sequenced. With single-end seuqecing, only one end is of a fragment is sequenced.
+
 
 Accessing the original archived data
 ------------------------------------
