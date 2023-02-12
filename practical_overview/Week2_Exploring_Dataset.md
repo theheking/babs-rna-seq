@@ -10,8 +10,6 @@ Examining Data on the NCBI SRA Database
 > Overview
 > --------
 > 
-> **Teaching:** 20 min  
-> **Exercises:** 10 min
 > 
 > **Questions**
 > 
