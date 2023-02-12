@@ -101,25 +101,15 @@ Details on the FASTQ format
 
 Although it looks complicated (and it is), we can understand the [fastq](https://en.wikipedia.org/wiki/FASTQ_format) format with a little decoding. Some rules about the format include…
 
-Line
+Line - Description
 
-Description
+1 - Always begins with ‘@’ and then information about the read
 
-1
+2 - The actual DNA sequence
 
-Always begins with ‘@’ and then information about the read
+3 - Always begins with a ‘+’ and sometimes the same info in line 1
 
-2
-
-The actual DNA sequence
-
-3
-
-Always begins with a ‘+’ and sometimes the same info in line 1
-
-4
-
-Has a string of characters which represent the quality scores; must have same number of characters as line 2 (https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm) 
+4 - Has a string of characters which represent the quality scores; must have same number of characters as line 2 (https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm) 
 
 
 We can view the first complete read in one of the files our dataset by using `head` to look at the first four lines.
