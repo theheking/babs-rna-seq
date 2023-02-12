@@ -219,7 +219,6 @@ e.g ***On my Mac computer**** scp zID@katana.restech.unsw.edu.au:"somewhere/nice
     $ find ~ -name *.txt
     
 
-
     
 
 > Key Points
