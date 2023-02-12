@@ -60,23 +60,20 @@ The data is single-end sequenced.
 
 **Recap** 
 ## What is the difference between single and paired end reads?
-With paired-end sequencing, both ends of the fragment are sequenced. With single-end seuqecing, only one end is of a fragment is sequenced.
+With paired-end sequencing, both ends of the fragment are sequenced. With single-end seuqecing, only one end is of a fragment is sequenced. If the data is paired-end, you have two files for each sample.
 
 
-If the data is paired-end, you will have to download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA “provides a comprehensive record of the world’s nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation.” The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today.
+You will find your FASTA file at  **/srv/scratch/babs3291/**. You will be assigned a chromosome subset and a dataset previously.
 
-To download the data, run the commands below.
+To download the data, please:
 
-Here we are using the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
+1) request an interactive session using qsub 
 
-It will take about 5 minutes to download the files.
+2) Use `mkdir` to create a folder for your input fasta file e.g. **UNTRIMMED_FASTA**
+You can use the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 
-    mkdir -p ~/data/untrimmed_fastq/
-    cd ~/data/untrimmed_fastq
-    
-    wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
-    wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
-    
+3) copy your dataset from the **/srv/scratch/babs3291/** to your local scratch 
+
 
 > For your download 
 > -------------
@@ -84,7 +81,7 @@ It will take about 5 minutes to download the files.
 > To download your dataset. 
 >     $ DIRECTORY="GSE30352"
 >     $ CHROMOSOME="chr1_" 
->     $ scp /srv/scratch/cking/BABS3291/FINAL_FASTQ/${DIRECTORY}/*${CHROMOSOME}*fastq.gz .
+>     $ scp /srv/scratch/babs3291/FASTA/${DIRECTORY}/*${CHROMOSOME}*fastq.gz .
 >     
 > 
 > This command creates a copy of each of the files in the directory that end in `fastq.gz` and places the copies in the current working directory (signified by `.`).
@@ -311,31 +308,17 @@ Here, we see positions within the read in which the boxes span a much wider rang
 Running FastQC
 --------------
 
-We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `untrimmed_fastq` directory
+We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `UNTRIMMED_FASTA` directory
 
-    $ cd ~/dc_workshop/data/untrimmed_fastq/
+    $ cd /[yourscratch]/UNTRIMMED_FASTA/
     
 
 > Exercise
 > --------
 > 
-> How big are the files? (Hint: Look at the options for the `ls` command to see how to show file sizes.)
+> How big are your files? (Hint: Look at the options for the `ls` command to see how to show file sizes.)
 > 
-> > Solution
-> > --------
-> > 
-> >     $ ls -l -h
-> >     
-> > 
-> >     -rw-rw-r-- 1 dcuser dcuser 545M Jul  6 20:27 SRR2584863_1.fastq
-> >     -rw-rw-r-- 1 dcuser dcuser 183M Jul  6 20:29 SRR2584863_2.fastq.gz
-> >     -rw-rw-r-- 1 dcuser dcuser 309M Jul  6 20:34 SRR2584866_1.fastq.gz
-> >     -rw-rw-r-- 1 dcuser dcuser 296M Jul  6 20:37 SRR2584866_2.fastq.gz
-> >     -rw-rw-r-- 1 dcuser dcuser 124M Jul  6 20:22 SRR2589044_1.fastq.gz
-> >     -rw-rw-r-- 1 dcuser dcuser 128M Jul  6 20:24 SRR2589044_2.fastq.gz
-> >     
-> > 
-> > There are six FASTQ files ranging from 124M (124MB) to 545M.
+
 
 FastQC can accept multiple file names as input, and on both zipped and unzipped files, so we can use the \*.fastq\* wildcard to run FastQC on all of the FASTQ files in this directory.
 
@@ -344,39 +327,15 @@ FastQC can accept multiple file names as input, and on both zipped and unzipped 
 
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
 
-    Started analysis of SRR2584863_1.fastq
-    Approx 5% complete for SRR2584863_1.fastq
-    Approx 10% complete for SRR2584863_1.fastq
-    Approx 15% complete for SRR2584863_1.fastq
-    Approx 20% complete for SRR2584863_1.fastq
-    Approx 25% complete for SRR2584863_1.fastq
-    Approx 30% complete for SRR2584863_1.fastq
-    Approx 35% complete for SRR2584863_1.fastq
-    Approx 40% complete for SRR2584863_1.fastq
-    Approx 45% complete for SRR2584863_1.fastq
-    
+    Started analysis of SRR19154424.fastq
+    Approx 5% complete for SRR19154424.fastq
+    Approx 10% complete for SRR19154424.fastq
+    Approx 15% complete for SRR19154424.fastq
 
-In total, it should take about five minutes for FastQC to run on all six of our FASTQ files. When the analysis completes, your prompt will return. So your screen will look something like this:
 
-    Approx 80% complete for SRR2589044_2.fastq.gz
-    Approx 85% complete for SRR2589044_2.fastq.gz
-    Approx 90% complete for SRR2589044_2.fastq.gz
-    Approx 95% complete for SRR2589044_2.fastq.gz
-    Analysis complete for SRR2589044_2.fastq.gz
-    $
-    
-
-The FastQC program has created several new files within our `data/untrimmed_fastq/` directory.
+The FastQC program has created several new files within our `/UNTRIMMED_FASTA/` directory.
 
     $ ls
-    
-
-    SRR2584863_1.fastq        SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-    SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-    SRR2584863_1_fastqc.zip   SRR2584866_1.fastq.gz     SRR2589044_1.fastq.gz
-    SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-    SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
-    SRR2584863_2.fastq.gz     SRR2584866_2.fastq.gz     SRR2589044_2.fastq.gz
     
 
 For each input FASTQ file, FastQC has created a `.zip` file and a
@@ -385,66 +344,43 @@ For each input FASTQ file, FastQC has created a `.zip` file and a
 
 We want to keep our data files and our results files separate, so we will move these output files into a new directory within our `results/` directory.
 
-    $ mkdir -p ~/dc_workshop/results/fastqc_untrimmed_reads
-    $ mv *.zip ~/dc_workshop/results/fastqc_untrimmed_reads/
-    $ mv *.html ~/dc_workshop/results/fastqc_untrimmed_reads/
+    $ mkdir -p [yourscratch]/FASTQC_UNTRIMMED_READS
+    $ mv *.zip [yourscratch]/FASTQC_UNTRIMMED_READS/
+    $ mv *.html [yourscratch]/FASTQC_UNTRIMMED_READS/
     
 
 Now we can navigate into this results directory and do some closer inspection of our output files.
 
-    $ cd ~/dc_workshop/results/fastqc_untrimmed_reads/
+    $ cd [yourscratch]/FASTQC_UNTRIMMED_READS/
     
 
 Viewing the FastQC results
 --------------------------
 
-If we were working on our local computers, we would be able to look at each of these HTML files by opening them in a web browser.
+If we were working on our local computers, we would be able to look at each of these HTML files by opening them in a web browser. However, to look at a summary vesion of the Fastqc html files- we need to create a summary file.
 
-However, these files are currently sitting on our remote AWS instance, where our local computer can not see them. And, since we are only logging into the AWS instance via the command line - it does not have any web browser setup to display these files either.
+However, these files are currently sitting on Katana, where our local computer can not see them. And, since we are only logging into the Katana  via the command line - it does not have any web browser setup to display these files either.
 
 So the easiest way to look at these webpage summary reports will be to transfer them to our local computers (i.e. your laptop).
 
-To transfer a file from a remote server to our own machines, we will use `scp`, which we learned yesterday in the Shell Genomics lesson.
+To transfer a file from a remote server to our own machines, we will use `scp`.
 
 First we will make a new directory on our computer to store the HTML files we are transferring. Let’s put it on our desktop for now. Open a new tab in your terminal program (you can use the pull down menu at the top of your screen or the Cmd+t keyboard shortcut) and type:
 
-    $ mkdir -p ~/Desktop/fastqc_html
+    $ mkdir -p ~/Desktop/FASTQC_HTML
     
 
 Now we can transfer our HTML files to our local computer using `scp`.
 
-    $ scp [email protected]:~/dc_workshop/results/fastqc_untrimmed_reads/*.html ~/Desktop/fastqc_html
+    $ scp [email protected]:/UNTRIMMED_FASTQC/*.html ~/Desktop/fastqc_html
+    
     
 
 > Note on using zsh
 > -----------------
 > 
 > If you are using zsh instead of bash (macOS for example changed the default recently to zsh), it is likely that a `no matches found` error will be displayed. The reason for this is that the wildcard (“\*”) is not correctly interpreted. To fix this problem the wildcard needs to be escaped with a “\\”:
-> 
-> >     $ scp [email protected]:~/dc_workshop/results/fastqc_untrimmed_reads/\*.html ~/Desktop/fastqc_html
-> >     
-> > 
-> > Alternatively, you can put the whole path into quotation marks:
-> > 
-> >     $ scp "[email protected]:~/dc_workshop/results/fastqc_untrimmed_reads/*.html" ~/Desktop/fastqc_html
-> >     
-
-As a reminder, the first part of the command `[[email protected]](/cdn-cgi/l/email-protection)` is the address for your remote computer. Make sure you replace everything after `[[email protected]](/cdn-cgi/l/email-protection)` with your instance number (the one you used to log in).
-
-The second part starts with a `:` and then gives the absolute path of the files you want to transfer from your remote computer. Do not forget the `:`. We used a wildcard (`*.html`) to indicate that we want all of the HTML files.
-
-The third part of the command gives the absolute path of the location you want to put the files. This is on your local computer and is the directory we just created `~/Desktop/fastqc_html`.
-
-You should see a status output like this:
-
-    SRR2584863_1_fastqc.html                      100%  249KB 152.3KB/s   00:01
-    SRR2584863_2_fastqc.html                      100%  254KB 219.8KB/s   00:01
-    SRR2584866_1_fastqc.html                      100%  254KB 271.8KB/s   00:00
-    SRR2584866_2_fastqc.html                      100%  251KB 252.8KB/s   00:00
-    SRR2589044_1_fastqc.html                      100%  249KB 370.1KB/s   00:00
-    SRR2589044_2_fastqc.html                      100%  251KB 592.2KB/s   00:00
     
-
 Now we can go to our new directory and open the 6 HTML files.
 
 Depending on your system, you should be able to select and open them all at once via a right click menu in your file browser.
@@ -452,12 +388,9 @@ Depending on your system, you should be able to select and open them all at once
 > Exercise
 > --------
 > 
-> Discuss your results with a neighbor. Which sample(s) looks the best in terms of per base sequence quality? Which sample(s) look the worst?
+> Discuss your results with your group or a neighbor. Which sample(s) looks the best in terms of per base sequence quality? Which sample(s) look the worst?
 > 
-> > Solution
-> > --------
-> > 
-> > All of the reads contain usable data, but the quality decreases toward the end of the reads.
+
 
 Decoding the other FastQC outputs
 ---------------------------------
@@ -475,163 +408,52 @@ We have now looked at quite a few “Per base sequence quality” FastQC graphs,
 *   [**Adapter Content**](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/10%20Adapter%20Content.html): a graph indicating where adapater sequences occur in the reads.
 *   [**K-mer Content**](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/11%20Kmer%20Content.html): a graph showing any sequences which may show a positional bias within the reads.
 
+
+
+Using MultiQC to Simplify the FastqC html output
+-------------------------------------------------
+It is hard to read through all html files at once. A great tool to make a summary of the QC files is `multiqc`
+
+    $ multiqc . 
+    
+  
+  Use the flags to specifiy an output file or location and the input files. 
+  
+  Please transfer 
+
+
+> Exercise
+> --------
+> 
+> Does any samples failed at least one of FastQC’s quality tests? What test(s) did those samples fail?
+
+***Extra Work***
 Working with the FastQC text output
 -----------------------------------
 
-Now that we have looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to your AWS instance (the tab label will start with `[[email protected]](/cdn-cgi/l/email-protection)`) and make sure you are in our results subdirectory.
-
-    $ cd ~/dc_workshop/results/fastqc_untrimmed_reads/
-    $ ls
-    
-
-    SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-    SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-    SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-    SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
-    
-
 Our `.zip` files are compressed files. They each contain multiple different types of output files for a single input FASTQ file. To view the contents of a `.zip` file, we can use the program `unzip` to decompress these files. Let’s try doing them all at once using a wildcard.
 
+To unzip the files 
+
     $ unzip *.zip
-    
-
-    Archive:  SRR2584863_1_fastqc.zip
-    caution: filename not matched:  SRR2584863_2_fastqc.zip
-    caution: filename not matched:  SRR2584866_1_fastqc.zip
-    caution: filename not matched:  SRR2584866_2_fastqc.zip
-    caution: filename not matched:  SRR2589044_1_fastqc.zip
-    caution: filename not matched:  SRR2589044_2_fastqc.zip
-    
-
-This did not work. We unzipped the first file and then got a warning message for each of the other `.zip` files. This is because `unzip` expects to get only one zip file as input. We could go through and unzip each file one at a time, but this is very time consuming and error-prone. Someday you may have 500 files to unzip!
-
-A more efficient way is to use a `for` loop like we learned in the Shell Genomics lesson to iterate through all of our `.zip` files. Let’s see what that looks like and then we will discuss what we are doing with each line of our loop.
 
     $ for filename in *.zip
     > do
     > unzip $filename
     > done
     
-
-In this example, the input is six filenames (one filename for each of our `.zip` files). Each time the loop iterates, it will assign a file name to the variable `filename` and run the `unzip` command. The first time through the loop, `$filename` is `SRR2584863_1_fastqc.zip`. The interpreter runs the command `unzip` on `SRR2584863_1_fastqc.zip`. For the second iteration, `$filename` becomes `SRR2584863_2_fastqc.zip`. This time, the shell runs `unzip` on `SRR2584863_2_fastqc.zip`. It then repeats this process for the four other `.zip` files in our directory.
-
-When we run our `for` loop, you will see output that starts like this:
-
-    Archive:  SRR2589044_2_fastqc.zip
-       creating: SRR2589044_2_fastqc/
-       creating: SRR2589044_2_fastqc/Icons/
-       creating: SRR2589044_2_fastqc/Images/
-      inflating: SRR2589044_2_fastqc/Icons/fastqc_icon.png
-      inflating: SRR2589044_2_fastqc/Icons/warning.png
-      inflating: SRR2589044_2_fastqc/Icons/error.png
-      inflating: SRR2589044_2_fastqc/Icons/tick.png
-      inflating: SRR2589044_2_fastqc/summary.txt
-      inflating: SRR2589044_2_fastqc/Images/per_base_quality.png
-      inflating: SRR2589044_2_fastqc/Images/per_tile_quality.png
-      inflating: SRR2589044_2_fastqc/Images/per_sequence_quality.png
-      inflating: SRR2589044_2_fastqc/Images/per_base_sequence_content.png
-      inflating: SRR2589044_2_fastqc/Images/per_sequence_gc_content.png
-      inflating: SRR2589044_2_fastqc/Images/per_base_n_content.png
-      inflating: SRR2589044_2_fastqc/Images/sequence_length_distribution.png
-      inflating: SRR2589044_2_fastqc/Images/duplication_levels.png
-      inflating: SRR2589044_2_fastqc/Images/adapter_content.png
-      inflating: SRR2589044_2_fastqc/fastqc_report.html
-      inflating: SRR2589044_2_fastqc/fastqc_data.txt
-      inflating: SRR2589044_2_fastqc/fastqc.fo
-    
-
-The `unzip` program is decompressing the `.zip` files and creating a new directory (with subdirectories) for each of our samples, to store all of the different output that is produced by FastQC. There
-
-are a lot of files here. The one we are going to focus on is the `summary.txt` file.
-
-If you list the files in our directory now you will see:
-
-    SRR2584863_1_fastqc       SRR2584866_1_fastqc       SRR2589044_1_fastqc
-    SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-    SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-    SRR2584863_2_fastqc       SRR2584866_2_fastqc       SRR2589044_2_fastqc
-    SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-    SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
-    
-
-The `.html` files and the uncompressed `.zip` files are still present, but now we also have a new directory for each of our samples. We can see for sure that it is a directory if we use the `-F` flag for `ls`.
-
-    $ ls -F
-    
-
-    SRR2584863_1_fastqc/      SRR2584866_1_fastqc/      SRR2589044_1_fastqc/
-    SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-    SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-    SRR2584863_2_fastqc/      SRR2584866_2_fastqc/      SRR2589044_2_fastqc/
-    SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-    SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
-    
-
 Let’s see what files are present within one of these output directories.
 
-    $ ls -F SRR2584863_1_fastqc/
-    
-
-    fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
-    
-
+    $ ls -F SRR2584863_FASTQC/
+   
 Use `less` to preview the `summary.txt` file for this sample.
 
-    $ less SRR2584863_1_fastqc/summary.txt
+    $ cat SRR2584863_FASTQC/summary.txt
     
-
-    PASS    Basic Statistics        SRR2584863_1.fastq
-    PASS    Per base sequence quality       SRR2584863_1.fastq
-    PASS    Per tile sequence quality       SRR2584863_1.fastq
-    PASS    Per sequence quality scores     SRR2584863_1.fastq
-    WARN    Per base sequence content       SRR2584863_1.fastq
-    WARN    Per sequence GC content SRR2584863_1.fastq
-    PASS    Per base N content      SRR2584863_1.fastq
-    PASS    Sequence Length Distribution    SRR2584863_1.fastq
-    PASS    Sequence Duplication Levels     SRR2584863_1.fastq
-    PASS    Overrepresented sequences       SRR2584863_1.fastq
-    WARN    Adapter Content SRR2584863_1.fastq
-    
-
 The summary file gives us a list of tests that FastQC ran, and tells us whether this sample passed, failed, or is borderline (`WARN`). Remember, to quit from `less` you must type `q`.
 
-Documenting our work
---------------------
 
-We can make a record of the results we obtained for all our samples
-
-by concatenating all of our `summary.txt` files into a single file using the `cat` command. We will call this `fastqc_summaries.txt` and move it to `~/dc_workshop/docs`.
-
-    $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
     
-
-> Exercise
-> --------
-> 
-> Which samples failed at least one of FastQC’s quality tests? What test(s) did those samples fail?
-> 
-> > Solution
-> > --------
-> > 
-> > We can get the list of all failed tests using `grep`.
-> > 
-> >     $ cd ~/dc_workshop/docs
-> >     $ grep FAIL fastqc_summaries.txt
-> >     
-> > 
-> >     FAIL    Per base sequence quality       SRR2584863_2.fastq.gz
-> >     FAIL    Per tile sequence quality       SRR2584863_2.fastq.gz
-> >     FAIL    Per base sequence content       SRR2584863_2.fastq.gz
-> >     FAIL    Per base sequence quality       SRR2584866_1.fastq.gz
-> >     FAIL    Per base sequence content       SRR2584866_1.fastq.gz
-> >     FAIL    Adapter Content SRR2584866_1.fastq.gz
-> >     FAIL    Adapter Content SRR2584866_2.fastq.gz
-> >     FAIL    Adapter Content SRR2589044_1.fastq.gz
-> >     FAIL    Per base sequence quality       SRR2589044_2.fastq.gz
-> >     FAIL    Per tile sequence quality       SRR2589044_2.fastq.gz
-> >     FAIL    Per base sequence content       SRR2589044_2.fastq.gz
-> >     FAIL    Adapter Content SRR2589044_2.fastq.gz
-> >     
 
 Other notes – optional
 ======================
@@ -658,11 +480,9 @@ Other notes – optional
 > *   Quality encodings vary across sequencing platforms.
 >     
 > *   `for` loops let you perform the same set of operations on multiple files with a single command.
->     
 
-### [previous episode](/wrangling-genomics/01-background/index.html)
 
-### [next episode](/wrangling-genomics/03-trimming/index.html)
+
 
 * * *
 
