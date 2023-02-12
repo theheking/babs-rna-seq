@@ -8,9 +8,6 @@ Working with Files and Directories
 > Overview
 > --------
 > 
-> **Teaching:** 30 min  
-> **Exercises:** 15 min
-> 
 > **Questions**
 > 
 > *   How can I view and search file contents?
