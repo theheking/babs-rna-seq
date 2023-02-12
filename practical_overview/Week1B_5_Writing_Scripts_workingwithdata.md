@@ -9,9 +9,6 @@ Writing Scripts and Submitting Jobs to Katana
 > Overview
 > --------
 > 
-> **Teaching:** 10 min  
-> **Exercises:** 20 min
-> 
 > **Questions**
 > 
 > *   How can we automate a commonly used set of commands?
