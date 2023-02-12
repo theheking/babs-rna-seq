@@ -4,43 +4,56 @@ title: Week 5 Alignment with Kallisto
 ---
 
 
-=====================
+Trimming and Filtering
+======================
 
 > Overview
+> --------
+> **Questions**
+> 
+> *  How do I perform pseudo-alignment to map the transcriptome of my sample?
+>     
+> 
+> **Objectives**
+> 
+> *   Understand the difference between pseudo-alignment and alignment
+>     
+> *  Select the correct parameters for kallisto for your sample
+>     
+> *  Submit your job to the cluster
+>     
+=====================
 
-Despite these challenges, RNA-Seq is a very useful experiment and researchers have worked through many of the challenges above to develop software that can help us infer what is happening in the transcriptome.
+Introduction
+==============
+Despite challenges of RNA-seq, it is a very useful experiment and researchers have worked through many of the challenges above to develop software that can help us infer what is happening in the transcriptome.
 
 Kallisto is a quick, highly-efficient software for quantifying transcript abundances in an RNA-Seq experiment. Even on a typical laptop, Kallisto can quantify 30 million reads in less than 3 minutes.
 
 In order to analyze data with Kallisto we need several inputs:
 
-We need the FastQ files from the RNA-Seq experiment; we usually start with reads that have already been trimmed/filtered
-We need a reference transcriptome. This is a file that has the sequences for all the known expressed genes. Reference transcriptomes are usually available from repositories like Ensembl and NCBI. We will be using the mouse reference transcriptome (available on the linked page “Download sequences in FASTA format for transcript”). Unlike a genome, the transcriptome is only coding genes.
+1) Trimmed and filtered FastQ files from the RNA-Seq experiment
+2) A Reference transcriptome 
+  This is a file that has the sequences for all the known expressed genes. Reference transcriptomes are usually available from repositories like Ensembl and NCBI. We will be using the human reference transcriptome. Unlike a genome, the transcriptome is only coding genes.
 
 
 
->Optional
+Step-by-Step Kallisto
+======================
+Analysis with Kallisto has two main steps:
 
-We also will get the annotations and chromosome information for our subsequent visualization steps:
-
-We need a reference annotations. This is a file that has the names and locations for all the genes in the transcriptome. Annotations have information like how many introns/exons a gene contains, and perhaps other information about the gene (such as a predicted function). This information also comes from the Ensembl page
-Because of the way we sequenced (single-end sequencing) we also need to know the chromosome lengths and this information from the NCBI mouse reference page.
-Basic Kallisto Steps
-
-Analysis with Kallisto has two main steps (see the manual on the Kallisto home page):
 | Step | Description     | Command                                         | Input                                                                | Output                                          |
 | ---- | --------------- | ----------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------- |
 | 1    | Genome indexing | kallisto index <--index=> <transcriptome.fa.gz> | Redference transcriptome                                             | Kallisto index (no file extension)              |
 | 2    | Pseudoalignment | kallisto quant sample.fa.gz                     | FASTQ (one per run of kallisto), kallisto index (from indexing step) | abundances.h5, abundances.tsv and run_info.json |
   
-  *Note: The Psuedoalignment step in the JupyterNotbook is written in a “For Loop” since we want to run it for one or more fastq files. If you have only one file, a for loop is overkill, but for more files, the For Loop is efficient since it would automatically run analysis on one file right after another. See Linux/Bash Command Line Primer for more information.
 
->Pseudoalignment and genomics word search
-Alignment of reads is an expansive topic. Several reviews cover some of the important topics including [Stark et. al. 2019](https://www.nature.com/articles/s41576-019-0150-2). This [blog post](http://tinyheero.github.io/2015/09/02/pseudoalignments-kallisto.html) and the (kallisto paper)[https://www.nature.com/articles/nbt.3519] are required readings to get a deep understanding of the subject.
+Pseudoalignment and genomics word search Explained
+=====================================================
+Alignment of reads is an expansive topic. Several reviews cover some of the important topics including [Stark et. al. 2019](https://www.nature.com/articles/s41576-019-0150-2). This [blog post](http://tinyheero.github.io/2015/09/02/pseudoalignments-kallisto.html) and the (kallisto paper)[https://www.nature.com/articles/nbt.3519] are further readings to get a deep understanding of the subject.
 
 To try and reduce this problem to its most basic, let’s use an analogy. In the traditional case, when software does alignment, it tries to match a read to the genome.
-  
-  
+ 
   
 > Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
 >
@@ -50,8 +63,8 @@ If we move things around we can find the match:
 
 
 > Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
->                    |||| |||||||
-> Read:              AAATTTCCCGGG
+>                       |||| |||||||
+> Read:                 AAATTTCCCGGG
   
  
   
@@ -127,112 +140,79 @@ Immediately, the problem is made easier by throwing away transcripts that could 
 Pseudoalignment is just one approach to aligning RNA-Seq reads. Other software will do full alignments of the read to a transcriptome or genome. These methods have different advantages and requirements.
 
 
-There are a few files we need to analyze our data with Kallisto
+
+Step 1 Genome indexing for Kallisto
+===================================
+There are a few files we need perform the first step of Kallisto
 
 - Reference transcriptome: A file of all the known trasncripts of the mouse genome
-- Reference annotations: A file with information on the location and structure of the genes in the mouse genome
-These data (for mouse, and many other organisims) are available from public databases
+- Reference annotations: A file with information on the location and structure of the genes in the human genome and a file with chromosome details.
   
   
-> Obtain the reference data
-
+Step 1 Genome indexing for Kallisto
+===================================
 Index transcriptome
+
 We will now use Kallisto's indexing function to prepare the transcriptome for analysis. The "Index" is a lookup table for the transcriptome that allows it to be more easily searched by Kallisto. First let's organize our files by creating a new directory to hold our kallisto work.
 
-` mkdir -p /home/gea_user/rna-seq-project/kallisto` 
-Next run the indexing command. This prepares the transcriptome so that we can peudoalign reads to it.
+  $ mkdir -p [yourscratch]/kallisto_human_ref
+ 
+First, we must download the reference files from (https://asia.ensembl.org/info/data/ftp/index.html) using `wget`
 
-` kallisto index --index="Mus_musculus.GRCm38_index" /home/gea_user/rna-seq-project/transcriptome/Mus_musculus.GRCm38.cdna.all.fa.gz `
+1) We will need the FASTA file of the cDNA sequence
+(https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz)
 
-We now have a transcriptome index which can now be used for pseudoalignment, we'll move it into the transcriptome folder:
+2) We also will need the human GTF file, a file containing coordinates and descriptions for all gene names and locations - we will also download this from Ensembl. (https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)  **not needed for index command**
 
-` mv Mus_musculus.GRCm38_index /home/gea_user/rna-seq-project/transcriptome/ `
-We also will need the mouse GTF file, a file containing coordinates and descriptions for all gene names and locations - we will also download this from Ensembl.
 
-` wget ftp://ftp.ensembl.org/pub/release-97/gtf/mus_musculus/Mus_musculus.GRCm38.97.chr.gtf.gz `
-We will make a folder called annotations and save that there as well.
+Next run the indexing command. This prepares the transcriptome so that we can pseudoalign reads to it.
+  
+  $ kallisto index --index=transcriptome_Homo_sapiens_GRCh38 /kallisto_human_ref/Homo_sapiens.GRCh38.cdna.all.fa.gz
 
-` mkdir -p /home/gea_user/rna-seq-project/kallisto/annotations
-mv Mus_musculus.GRCm38.97.chr.gtf.gz /home/gea_user/rna-seq-project/kallisto/annotations `
-Finally we also need a textfile that has the name of each mouse chromosome (e.g. 1, 2, 3, ... X, Y, MT) and the length of each chromosome, This will be used for visualization. The information will be downloaded and then edited using bash commands.
 
-` wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.26_GRCm38.p6/GCF_000001635.26_GRCm38.p6_assembly_report.txt
-head -n64 GCF_000001635.26_GRCm38.p6_assembly_report.txt|tail -n21|cut -f1,9 > /home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv `
-
-We can see this edited list of chromosome numbers and lengths here:
-
-` cat /home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv `
-
-Quantify reads
+Step 2 Pseudoalignment of reads with Kallisto
+============================================
 In this final step, we will run Kallisto on all of our files to quantify the reads. We will write a for loop to do this. Let's see once again our trimmed reads
+Using your trimmed reads
 
-Exercise 3: Pseudoaligning reads with Kallisto
-Working with data you trimmed yourself
-If you used trimmomatic to trim your reads, run the next cell (otherwise skip to the cell for fastp reads)
+  $ cd [yourscratch]/trimmed-reads/
+  
+All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). 
 
-` cd /home/gea_user/rna-seq-project/trimmed-reads
-ls  `
+We need to run Kallisto on all of your files. Run the command below on one of your files.
 
-We don't want the small_trimmed.fastq.gz file to be part of our analysis, so we will delete it
-
-rm small_trimmed.fastq.gz
-Now we should have just the trimmed file(s) we want to analyze.
-
-ls
-Working with data pre-trimmed data
-All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). We need to run Kallisto separately on each of our 6 files so we will use a for loop.
-
-` for file in *_trimmed.fastq.gz; do output=$(basename --suffix=.fastq.gz_trimmed.fastq.gz $file)_quant; kallisto quant\
+  $ kallisto quant\
  --single\
  --threads=8\
- --index=/home/gea_user/rna-seq-project/transcriptome/Mus_musculus.GRCm38_index\
+ --index=[insert_location_your trascriptome]\
  --bootstrap-samples=25\
  --fragment-length=200\
  --sd=20\
  --output-dir=$output\
  --genomebam\
- --gtf=/home/gea_user/rna-seq-project/kallisto/annotations/Mus_musculus.GRCm38.97.chr.gtf.gz\
- --chromosomes=/home/gea_user/rna-seq-project/kallisto/annotations/mouse_chromosomes.tsv\
- $file; done `
+ --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
  
-Lets move our results to an appropriate directory and view the directories containing our analyses:
+kallisto quant produces three output files by default:
 
-` mkdir -p /home/gea_user/rna-seq-project/kallisto/analyzed
- mv *_quant /home/gea_user/rna-seq-project/kallisto/analyzed
- cd /home/gea_user/rna-seq-project/kallisto/analyzed
- ls `
-
-Each of these directories containes several files, lets remind ourselves what each of these directories contain:
-
-| SRA Sample | Sample Name             | Folder Name                       |
-| ---------- | ----------------------- | --------------------------------- |
-| SRS1794108 | High-Fat Diet Control 1 | SRR5017135_trimmed.fastq.gz_quant |
-| SRS1794110 | High-Fat Diet Control 2 | SRR5017137_trimmed.fastq.gz_quant |
-| SRS1794106 | High-Fat Diet Control 3 | SRR5017133_trimmed.fastq.gz_quant |
-| SRS1794105 | High-Fat Diet Tumor 1   | SRR5017132_trimmed.fastq.gz_quant |
-| SRS1794101 | High-Fat Diet Tumor 2   | SRR5017128_trimmed.fastq.gz_quant |
-| SRS1794111 | High-Fat Diet Tumor 3   | SRR5017138_trimmed.fastq.gz_quant |
-
-Let's look at the files in the High-Fat Diet Control 1
-
-  ` cd /home/gea_user/rna-seq-project/kallisto/analyzed/SRR5017135_trimmed.fastq.gz_quant
-   ls`
-
-This file contains a list of abundances (counts) for the Regular Diet Control sequences from SRR5017139
+- abundance.h5 is a HDF5 binary file containing run info, abundance esimates, bootstrap estimates, and transcript length information length. This file can be read in by sleuth
+- abundance.tsv is a plaintext file of the abundance estimates. It does not contains bootstrap estimates. Please use the --plaintext mode to output plaintext abundance estimates. Alternatively, kallisto h5dump can be used to output an HDF5 file to plaintext. The first line contains a header for each column, including estimated counts, TPM, effective length.
+- run_info.json is a json file containing information about the run
+ 
+ Lets have a look at what the file contains a list of abundances (counts) shows.
 
   ` head -n 100 abundance.tsv`
   
   
 
+> Exercise
+> --------
+> Use kallisto quant to quantify all the transcriptome of your files. **Hint** Be polite and request your turn in the (HPC) queue!
+>  
   
-> Question
 
-What are some of the constraints we have to work within when doing an RNA-Seq experiment (e.g. the difference between the ideal experiment and the real-world experiment?)
-In addition to FastQ reads, what are some other datasets needed to do RNA-Seq using Kallisto?
-Use an analogy to explain Kallisto pseudoalignment
-Bonus
-
-Using the referenced papers and other research materials you can find, what are some other software tools that could be used as an alternative to Kallisto in RNA-Seq? Do they require the same datasets as Kallisto does in order to run?
+> Bonus
+> -------
+> Using the referenced papers and other research materials you can find, what are some other software tools that could be used as an alternative to Kallisto in RNA-Seq? Do they require the same datasets as Kallisto does in order to run?
 
 
   
