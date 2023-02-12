@@ -8,9 +8,7 @@ Navigating Files and Directories
 
 > Overview
 > --------
-> 
-> **Teaching:** 30 min  
-> **Exercises:** 20 min
+>
 > 
 > **Questions**
 > 
