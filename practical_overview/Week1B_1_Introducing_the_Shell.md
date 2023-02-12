@@ -9,9 +9,6 @@ Introducing the Shell
 > Overview
 > --------
 > 
-> **Teaching:** 20 min  
-> **Exercises:** 10 min
-> 
 > **Questions**
 > 
 > *   What is a command shell and why would I use one?
