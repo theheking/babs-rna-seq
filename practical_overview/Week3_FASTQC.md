@@ -160,7 +160,36 @@ we can now see that there is a range of quality scores, but that the end of the 
 > Hint use command: tail
 > 
 
-At this point, lets validate that all the relevant tools are installed. If you are using the AWS AMI then these _should_ be preinstalled.
+
+
+
+Loading a new function
+------------------------
+
+Try and run fastqc to see if it is available, if not we will "load" into your local path. 
+   
+    $ fastqc
+
+
+![installation](../assets/img/installation.png)
+
+
+You will not be asked to install any packages in this course. However, the functions will be available through a main installation, but you need to modify your local environment so your computer know exactly where the main installation is. 
+
+    $ module avail 
+    
+    
+To load the function. You need 
+
+    $ module load fastqc 
+    
+
+> Exercise
+> ------------
+> Which function would you use to filter the output of module avail to show only output with keyword **"fastq"** ?
+> 
+
+
 
     $ fastqc -h
                 FastQC - A high throughput sequence QC analysis tool
