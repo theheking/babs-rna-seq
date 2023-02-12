@@ -9,8 +9,6 @@ Assessing Read Quality
 > Overview
 > --------
 > 
-> **Teaching:** 30 min  
-> **Exercises:** 20 min
 > 
 > **Questions**
 > 
