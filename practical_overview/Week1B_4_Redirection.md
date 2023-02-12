@@ -9,9 +9,6 @@ Redirection
 > Overview
 > --------
 > 
-> **Teaching:** 30 min  
-> **Exercises:** 15 min
-> 
 > **Questions**
 > 
 > *   How can I search within files?
