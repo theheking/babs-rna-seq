@@ -216,5 +216,6 @@ kallisto quant produces three output files by default:
 
 
   
-  
+  Adapted from https://cyverse-leptin-rna-seq-lesson-dev.readthedocs-hosted.com
+  and https://pachterlab.github.io/kallisto/manual
   
