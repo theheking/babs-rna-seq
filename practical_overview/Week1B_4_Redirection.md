@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1A Intro to Shell - Redirection
+title: Week 2A Intro to Shell - Redirection
 ---
 
 Redirection
