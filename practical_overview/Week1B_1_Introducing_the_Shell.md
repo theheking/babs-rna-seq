@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1B Intro to Shell - Introducting the Shell 
+title: Week 1A Intro to Shell - Introducting the Shell 
 ---
 
 Introducing the Shell
@@ -42,7 +42,7 @@ There are many reasons to learn about the shell:
 *   Used for boring, repetitive tasks.
 *   Ensures error-free output.
 *   More reproducible output. 
-*   Large amount of computatipnal power and memory space is better. 
+*   Large amount of computational power and memory space is better. 
 
 
 In this lesson you will learn how to use the command line interface to move around in your file system.
