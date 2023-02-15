@@ -100,9 +100,11 @@ Let’s look at how our file system is organized. We can see what files and subd
 
 On the Katana HPC, you will have two locations: 
 
-1) Home directory - which is the location where you are when you login
+1. Home directory - which is the location where you are when you login
     - Small space, keep scripts or other small files here.
-2) Scratch - where to keep large files 
+    
+    
+2. Scratch - where to keep large files 
     - Your scratch is /srv/scratch/[insert your zID here]
     - Large space, regularly cleaned of old files 
 
