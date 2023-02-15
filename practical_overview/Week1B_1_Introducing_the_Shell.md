@@ -135,7 +135,6 @@ Anything with a “/” after it is a directory. Things with a “\*” after th
 
 No one can possibly learn all of these arguments, that’s what the manual page is for. You can (and should) refer to the manual page or other help files as needed.
 
-This directory contains two files with `.fastq` extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
 
 ### Shortcut: Tab Completion
 
@@ -165,6 +164,7 @@ It will take about 5 minutes to download the files.
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
 
 
+These are two files with `.fastq.gz` extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
 
 Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
 
@@ -172,6 +172,7 @@ For example, if we now try to list the files which names start with `SR` by usin
 
     $ ls SR<tab>
     
+
 
 The shell auto-completes your command to `SRR2589044`, because all file names in the directory begin with this prefix. When you hit Tab again, the shell will list the possible choices.
 
