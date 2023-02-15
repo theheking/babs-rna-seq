@@ -157,8 +157,7 @@ Here we are using the -p option for mkdir. This option allows mkdir to create th
  `wget` is short for “world wide web get”, and it’s basic function is to _download_ web pages or data at a web address.
 
 It will take about 5 minutes to download the files.
-
-
+**NB. Please make sure you are in your scratch directory **
 
     $   mkdir -p /data/
     $   cd data
