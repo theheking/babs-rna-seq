@@ -8,7 +8,7 @@ Week 1 - Practical
 
 Please find your [groups](https://theheking.github.io/babs-rna-seq/key_info/) again .
 
-Each group is paired up with a[dataset](https://theheking.github.io/babs-rna-seq/practical_overview/sample_datasets/) eg. Group 1 will be doing neuroblastomas. 
+Each group is paired up with a [dataset](https://theheking.github.io/babs-rna-seq/practical_overview/sample_datasets/) eg. Group 1 will be doing neuroblastomas. 
 
 The structure of today's session is to:
 
