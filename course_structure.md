@@ -6,7 +6,7 @@ title: Course Structure
 | **Component**               | **HPW** | **Weeks** | **Time**  | **Day** | **Location**          |
 | --------------------------- | ------- | --------- | --------- | ------- | --------------------- |
 | Practical (Computer labs)   | 2       | 1-5,7-10  | 1400-1600 | Thu     | MS Teams / E26 Lab 11 |
-| Tutorial/Practical (Online) | 2       | 1-5,7-10  | 1000-1200 | Fri     | MS Teams              |
+| Tutorial (Computer Labs) | 2       | 1-5,7-10  | 1000-1200 | Fri     | E26 Lab 11             |
 
 
 
@@ -22,7 +22,7 @@ Attendance in practicals & tutorials is compulsory unless otherwise announced or
 
 | Assessment task                   | Weight | Deadline                  |
 | --------------------------------- | ------ | ------------------------- |
-| 1 (a)RNA-seq datasetTalk          | 10%    | Thu16-Mar(Week 5)         |
+| 1 (a)RNA-seq dataset talk          | 10%    | Thu16-Mar(Week 5)         |
 | 1 (b) RNA-seq dataset Short essay | 20%    | Fri 24-Mar 1400 (Week 6)  |
 | 2 Bioinformatics Practical Report | 40%    | Fri 21-Apr 1400 (Week 10) |
 | Coursework                        | 70%    |                           |
