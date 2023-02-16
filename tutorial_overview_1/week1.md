@@ -1,8 +1,10 @@
-
 ---
 layout: page
-title: Week 1 
+title: Week 1 - Paper Deep Dive/ Prac Q&A
 ---
+
+Week 1 - Practical
+=====================
 
 Please find your [groups](https://theheking.github.io/babs-rna-seq/key_info/) again .
 
