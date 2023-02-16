@@ -161,7 +161,7 @@ Here we are using the -p option for mkdir. This option allows mkdir to create th
 It will take about 5 minutes to download the files.
 **NB. Please make sure you are in your scratch directory **
 
-    $   mkdir -p /data/
+    $   mkdir -p [yourscratch]/data/
     $   cd data
 
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
