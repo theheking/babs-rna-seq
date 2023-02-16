@@ -85,8 +85,8 @@ to see a numbered list of recent commands. You can reuse one of these commands d
 For example, if your history looked like this:
 
     259  ls *
-    260  ls /usr/bin/*.sh
-    261  ls *R1*fastq
+    260  ls /srv/scratch/*.fastq.gz
+    261  ls *R1*fastq.gz
     
 
 then you could repeat command #260 by entering:
@@ -99,7 +99,7 @@ Type `!` (exclamation point) and then the number of the command from your histor
 > Exercise
 > --------
 > 
-> Find the line number in your history for the command that listed all the .sh files in `/usr/bin`. Rerun that command.
+> Find the line number in your history for the command that listed all the .fastq.gz files in your data directory. Rerun that command.
 > 
 
 Examining Files
@@ -118,7 +118,7 @@ Enter the following commands from within the `data` directory. First we want to 
 
 This will print out all of the contents of the `SRR2589044_1.fastq` to the screen.
 
-The print out is totally overwhelming. 
+The print out is totally overwhelming. **Hint** Ctrl+C
 
 To access just the final lines, we have to use the method called **piping**, where you pipe using `|` character. It is when the output of one command into another command. It is like doing step 1 and step 2 of a recipe all at once, rather than in sequence. 
 
