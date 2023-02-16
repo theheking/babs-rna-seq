@@ -503,5 +503,7 @@ Other notes – optional
 
 * * *
 
+Adapted from the Data Carpentry Intro to Command Line -shell genomics https://datacarpentry.org/shell-genomics/
+
 Licensed under CC-BY 4.0 2018–2022 by [The Carpentries](https://carpentries.org/)  
 Licensed under CC-BY 4.0 2016–2018 by [Data Carpentry](http://datacarpentry.org)
