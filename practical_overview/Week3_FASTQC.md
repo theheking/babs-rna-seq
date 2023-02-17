@@ -73,15 +73,15 @@ You can use the `-p` option for `mkdir`. This option allows `mkdir` to create th
 3) copy your dataset from the **/srv/scratch/babs3291/** to your local scratch 
 
 
-> For your download 
-> -------------
+> Important for your unique download 
+> --------------------------------------------
 > 
-> To download your dataset. 
->     $ DIRECTORY="GSE30352"
->     $ CHROMOSOME="chr1_" 
->     $ scp /srv/scratch/babs3291/FASTA/${DIRECTORY}/*${CHROMOSOME}*fastq.gz .
+>     $ GSE="GSE30352"
+>     $ CHROMOSOME="chr1_chr3" 
+>     $ scp /srv/scratch/babs3291/FASTA/${GSE}/*${CHROMOSOME}*fastq.gz .
 >     
-> 
+
+
 > This command creates a copy of each of the files in the directory that end in `fastq.gz` and places the copies in the current working directory (signified by `.`).
 
 The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. To unzip one of the files - you can look at the fastq format.
