@@ -110,10 +110,10 @@ Now we will run Trimmomatic on our data. To begin, navigate to your `untrimmed_f
 
     $ cd /[yourscratch]/data/
 
-We are going to run Trimmomatic on one of our paired-end samples. While using FastQC we saw that Nextera adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
+We are going to run Trimmomatic on one of my single-end samples. While using FastQC we saw that Nextera adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
 
     <<<NEED TO CHANGE>>>>
-    $ cp ~/.miniconda3/pkgs/trimmomatic-0.38-0/share/trimmomatic-0.38-0/adapters/NexteraPE-PE.fa .
+    $ cp /srv/scratch/babs3291/adapters/[] .
     
 
 We will also use a sliding window of size 4 that will remove bases if their phred score is below 20 (like in our example above). We will also discard any reads that do not have at least 25 bases remaining after this trimming step. Three additional pieces of code are also added to the end of the ILLUMINACLIP step. These three additional numbers (2:40:15) tell Trimmimatic how to handle sequence matches to the Nextera adapters. A detailed explanation of how they work is advanced for this particular lesson. For now we will use these numbers as a default and recognize they are needed to for Trimmomatic to run properly. This command will take a few minutes to run.
