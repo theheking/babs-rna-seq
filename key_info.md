@@ -4,9 +4,9 @@ title: Key Infomation
 ---
 
 Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution. The material in this handbook is designed to help guide you through the practical.
-
-| Hugh Benz              | z5363633 | Student | Group 1 | chr1_chr3   |
+| Name                   | zID      | Role    | Groups  | Chromosome  |
 | ---------------------- | -------- | ------- | ------- | ----------- |
+| Hugh Benz              | z5363633 | Student | Group 1 | chr1_chr3   |
 | Gina Briones           | z5464177 | Student | Group 1 | chr4_chr7   |
 | Ofri Einav             | z5256047 | Student | Group 1 | chr8_chr12  |
 | Darcy Tay              | z5311012 | Student | Group 1 | chr13_chr16 |
@@ -49,7 +49,6 @@ Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution
 | Virasha Singh          | z5367725 | Student | Group 9 | chr4_chr7   |
 | Megan Swain            | z5362666 | Student | Group 9 | chr8_chr12  |
 | Cleo Turner            | z5360155 | Student | Group 9 | chr13_chr16 |
-
 
 ### Key to How Infomation will be Displayed
 Exploratory text
