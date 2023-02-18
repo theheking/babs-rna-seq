@@ -38,7 +38,7 @@ You log on to the server using your **zID** and **zPass** and a program that let
 
 ### Logging on the server with putty
 
-On a UNSW machine, Putty is available from the start menu under PuTTY. This will open up the main putty window. In the **Host Name** box type: babsteaching.babs.unsw.edu.au. To save yourself having to type this again, you can **Save** the session as BABS3291 and later **Load** it. (If you change terminal settings, you can save these too.)
+On a UNSW machine, Putty is available from the start menu under PuTTY. This will open up the main putty window. In the **Host Name** box type: katana.restech.unsw.edu.au. To save yourself having to type this again, you can **Save** the session as BABS3291 and later **Load** it. (If you change terminal settings, you can save these too.)
 
 ![img](../assets/img/1.png)
 ![images](../assets/img/2.png)
