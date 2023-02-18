@@ -78,7 +78,7 @@ You can use the `-p` option for `mkdir`. This option allows `mkdir` to create th
 > 
 >     $ GSE="GSE30352"
 >     $ CHROMOSOME="chr1_chr3" 
->     $ scp /srv/scratch/babs3291/FASTA/${GSE}/*${CHROMOSOME}*fastq.gz .
+>     $ scp /srv/scratch/babs3291/${GSE}/*${CHROMOSOME}*fastq.gz .
 >     
 
 
