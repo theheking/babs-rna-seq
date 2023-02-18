@@ -5,19 +5,50 @@ title: Key Infomation
 
 Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution. The material in this handbook is designed to help guide you through the practical.
 
-
-| Groups (9) | Group members                                                                       | User count (42) |
-| ---------- | ----------------------------------------------------------------------------------- | --------------- |
-| Group 1    | Lilyan Zhu , Darcy Tay, Ofri Einav, Hugh Benz , Gina Briones                        | 5               |
-| Group 2    | Denique Shai-Hee, Jessica Perry, Grace Apted, (Xerox) Yuet Yat Chan, Ariana Farjana | 5               |
-| Group 3    | Jessica Gu , Thomas Calnin ,  Ji Won Han, Ella Sanders , Mark Hong                  | 5               |
-| Group 4    | Ed Luo , Cameron Donarski, Jed Tomlinson , Harley Touloupas , Shreya Nagaraj        | 5               |
-| Group 5    | Kate Brewer, Ethan Dichiara, Yujia Wang , Tia Valentini, Kristina Santucci          | 5               |
-| Group 6    | Wenxin Bai , Anaida Nirula, Abdul Fahmi , Finn O'Loan , Gabriel Awasarira Dewa      | 5               |
-| Group 7    | Mathew Samuel , Brian Chang, Alexis Argyropoulos , Gabrielle De Vries               | 4               |
-| Group 8    | Ryan Haidar, Aneesha Ananda, Mackenna James , William McDonald                      | 4               |
-| Group 9    | Megan Swain, Josephine Prior, Cleo Turner, Virasha Singh                            | 4               |
-
+| Hugh Benz              | z5363633 | Student | Group 1 | chr1_chr3   |
+| ---------------------- | -------- | ------- | ------- | ----------- |
+| Gina Briones           | z5464177 | Student | Group 1 | chr4_chr7   |
+| Ofri Einav             | z5256047 | Student | Group 1 | chr8_chr12  |
+| Darcy Tay              | z5311012 | Student | Group 1 | chr13_chr16 |
+| Lilyan Zhu             | z5366901 | Student | Group 1 | chr17_chr22 |
+| Grace Apted            | z5309270 | Student | Group 2 | chr1_chr3   |
+| (Xerox) Yuet Yat Chan  | z5289835 | Student | Group 2 | chr4_chr7   |
+| Ariana Farjana         | z5361263 | Student | Group 2 | chr8_chr12  |
+| Jessica Perry          | z5312049 | Student | Group 2 | chr13_chr16 |
+| Denique Shai-Hee       | z5359476 | Student | Group 2 | chr17_chr22 |
+| Thomas Calnin          | z5361967 | Student | Group 3 | chr1_chr3   |
+| Jessica Gu             | z5364806 | Student | Group 3 | chr4_chr7   |
+| Ji Won Han             | z5464629 | Student | Group 3 | chr8_chr12  |
+| Mark Hong              | z5308624 | Student | Group 3 | chr13_chr16 |
+| Ella Sanders           | z5362652 | Student | Group 3 | chr17_chr22 |
+| Cameron Donarski       | z5465570 | Student | Group 4 | chr1_chr3   |
+| Ed Luo                 | z5362626 | Student | Group 4 | chr4_chr7   |
+| Shreya Nagaraj         | z5361741 | Student | Group 4 | chr8_chr12  |
+| Jed Tomlinson          | z5360075 | Student | Group 4 | chr13_chr16 |
+| Harley Touloupas       | z5360355 | Student | Group 4 | chr17_chr22 |
+| Kate Brewer            | z5362968 | Student | Group 5 | chr1_chr3   |
+| Ethan Dichiara         | z5362660 | Student | Group 5 | chr4_chr7   |
+| Kristina Santucci      | z5363382 | Student | Group 5 | chr8_chr12  |
+| Tia Valentini          | z5388120 | Student | Group 5 | chr13_chr16 |
+| Yujia Wang             | z5325838 | Student | Group 5 | chr17_chr22 |
+| Wenxin Bai             | z5364898 | Student | Group 6 | chr1_chr3   |
+| Gabriel Awasarira Dewa | z5285980 | Student | Group 6 | chr4_chr7   |
+| Abdul Fahmi            | z5363410 | Student | Group 6 | chr8_chr12  |
+| Anaida Nirula          | z5321103 | Student | Group 6 | chr13_chr16 |
+| Finn O'Loan            | z5363051 | Student | Group 6 | chr17_chr22 |
+| Alexis Argyropoulos    | z5368001 | Student | Group 7 | chr1_chr3   |
+| Katherine Taylor       | z5322627 | Student | Group 7 | chr4_chr7   |
+| Gabrielle De Vries     | z5362036 | Student | Group 7 | chr8_chr12  |
+| Mathew Samuel          | z5360970 | Student | Group 7 | chr13_chr16 |
+| Nicole Szorenyi        | z2119216 | Student | Group 7 | chr17_chr22 |
+| Aneesha Ananda         | z5363897 | Student | Group 8 | chr1_chr3   |
+| Ryan Haidar            | z5255525 | Student | Group 8 | chr4_chr7   |
+| Mackenna James         | z5413767 | Student | Group 8 | chr8_chr12  |
+| William McDonald       | z5468163 | Student | Group 8 | chr13_chr16 |
+| Josephine Prior        | z5317184 | Student | Group 9 | chr1_chr3   |
+| Virasha Singh          | z5367725 | Student | Group 9 | chr4_chr7   |
+| Megan Swain            | z5362666 | Student | Group 9 | chr8_chr12  |
+| Cleo Turner            | z5360155 | Student | Group 9 | chr13_chr16 |
 
 
 ### Key to How Infomation will be Displayed
