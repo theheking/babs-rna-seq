@@ -114,13 +114,12 @@ Line - Description
 
 We can view the first complete read in one of the files our dataset by using `head` to look at the first four lines.
 
-    $ zcat SRR2584863_1.fastq.gz | head -n 4
+    $ zcat SRR306844chr1_chr3.fastq.gz | head -n 4
     
 
 Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality score, the numerical score is converted into a code where each individual character represents the numerical quality score for an individual nucleotide. For example, in the line above, the quality score line is:
 
-    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD8+89<4(:83825C(:A#########################
-    
+    !69699><;;:8=+:::::987765979858859775775883796699+48789599878592274362843111    
 
 The numerical value assigned to each of these characters depends on the sequencing platform that generated the reads. The sequencing machine used to generate our data uses the standard Sanger quality PHRED score encoding, using Illumina version 1.8 onwards. Each character is assigned a quality score between 0 and 41 as shown in the chart below.
 
@@ -133,18 +132,17 @@ Each quality score represents the probability that the corresponding nucleotide 
 
 Looking back at our read:
 
-    @SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/1
-    TTCACATCCTGACCATTCAGTTGAGCAAAATAGTTCTTCAGTGCCTGTTTAACCGAGTCACGCAGGGGTTTTTGGGTTACCTGATCCTGAGAGTTAACGGTAGAAACGGTCAGTACGTCAGAATTTACGCGTTGTTCGAACATAGTTCTG
+    @SRR306844.16.1
+    NTGTAAATGAGTGAGGCAGGAGTCCGAGGAGGTTAGTTGTGGCAATAAAAATGATTAAGGATACTAGTATAAGAGA
     +
-    CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACC3>@5(8&>C:9?8+89<4(:83825C(:A#########################
-    
+    !69699><;;:8=+:::::987765979858859775775883796699+48789599878592274362843111
 
-we can now see that there is a range of quality scores, but that the end of the sequence is very poor (`#` = a quality score of 2).
+we can now see that there is a range of quality scores, but that the end of the sequence is very poor (`!` = a quality score of 1).
 
 > Exercise
 > --------
 > 
-> What is the last read in your file? How confident are you in this read?
+> What is the last read in your file? Is this read of high quality, explain?
 > Hint use command: tail
 > 
 
@@ -166,6 +164,10 @@ You will not be asked to install any packages in this course. However, the funct
 
     $ module avail 
     
+    
+To find modules of interest, you can use the `grep` command to filter out a string. E.g. any package with "t"
+
+    $ module avail | grep t
     
 To load the function. You need 
 
@@ -294,14 +296,6 @@ To load the function. You need
         or in www.bioinformatics.babraham.ac.uk/bugzilla/
     
 
-if fastqc is not installed then you would expect to see an error like
-
-    $ fastqc -h
-    The program 'fastqc' is currently not installed. You can install it by typing:
-    sudo apt-get install fastqc
-    
-
-If this happens check with your instructor before trying to install it.
 
 Assessing quality using FastQC
 ------------------------------
@@ -344,10 +338,10 @@ FastQC can accept multiple file names as input, and on both zipped and unzipped 
 
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
 
-    Started analysis of SRR19154424.fastq
-    Approx 5% complete for SRR19154424.fastq
-    Approx 10% complete for SRR19154424.fastq
-    Approx 15% complete for SRR19154424.fastq
+    Started analysis of SRR306844chr1_chr3.fastq.gz
+    Approx 5% complete for SRR306844chr1_chr3.fastq.gz
+    Approx 10% complete for SRR306844chr1_chr3.fastq.gz
+    Approx 15% complete for SRR306844chr1_chr3.fastq.gz
 
 
 The FastQC program has created several new files within our `/UNTRIMMED_FASTA/` directory.
@@ -429,7 +423,7 @@ We have now looked at quite a few “Per base sequence quality” FastQC graphs,
 
 Using MultiQC to Simplify the FastqC html output
 -------------------------------------------------
-It is hard to read through all html files at once. A great tool to make a summary of the QC files is `multiqc`
+It is hard to read through all html files at once. A great tool to make a summary of the QC files is `multiqc`. Remember to perform `module load`.
 
     $ multiqc . 
     
