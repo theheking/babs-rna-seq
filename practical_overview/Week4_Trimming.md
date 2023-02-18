@@ -81,8 +81,10 @@ However, a complete command for Trimmomatic will look something like the command
     $ trimmomatic PE -threads 4 SRR_1056_1.fastq SRR_1056_2.fastq  \
                   SRR_1056_1.trimmed.fastq SRR_1056_1un.trimmed.fastq \
                   SRR_1056_2.trimmed.fastq SRR_1056_2un.trimmed.fastq \
-                  ILLUMINACLIP:SRR_adapters.fa SLIDINGWINDOW:4:20
-    
+                  ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36     
+                  
+                  
+    NB. You will have to edit this command if you have paired end sample. 
 
 In this example, we have told Trimmomatic:
 | code                           | meaning                                                                                                   |
@@ -112,32 +114,28 @@ Now we will run Trimmomatic on our data. To begin, navigate to your `untrimmed_f
 
 We are going to run Trimmomatic on one of my single-end samples. While using FastQC we saw that Nextera adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
 
-    <<<NEED TO CHANGE>>>>
-    $ cp /srv/scratch/babs3291/adapters/[] .
+    $ scp -r /srv/scratch/babs3291/adapters/ [yourscratch]
     
 
 We will also use a sliding window of size 4 that will remove bases if their phred score is below 20 (like in our example above). We will also discard any reads that do not have at least 25 bases remaining after this trimming step. Three additional pieces of code are also added to the end of the ILLUMINACLIP step. These three additional numbers (2:40:15) tell Trimmimatic how to handle sequence matches to the Nextera adapters. A detailed explanation of how they work is advanced for this particular lesson. For now we will use these numbers as a default and recognize they are needed to for Trimmomatic to run properly. This command will take a few minutes to run.
 
-    $ trimmomatic PE SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz \
-                    SRR2589044_1.trim.fastq.gz SRR2589044_1un.trim.fastq.gz \
-                    SRR2589044_2.trim.fastq.gz SRR2589044_2un.trim.fastq.gz \
-                    SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraPE-PE.fa:2:40:15
+    $ ILLUMINA_READS="[yourscratch]/adapters/TruSeq2-SE.fa"
+    $ trimmomatic SE -phred33 SRR306844chr1_chr3.fastq.gz \
+                    SRR306844chr1_chr3.trim.fastq.gz \
+                    ILLUMINACLIP:${ILLUMINA_READS}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
+                        
+    TrimmomaticSE: Started with arguments:
+    -phred33 SRR306844chr1_chr3.fastq.gz SRR306844chr1_chr3.trim.fastq.gz ILLUMINACLIP:/srv/scratch/z5342988/adapters/TruSeq2-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+    Automatically using 4 threads
+    Using Long Clipping Sequence: 'AGATCGGAAGAGCGGTTCAGCAGGAATGCCGAG'
+    Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
+    Using Long Clipping Sequence: 'AGATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG'
+    ILLUMINACLIP: Using 0 prefix pairs, 3 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+    Input Reads: 5416173 Surviving: 5165820 (95.38%) Dropped: 250353 (4.62%)
+    TrimmomaticSE: Completed successfully
     
-
-    TrimmomaticPE: Started with arguments:
-     SRR2589044_1.fastq.gz SRR2589044_2.fastq.gz SRR2589044_1.trim.fastq.gz SRR2589044_1un.trim.fastq.gz SRR2589044_2.trim.fastq.gz SRR2589044_2un.trim.fastq.gz SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraPE-PE.fa:2:40:15
-    Multiple cores found: Using 2 threads
-    Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
-    Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
-    Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
-    Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
-    Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
-    ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
-    Quality encoding detected as phred33
-    Input Read Pairs: 1107090 Both Surviving: 885220 (79.96%) Forward Only Surviving: 216472 (19.55%) Reverse Only Surviving: 2850 (0.26%) Dropped: 2548 (0.23%)
-    TrimmomaticPE: Completed successfully
     
-
+    
 > Exercise
 > --------
 > 
@@ -159,11 +157,9 @@ We can confirm that we have our output files:
 The output files are also FASTQ files. It should be smaller than our input file, because we have removed reads. We can confirm this:
 
     $ ls -lh SRR306844*
-    
 
-    -rw-rw-r-- 1 dcuser dcuser 124M Jul  6 20:22 SRR306844.fastq.gz
-    -rw-rw-r-- 1 dcuser dcuser  94M Jul  6 22:33 SRR306844.trim.fastq.gz
-    -rw-rw-r-- 1 dcuser dcuser  18M Jul  6 22:33 SRR306844un.trim.fastq.gz
+    -rw-------. 1 z5342988 unsw 360M Feb 19 09:29 SRR306844chr1_chr3.trim.fastq.gz
+    -rw-------. 1 z5342988 unsw 392M Feb 19 09:07 SRR306844chr1_chr3.fastq.gz
 
 We have just successfully run Trimmomatic on one of our FASTQ files! However, there is some bad news. Trimmomatic can only operate on one sample at a time and we have more than one sample. The good news is that we can use a `for` loop to iterate through our sample files quickly!
     
@@ -172,9 +168,9 @@ We have just successfully run Trimmomatic on one of our FASTQ files! However, th
     $ for infile in *.fastq.gz
     > do
     >   base=$(basename ${infile} _1.fastq.gz)
-    >   trimmomatic SE ${infile}
-    >                ${base}.trim.fastq.gz ${base}un.trim.fastq.gz \
-    >                SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:NexteraSE-PSE.fa:2:40:15 
+    >       trimmomatic SE -phred33 ${infile} \
+    >                ${infile} \
+    >                ILLUMINACLIP:${ILLUMINA_READS}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
     > done
 
 This is too computationally demanding to perform without requesting resources from the HPC. 
