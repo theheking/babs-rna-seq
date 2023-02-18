@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 5 Alignment with Kallisto 
+title: Week 7 Alignment with Kallisto 
 ---
 
 
@@ -180,11 +180,12 @@ Using your trimmed reads
 All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). 
 
 We need to run Kallisto on all of your files. Run the command below on one of your files.
-
+  $ INPUT_FASTA="[yourscratch]/data/*chr1_chr3.trim.fastq.gz"
+ 
   $ kallisto quant\
  --single\
  --threads=8\
- --index=[insert_location_your trascriptome]\
+ --index=[insert_location_your trancriptome]\
  --bootstrap-samples=25\
  --fragment-length=200\
  --sd=20\
