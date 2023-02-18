@@ -31,6 +31,8 @@ navbar-links:
     - Week 2 2) Creating scripts and submitting: "practical_overview/Week1B_5_Writing_Scripts_workingwithdata"
     - Week 2 3) Exploring your dataset: "practical_overview/Week2_Exploring_Dataset"
     - Week 3 Using FASTQC For Data Quality Report: "practical_overview/Week3_FASTQC"
+    - Week 4 Using Trimmomatic for Trimming and Filtering: "practical_overview/Week4_Trimming"
+    
   Tutorial Overview:
     - Week 1: "tutorial_overview_1/week1"
   Key Information: "key_info"
