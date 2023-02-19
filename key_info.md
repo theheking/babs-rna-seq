@@ -5,6 +5,8 @@ title: Key Infomation
 
 Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution. The material in this handbook is designed to help guide you through the practical.
 
+
+
 | Name                   | zID      | Role    | Groups  | Chromosome  |
 | ---------------------- | -------- | ------- | ------- | ----------- |
 | Hugh Benz              | z5363633 | Student | Group 1 | chr1_chr3   |
@@ -38,7 +40,7 @@ Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution
 | Anaida Nirula          | z5321103 | Student | Group 6 | chr13_chr16 |
 | Finn O'Loan            | z5363051 | Student | Group 6 | chr17_chr22 |
 | Alexis Argyropoulos    | z5368001 | Student | Group 7 | chr1_chr3   |
-| Katherine Taylor       | z5322627 | Student | Group 7 | chr4_chr7   |
+| Brian Chang            | z5208926 | Student | Group 7 | chr4_chr7   |
 | Gabrielle De Vries     | z5362036 | Student | Group 7 | chr8_chr12  |
 | Mathew Samuel          | z5360970 | Student | Group 7 | chr13_chr16 |
 | Nicole Szorenyi        | z2119216 | Student | Group 7 | chr17_chr22 |
@@ -46,6 +48,7 @@ Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution
 | Ryan Haidar            | z5255525 | Student | Group 8 | chr4_chr7   |
 | Mackenna James         | z5413767 | Student | Group 8 | chr8_chr12  |
 | William McDonald       | z5468163 | Student | Group 8 | chr13_chr16 |
+| Katherine Taylor       | z5322627 | Student | Group 9 | chr17_chr22 |
 | Josephine Prior        | z5317184 | Student | Group 9 | chr1_chr3   |
 | Virasha Singh          | z5367725 | Student | Group 9 | chr4_chr7   |
 | Megan Swain            | z5362666 | Student | Group 9 | chr8_chr12  |
