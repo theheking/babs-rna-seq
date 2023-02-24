@@ -168,13 +168,13 @@ There’s a way to do this, however, that doesn’t require us to create these i
 
 What `|` does is take the output that is scrolling by on the terminal and uses that output as input to another command. When our output was scrolling by, we might have wished we could slow it down and look at it, like we can with `less`. Well it turns out that we can! We can redirect our output from our `grep` call through the `less` or `wc` commands
 
-    $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | wc -l 
+    $ grep -B1 -A2 NNNNNNNNNN SRR2589044_1 | wc -l 
     
 - Expecting an integer. Why? 
     
 The fifth and six lines in the output display “–” which is the default action for `grep` to separate groups of lines matching the pattern, and indicate groups of lines which did not match the pattern so are not displayed. To fix this issue, we can redirect the output of grep to a second instance of `grep` as follows.
 
-    $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | grep -v '^--' > bad_reads.fastq
+    $ grep -B1 -A2 NNNNNNNNNN SRR2589044_1 | grep -v '^--' > bad_reads.fastq
     tail bad_reads.fastq
     
 
