@@ -114,7 +114,7 @@ Bad reads have a lot of N’s, so we’re going to look for `NNNNNNNNNN` with `g
 > Custom `grep` control
 > ---------------------
 > 
-> We introduced the `-v` option in [the previous episode](http://www.datacarpentry.org/shell-genomics/04-redirection/), now we are using `-h` to “Suppress the prefixing of file names on output” according to the documentation shown by `man grep`.
+> We introduced the `-v` option previously, now we are using `-h` to “Suppress the prefixing of file names on output” according to the documentation shown by `man grep`.
 
 Type your `grep` command into the file and save it as before. Be careful that you did not add the `$` at the beginning of the line.
 
