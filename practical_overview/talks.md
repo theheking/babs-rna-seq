@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Talks
+title: Week 5 Student Talks
 ---
 
 Week 5 - Student Talks 
