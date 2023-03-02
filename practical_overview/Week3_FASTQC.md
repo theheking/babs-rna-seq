@@ -389,10 +389,11 @@ Now we can transfer our HTML files to our local computer.
 
 **For a Mac/Linux OS:**
 
+
 3. Navigate into a known location e.g. Desktop with the `cd` command.
 
-
 **For a Windows OS:**
+ 
  
 3. Navigate into a known location with the equivalent command as `cd` which is `pushd` or `popd`
 
