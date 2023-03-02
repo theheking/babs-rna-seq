@@ -123,9 +123,9 @@ Line 4 shows the quality for each nucleotide in the read. Quality is interpreted
 
 The numerical value assigned to each of these characters depends on the sequencing platform that generated the reads. The sequencing machine used to generate our data uses the standard Sanger quality PHRED score encoding, using Illumina version 1.8 onwards. Each character is assigned a quality score between 0 and 41 as shown in the chart below.
 
-    Quality encoding: !"#$%&'()*+,-./0123456789:;<=>
-                      |     |     |      |        |
-    Quality score:   01....11.....21.....31......41
+    Quality encoding: !"#$%&'()*+,-./0123456789:;<=>@ABCDEFGHI
+                       |        |         |        |       |
+    Quality score:   01........11........20........30.......40
     
 
 Each quality score represents the probability that the corresponding nucleotide call is incorrect. This quality score is logarithmically based, so a quality score of 10 reflects a base call accuracy of 90%, but a quality score of 20 reflects a base call accuracy of 99%. These probability values are the results from the base calling algorithm and depend on how much signal was captured for the base incorporation.
@@ -428,9 +428,10 @@ It is hard to read through all html files at once. A great tool to make a summar
     $ multiqc . 
     
   
-  Use the flags to specifiy an output file or location and the input files. 
+  To customize the multiqc command please use flags such as *-f* to overwrite any existing reports or *-o* to specifiy an output location. 
   
-  Please transfer 
+  
+  After running multiqc, please transfer your html file **multiqc_report.html** using scp to your local machine and examine the output file.
 
 
 > Exercise
