@@ -383,22 +383,22 @@ First we will make a new directory on our computer to store the HTML files we ar
 
 Now we can transfer our HTML files to our local computer.
 
-1. Check if you have a Mac/Linux operating system or Windows operating system.
-2. Open a new terminal/putty window where you are NOT logged into Katana
+1) Check if you have a Mac/Linux operating system or Windows operating system.
+2) Open a new terminal/putty window where you are NOT logged into Katana
 
 
 **For a Mac/Linux OS:**
 
 
-3. Navigate into a known location e.g. Desktop with the `cd` command.
+3) Navigate into a known location e.g. Desktop with the `cd` command.
 
 **For a Windows OS:**
  
  
-3. Navigate into a known location with the equivalent command as `cd` which is `pushd` or `popd`
+3) Navigate into a known location with the equivalent command as `cd` which is `pushd` or `popd`
 
   
-4. Using `scp` to move some infomation from scratch to your local computer.
+4) Using `scp` to move some infomation from scratch to your local computer.
 
     $ scp [your_zID]@katana.restech.unsw.edu.au:"srv/scratch/[your_zID]/UNTRIMMED_FASTQC/*.html" .
     
