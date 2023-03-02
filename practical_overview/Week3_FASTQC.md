@@ -403,6 +403,14 @@ Now we can transfer our HTML files to our local computer.
     $ scp [your_zID]@katana.restech.unsw.edu.au:"srv/scratch/[your_zID]/UNTRIMMED_FASTQC/*.html" .
     
     
+ Understanding the Phred Quality Score
+-----------------------------------------
+
+How the phred quality score actually makes sense in terms of accuracy:
+
+![qualscore](../assets/img/qualscore.png)
+
+
 
 > Note on using zsh
 > -----------------
