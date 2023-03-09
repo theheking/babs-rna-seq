@@ -209,6 +209,24 @@ We have just successfully run Trimmomatic on one of our FASTQ files! However, th
 This is too computationally demanding to perform without requesting resources from the HPC. 
 Please either a) run interactively b) submit to the hpc
 
+If you have a paired end sequence the for loop with be different...
+
+    $ for infile in *_1.fastq.gz
+    > do
+    >   base=$(basename ${infile} _1.fastq.gz)
+    >   infile_2="${base}_2.fastq.gz"
+    >   trimmed_1="${base}_1.trimmed.fastq.gz"
+    >   trimmed_2="${base}_2.trimmed.fastq.gz"
+    >   untrimmed_1="${base}_1.untrimmed.fastq.gz"
+    >   untrimmed_2="${base}_2.untrimmed.fastq.gz
+    >   trimmomatic PE -threads 4 ${infile} ${infile_2} \
+                  ${trimmed_1} ${untrimmed_1} \
+                  ${trimmed_2} ${untrimmed_2} \
+                  ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36  
+    > done
+
+
+
     
 > Exercise
 > --------
