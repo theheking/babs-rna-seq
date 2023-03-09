@@ -166,6 +166,14 @@ This command will take a few minutes to run.
     Input Reads: 5416173 Surviving: 5165820 (95.38%) Dropped: 250353 (4.62%)
     TrimmomaticSE: Completed successfully
     
+ 
+ If you have paired end sequences you should run the command from before. 
+ 
+     $ trimmomatic PE -threads 4 SRR_1056_1.fastq.gz SRR_1056_2.fastq.gz  \
+                  SRR_1056_1.trimmed.fastq.gz SRR_1056_1un.trimmed.fastq.gz \
+                  SRR_1056_2.trimmed.fastq.gz SRR_1056_2un.trimmed.fastq.gz \
+                  ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36     
+                  
     
     
 > Exercise
