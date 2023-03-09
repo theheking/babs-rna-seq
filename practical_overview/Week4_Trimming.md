@@ -203,7 +203,7 @@ We have just successfully run Trimmomatic on one of our FASTQ files! However, th
     >   outfile="${base}.trimmed.fastq.gz"
     >       trimmomatic SE -phred33 ${infile} \
     >                ${outfile} \
-    >                ILLUMINACLIP:${ILLUMINA_READS}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
+    >                ILLUMINACLIP:${ADAPTERSEQ}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
     > done
 
 This is too computationally demanding to perform without requesting resources from the HPC. 
