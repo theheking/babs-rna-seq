@@ -5,7 +5,6 @@ title: Week 4 - Using Trimmomatic for Trimming and Filtering
 ---
 
 
-
 Trimming and Filtering
 ======================
 
