@@ -147,6 +147,7 @@ Use the three steps above to specify one of these files in the subsequent trimmi
 
 We will also use a sliding window of size 4 that will remove bases if their phred score is below 20 (like in our example above). We will also discard any reads that do not have at least 25 bases remaining after this trimming step. Three additional pieces of code are also added to the end of the ILLUMINACLIP step. These three additional numbers (2:40:15) tell Trimmimatic how to handle sequence matches to the TruSeq adapters. A detailed explanation of how they work is advanced for this particular lesson. For now we will use these numbers as a default and recognize they are needed to for Trimmomatic to run properly. 
 
+ ![SlidingWindow](../assets/img/slidingwindow.png)
 
 
 This command will take a few minutes to run.
@@ -166,7 +167,10 @@ This command will take a few minutes to run.
     Input Reads: 5416173 Surviving: 5165820 (95.38%) Dropped: 250353 (4.62%)
     TrimmomaticSE: Completed successfully
     
- 
+ ![Paired_EndTrimming](../assets/img/paired_endtrimming.png)
+
+
+ A way of thinking about the files you are using 
  If you have paired end sequences you should run the command from before. 
  
      $ trimmomatic PE -threads 4 SRR_1056_1.fastq.gz SRR_1056_2.fastq.gz  \
@@ -216,6 +220,8 @@ We have just successfully run Trimmomatic on one of our FASTQ files! However, th
 
 This is too computationally demanding to perform without requesting resources from the HPC. 
 Please either a) run interactively b) submit to the hpc
+
+
 
 If you have a paired end sequence the for loop with be different...
 
