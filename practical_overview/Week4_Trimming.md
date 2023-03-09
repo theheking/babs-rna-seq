@@ -199,9 +199,10 @@ We have just successfully run Trimmomatic on one of our FASTQ files! However, th
 
     $ for infile in *.fastq.gz
     > do
-    >   base=$(basename ${infile} _1.fastq.gz)
+    >   base=$(basename ${infile} .fastq.gz)
+    >   outfile="${base}.trimmed.fastq.gz"
     >       trimmomatic SE -phred33 ${infile} \
-    >                ${infile} \
+    >                ${outfile} \
     >                ILLUMINACLIP:${ILLUMINA_READS}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
     > done
 
