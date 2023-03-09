@@ -14,6 +14,7 @@ The structure of today's session is to:
 4. Run through any Q and A for your talks 
 - *** If you are having issues please bring up any errors. If we don't know the answer we can work it out. ***
 
+ ![SlidingWindow](../assets/img/slidingwindow.png)
 
 
 
