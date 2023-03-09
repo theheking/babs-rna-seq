@@ -112,21 +112,49 @@ In this example, we have told Trimmomatic:
 Running Trimmomatic
 -------------------
 
-Now we will run Trimmomatic on our data. To begin, navigate to your `untrimmed_fastq` data directory:
+Now we will run Trimmomatic on our data. To begin, navigate to the data directory that contains your untrimmed fastq files:
 
     $ cd /[yourscratch]/data/
 
-We are going to run Trimmomatic on one of my single-end samples. While using FastQC we saw that Nextera adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
+We are going to run Trimmomatic on one of my single-end samples. While using FastQC we saw that TruSeq adapters were present in our samples. The adapter sequences came with the installation of trimmomatic, so we will first copy these sequences into our current directory.
 
     $ scp -r /srv/scratch/babs3291/adapters/ [yourscratch]
     
 
-We will also use a sliding window of size 4 that will remove bases if their phred score is below 20 (like in our example above). We will also discard any reads that do not have at least 25 bases remaining after this trimming step. Three additional pieces of code are also added to the end of the ILLUMINACLIP step. These three additional numbers (2:40:15) tell Trimmimatic how to handle sequence matches to the Nextera adapters. A detailed explanation of how they work is advanced for this particular lesson. For now we will use these numbers as a default and recognize they are needed to for Trimmomatic to run properly. This command will take a few minutes to run.
 
-    $ ILLUMINA_READS="[yourscratch]/adapters/TruSeq2-SE.fa"
+The adapter sequence you should specify with be dependent on:
+1. the platform your samples are run on (check out the GEO website that is relevant to your samples)
+2. whether your samples are paired or single end files
+3. what adapter sequences are shown to be present in the adapter content graph in your multiqc/fastqc
+
+Please look at the possible adapters that can be used for the adapter sequences 
+
+    $ ls /[yourscratch]/adapters
+    
+    $ NexteraPE-PE.fa  TruSeq2-PE.fa  TruSeq2-SE.fa  TruSeq3-PE.fa  TruSeq3-PE-2.fa  TruSeq3-SE.fa
+
+If you look at the content inside one of these fasta files. You will realise it is filled with short sequences of oligonucleotides.
+
+    $ head /[yourscratch]/adapters/NexteraPE-PE.fa
+    
+    $ >PrefixNX/1
+    $ AGATGTGTATAAGAGACAG
+
+
+Use the three steps above to specify one of these files in the subsequent trimming command. 
+
+
+
+We will also use a sliding window of size 4 that will remove bases if their phred score is below 20 (like in our example above). We will also discard any reads that do not have at least 25 bases remaining after this trimming step. Three additional pieces of code are also added to the end of the ILLUMINACLIP step. These three additional numbers (2:40:15) tell Trimmimatic how to handle sequence matches to the TruSeq adapters. A detailed explanation of how they work is advanced for this particular lesson. For now we will use these numbers as a default and recognize they are needed to for Trimmomatic to run properly. 
+
+
+
+This command will take a few minutes to run.
+
+    $ ADAPTERSEQ="[yourscratch]/adapters/TruSeq2-SE.fa"
     $ trimmomatic SE -phred33 SRR306844chr1_chr3.fastq.gz \
                     SRR306844chr1_chr3.trim.fastq.gz \
-                    ILLUMINACLIP:${ILLUMINA_READS}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
+                    ILLUMINACLIP:${ADAPTERSEQ}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 
                         
     TrimmomaticSE: Started with arguments:
     -phred33 SRR306844chr1_chr3.fastq.gz SRR306844chr1_chr3.trim.fastq.gz ILLUMINACLIP:/srv/scratch/z5342988/adapters/TruSeq2-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
