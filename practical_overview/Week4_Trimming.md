@@ -87,6 +87,8 @@ However, a complete command for Trimmomatic will look something like the command
     NB. You will have to edit this command if you have paired end sample. 
 
 In this example, we have told Trimmomatic:
+
+
 | code                           | meaning                                                                                                   |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- |
 | `PE`                           | that it will be taking a paired end file as input                                                         |
@@ -99,6 +101,8 @@ In this example, we have told Trimmomatic:
 | `SRR_1056_2un.trimmed.fastq`   | the output file for orphaned reads from the `_2` file                                                     |
 | `ILLUMINACLIP:SRR_adapters.fa` | to clip the Illumina adapters from the input file using the adapter sequences listed in `SRR_adapters.fa` |
 | `SLIDINGWINDOW:4:20`           | to use a sliding window of size 4 that will remove bases if their phred score is below 20                 |
+    
+    
     
 > Multi-line commands
 > -------------------
