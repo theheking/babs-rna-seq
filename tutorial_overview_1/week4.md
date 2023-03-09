@@ -10,14 +10,14 @@ The structure of today's session is to:
 
 1. To run through our technical understanding of trimmomatic from yesterday's practical. 
 2. Run through for loops 
-3. Understnading what has been trimmed or removed from your original fastq files. 
+3. Understanding what has been trimmed or removed from your original fastq files. 
 4. Run through any Q and A for your talks 
 - *** If you are having issues please bring up any errors. If we don't know the answer we can work it out. ***
 
 
 
 
- ![SlidingWindow](../assets/img/Untitled (9).png)
+ ![SlidingWindow](../assets/img/pipeline.png)
 
 
 
