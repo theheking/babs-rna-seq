@@ -15,6 +15,9 @@ Week 5 - Student Talks
 
 3. Once all of the talks are finished, for every talk please fill out [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSdEPWhRx9LvidLu0TixKHpjtdUic9BF84kfUuMG9EZj9QeMlQ/viewform)
 
+***Marking will be available until 2pm on Friday***
+
+
 Note:
 If we overrun timewise, we will use tutorial time. 
 
