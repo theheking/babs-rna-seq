@@ -160,8 +160,16 @@ First, we must download the reference files from (https://asia.ensembl.org/info/
 1) We will need the FASTA file of the cDNA sequence
 (https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz)
 
+      $ wget https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
+      
 2) We also will need the human GTF file, a file containing coordinates and descriptions for all gene names and locations - we will also download this from Ensembl. (https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)  **not needed for index command**
-
+  
+        $ wget https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz 
+        
+Also, must unzip the gtf above. This will take the gtf from being compressed to human readable.
+        
+        $ gunzip Homo_sapiens.GRCh38.109.gtf.gz 
+      
 
 Next run the indexing command. This prepares the transcriptome so that we can pseudoalign reads to it.
   
@@ -171,9 +179,10 @@ Next run the indexing command. This prepares the transcriptome so that we can ps
 Step 2 Pseudoalignment of reads with Kallisto
 ============================================
 In this final step, we will run Kallisto on all of our files to quantify the reads. We will write a for loop to do this. Let's see once again our trimmed reads
+
 Using your trimmed reads
 
-    $ cd [yourscratch]/trimmed-reads/
+    $ cd [yourscratch]/trimmed_fastq/
   
 All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). 
 
@@ -207,8 +216,7 @@ kallisto quant produces three output files by default:
 > Exercise
 > --------
 > Use kallisto quant to quantify all the transcriptome of your files. 
-> **Hint** Use a for loop
-> **Hint 2** Be polite and request your turn in the (HPC) queue!
+> **Hint** Be polite and request your turn in the (HPC) queue!
 >  
   
 
