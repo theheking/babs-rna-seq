@@ -165,7 +165,7 @@ First, we must download the reference files from (https://asia.ensembl.org/info/
 
 Next run the indexing command. This prepares the transcriptome so that we can pseudoalign reads to it.
   
-  $ kallisto index --index=transcriptome_Homo_sapiens_GRCh38 /kallisto_human_ref/Homo_sapiens.GRCh38.cdna.all.fa.gz
+    $ kallisto index --index=transcriptome_Homo_sapiens_GRCh38 /kallisto_human_ref/Homo_sapiens.GRCh38.cdna.all.fa.gz
 
 
 Step 2 Pseudoalignment of reads with Kallisto
@@ -173,23 +173,24 @@ Step 2 Pseudoalignment of reads with Kallisto
 In this final step, we will run Kallisto on all of our files to quantify the reads. We will write a for loop to do this. Let's see once again our trimmed reads
 Using your trimmed reads
 
-  $ cd [yourscratch]/trimmed-reads/
+    $ cd [yourscratch]/trimmed-reads/
   
 All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). 
 
 We need to run Kallisto on all of your files. Run the command below on one of your files.
-  $ INPUT_FASTA="[yourscratch]/data/*chr1_chr3.trim.fastq.gz"
+
+    $ INPUT_FASTA="[yourscratch]/data/*chr1_chr3.trim.fastq.gz"
  
-  $ kallisto quant\
- --single\
- --threads=8\
- --index=[insert_location_your trancriptome]\
- --bootstrap-samples=25\
- --fragment-length=200\
- --sd=20\
- --output-dir=$output\
- --genomebam\
- --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
+    $ kallisto quant \
+     --single\
+     --threads=8\
+     --index=[insert_location_your trancriptome]\
+     --bootstrap-samples=25\
+     --fragment-length=200\
+     --sd=20\
+     --output-dir=$output\
+     --genomebam\
+     --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
  
 kallisto quant produces three output files by default:
 
