@@ -1,10 +1,9 @@
 ---
 layout: page
-title: Week 7 Alignment with Kallisto 
+title: Week 8 Alignment with Kallisto 
 ---
 
-
-Trimming and Filtering
+Alignment With Kallisto
 ======================
 
 > Overview
