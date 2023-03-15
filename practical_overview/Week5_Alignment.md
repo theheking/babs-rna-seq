@@ -197,7 +197,7 @@ We need to run Kallisto on all of your files. Run the command below on one of yo
      --bootstrap-samples=25\
      --fragment-length=200\
      --sd=20\
-     --output-dir=$output\
+     --output-dir=output\
      --genomebam\
      --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
  
