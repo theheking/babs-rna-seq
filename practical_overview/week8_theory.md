@@ -11,14 +11,13 @@ Differential gene expression (DGE) analysis
 > --------
 > **Questions**
 > 
-> *   What are the top DEGs in our experiment? 
+> *   What calculations are actually being performed with DE?
 >     
 > 
 > **Objectives**
 > 
-> *   Use DEGUST to output top differentially expressed genes  
+> *   Understanding how DEGUST is calculating the top differentially expressed genes  
 >  
-> *   Understand the best diagrams to show differentially expressed genes
 > 
 
 ---------------------------------------
