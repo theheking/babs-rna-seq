@@ -6,6 +6,20 @@ title: Week 5 Student Talks
 Week 5 - Student Talks 
 =====================
 
+1. Please make a copy of the grading rubric google form (Select File --> Make a Copy)
+
+![copy](../assets/img/copy.png)
+
+
+2. Fill out your own personal responses in your own personal copy of the Template for Responses
+
+3. Once all of the talks are finished, for every talk please fill out [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSdEPWhRx9LvidLu0TixKHpjtdUic9BF84kfUuMG9EZj9QeMlQ/viewform)
+
+Note:
+If we overrun timewise, we will use tutorial time. 
+
+
+
 Please find use the scoring rubric to inform your form below. 
 
 - Discuss the importance of analysing your dataset to advance research and provide knowledge
@@ -18,10 +32,4 @@ Please find use the scoring rubric to inform your form below.
 
 ![workflow](../assets/img/table.png)
 ![workflow](../assets/img/table2.png)
-
-
-For every talk you watch please fill out [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSdEPWhRx9LvidLu0TixKHpjtdUic9BF84kfUuMG9EZj9QeMlQ/viewform)
-
-
-If we overrun timewise, we will use tutorial time. 
 
