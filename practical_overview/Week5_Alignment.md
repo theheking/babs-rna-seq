@@ -31,9 +31,8 @@ Kallisto is a quick, highly-efficient software for quantifying transcript abunda
 
 In order to analyze data with Kallisto we need several inputs:
 
-1) Trimmed and filtered FastQ files from the RNA-Seq experiment
-2) A Reference transcriptome 
-  This is a file that has the sequences for all the known expressed genes. Reference transcriptomes are usually available from repositories like Ensembl and NCBI. We will be using the human reference transcriptome. Unlike a genome, the transcriptome is only coding genes.
+1. Trimmed and filtered FASTQ files
+2. **A Reference transcriptome**  This is a file that has the sequences for all the known expressed genes. Reference transcriptomes are usually available from repositories like Ensembl and NCBI. We will be using the human reference transcriptome. Unlike a genome, the transcriptome is only coding genes.
 
 
 
@@ -43,15 +42,18 @@ Analysis with Kallisto has two main steps:
 
 | Step | Description     | Command                                         | Input                                                                | Output                                          |
 | ---- | --------------- | ----------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------- |
-| 1    | Genome indexing | kallisto index <--index=> <transcriptome.fa.gz> | Redference transcriptome                                             | Kallisto index (no file extension)              |
+| 1    | Genome indexing | kallisto index <--index=> <transcriptome.fa.gz> | Reference transcriptome                                             | Kallisto index (no file extension)              |
 | 2    | Pseudoalignment | kallisto quant sample.fa.gz                     | FASTQ (one per run of kallisto), kallisto index (from indexing step) | abundances.h5, abundances.tsv and run_info.json |
   
 
-Pseudoalignment and genomics word search Explained
+
+Pseudoalignment and Genomics Word Search Explained
 =====================================================
 Alignment of reads is an expansive topic. Several reviews cover some of the important topics including [Stark et. al. 2019](https://www.nature.com/articles/s41576-019-0150-2). This [blog post](http://tinyheero.github.io/2015/09/02/pseudoalignments-kallisto.html) and the (kallisto paper)[https://www.nature.com/articles/nbt.3519] are further readings to get a deep understanding of the subject.
 
-To try and reduce this problem to its most basic, let’s use an analogy. In the traditional case, when software does alignment, it tries to match a read to the genome.
+To try and reduce this problem to its most basic, the Leo Pachter Lab used an analogy. 
+
+In the traditional case, when software does alignment, it tries to match a read to the genome.
  
   
 > Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
@@ -148,9 +150,6 @@ There are a few files we need perform the first step of Kallisto
 - Reference annotations: A file with information on the location and structure of the genes in the human genome and a file with chromosome details.
   
   
-Step 1 Genome indexing for Kallisto
-===================================
-Index transcriptome
 
 We will now use Kallisto's indexing function to prepare the transcriptome for analysis. The "Index" is a lookup table for the transcriptome that allows it to be more easily searched by Kallisto. First let's organize our files by creating a new directory to hold our kallisto work.
 
@@ -206,7 +205,9 @@ kallisto quant produces three output files by default:
 
 > Exercise
 > --------
-> Use kallisto quant to quantify all the transcriptome of your files. **Hint** Be polite and request your turn in the (HPC) queue!
+> Use kallisto quant to quantify all the transcriptome of your files. 
+> **Hint** Use a for loop
+> **Hint 2** Be polite and request your turn in the (HPC) queue!
 >  
   
 
