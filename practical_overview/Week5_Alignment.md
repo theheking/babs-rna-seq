@@ -153,7 +153,7 @@ There are a few files we need perform the first step of Kallisto
 
 We will now use Kallisto's indexing function to prepare the transcriptome for analysis. The "Index" is a lookup table for the transcriptome that allows it to be more easily searched by Kallisto. First let's organize our files by creating a new directory to hold our kallisto work.
 
-  $ mkdir -p [yourscratch]/kallisto_human_ref
+    $ mkdir -p [yourscratch]/kallisto_human_ref
  
 First, we must download the reference files from (https://asia.ensembl.org/info/data/ftp/index.html) using `wget`
 
