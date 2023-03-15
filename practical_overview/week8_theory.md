@@ -38,12 +38,6 @@ So what does the count data actually represent? The count data used for differen
 ![](../assets/img/deseq_workflow_almost_full.png)
 
 
-Using DEGUST
--------------
-
-We will be using the online method  (https://degust.erc.monash.edu/) 
-
-
 Normalization
 -------------
 
