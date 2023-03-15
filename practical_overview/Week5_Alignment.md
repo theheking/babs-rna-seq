@@ -49,7 +49,7 @@ Analysis with Kallisto has two main steps:
 
 Pseudoalignment and Genomics Word Search Explained
 =====================================================
-Alignment of reads is an expansive topic. Several reviews cover some of the important topics including [Stark et. al. 2019](https://www.nature.com/articles/s41576-019-0150-2). This [blog post](http://tinyheero.github.io/2015/09/02/pseudoalignments-kallisto.html) and the (kallisto paper)[https://www.nature.com/articles/nbt.3519] are further readings to get a deep understanding of the subject.
+Alignment of reads is an expansive topic. Several reviews cover some of the important topics including [Stark et. al. 2019](https://www.nature.com/articles/s41576-019-0150-2). This [blog post](http://tinyheero.github.io/2015/09/02/pseudoalignments-kallisto.html) and the [kallisto paper](https://www.nature.com/articles/nbt.3519) are further readings to get a deep understanding of the subject.
 
 To try and reduce this problem to its most basic, the Leo Pachter Lab used an analogy. 
 
