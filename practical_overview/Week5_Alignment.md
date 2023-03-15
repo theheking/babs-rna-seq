@@ -186,14 +186,16 @@ Using your trimmed reads
   
 All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). 
 
-We need to run Kallisto on all of your files. Run the command below on one of your files.
+We need to run Kallisto on all of your files. Run the command below on one of your files. 
 
-    $ INPUT_FASTA="[yourscratch]/data/*chr1_chr3.trim.fastq.gz"
+Single-end:
+
+    $ INPUT_FASTA="[yourscratch]/data/SRR306844chr1_chr3.trimmed.fastq.gz"
  
     $ kallisto quant \
      --single\
      --threads=8\
-     --index=[insert_location_your trancriptome]\
+     --index=[insert_location_your transcriptome]\
      --bootstrap-samples=25\
      --fragment-length=200\
      --sd=20\
@@ -201,17 +203,78 @@ We need to run Kallisto on all of your files. Run the command below on one of yo
      --genomebam\
      --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
  
+ 
+
+Paired-end:
+
+    $ INPUT_FASTA="[yourscratch]/data/SRR306844*.trimmed.fastq.gz"
+ 
+    $ kallisto quant \
+     --threads=8\
+     --index=[insert_location_your transcriptome]\
+     --bootstrap-samples=25\
+     --fragment-length=200\
+     --sd=20\
+     --output-dir=output\
+     --genomebam\
+     --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
+     
+     
+     
 kallisto quant produces three output files by default:
 
 - abundance.h5 is a HDF5 binary file containing run info, abundance esimates, bootstrap estimates, and transcript length information length. This file can be read in by sleuth
 - abundance.tsv is a plaintext file of the abundance estimates. It does not contains bootstrap estimates. Please use the --plaintext mode to output plaintext abundance estimates. Alternatively, kallisto h5dump can be used to output an HDF5 file to plaintext. The first line contains a header for each column, including estimated counts, TPM, effective length.
 - run_info.json is a json file containing information about the run
  
- Lets have a look at what the file contains a list of abundances (counts) shows.
+ Lets have a look at what the file contains a list of abundances (counts) shows. 
 
   ` head -n 100 abundance.tsv`
   
-  
+Next you will have to calculate an abundance.tsv file for every sample.
+
+Step 3 For Loop to perform pseudoalignment of reads for every sample
+========================================================================
+Like when you performed trimming, you will need to first request enough computational resources through `qsub -I`. Then you will have to run a for loop to loop through every sample fastq file. The loop you use is dependent on whether you are single end or paired end. 
+
+If you have single-end reads. 
+
+    $ for infile in *.trimmed.fastq.gz
+          do
+          base=$(basename ${infile} .fastq.gz)
+          outdir="${base}"
+          kallisto quant \
+           --single\
+           --threads=8\
+           --index=[insert_location_your transcriptome]\
+           --bootstrap-samples=25\
+           --fragment-length=200\
+           --sd=20\
+           --output-dir=${outdir}\
+           --gtf=Homo_sapiens.GRCh38.109.gtf ${infile}
+
+      done
+
+
+
+If you have paired-end reads.
+
+     $ for infile in *_1.trimmed.fastq.gz
+          do
+          base=$(basename ${infile} _1.fastq.gz)
+          outdir="${base}"
+          infiles="${base}*trimmed.fastq.gz"
+          kallisto quant \
+           --threads=8\
+           --index=/srv/scratch/z5342988/transcriptome_Homo_sapiens_GRCh38\
+           --bootstrap-samples=25\
+           --fragment-length=200\
+           --sd=20\
+           --output-dir=${outdir}\
+           --gtf=Homo_sapiens.GRCh38.109.gtf ${infiles}
+
+      done
+
 
 > Exercise
 > --------
