@@ -165,7 +165,7 @@ First, we must download the reference files from (https://asia.ensembl.org/info/
 
 Next run the indexing command. This prepares the transcriptome so that we can pseudoalign reads to it.
   
-    $ kallisto index --index=transcriptome_Homo_sapiens_GRCh38 /kallisto_human_ref/Homo_sapiens.GRCh38.cdna.all.fa.gz
+    $ kallisto index --index=transcriptome_Homo_sapiens_GRCh38 kallisto_human_ref/Homo_sapiens.GRCh38.cdna.all.fa.gz
 
 
 Step 2 Pseudoalignment of reads with Kallisto
