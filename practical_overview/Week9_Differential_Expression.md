@@ -1,13 +1,10 @@
 ---
 layout: page
-title: Week  DE Analysis
+title: Week 9 - Differential Expression Analysis
 ---
 
-
-
-
-Differential gene expression (DGE) analysis
-===========================================
+Week 9 - Differential gene expression (DGE) analysis
+====================================================
 
 > Overview
 > --------
