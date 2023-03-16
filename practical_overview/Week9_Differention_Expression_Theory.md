@@ -117,8 +117,6 @@ A useful initial step in an RNA-seq analysis is often to assess overall similari
 
 Log2-transformed normalized counts are used to assess similarity between samples using the most common of which is Principal Component Analysis (PCA) and hierarchical clustering. PCA is analogous to the multidimension scaling used in DEGUST. Using log2 transformation, tools aim to moderate the variance across the mean, thereby improving the distances/clustering for these visualization methods.
 
-![](../assets/img/rlog_transformation.png)
-
 Sample-level QC allows us to see how well our replicates cluster together, as well as, observe whether our experimental condition represents the major source of variation in the data. Performing sample-level QC can also identify any sample outliers, which may need to be explored to determine whether they need to be removed prior to DE analysis.
 
 ![](../assets/img/sample_qc.png)
