@@ -1,8 +1,10 @@
-
 ---
 layout: page
 title: Week  DE Analysis
 ---
+
+
+
 
 Differential gene expression (DGE) analysis
 ===========================================
@@ -45,7 +47,7 @@ We will be using the online method  (https://degust.erc.monash.edu/).
 
 1. Preparing data to be compatable for use in DEGUST
 2. Transferring locally
-3. Uploading to DEGUST metadata and Kallisto output
+3. Uploading metadata and counts table  to DEGUST 
 4. Understanding the output 
 
 
@@ -56,27 +58,83 @@ We will be using the online method  (https://degust.erc.monash.edu/).
 Log onto katana. Change directory into the location that contains your aligned kallisto output `abundance.tsv`.
 
         $ ssh zID@katana.restech.unsw.edu.au 
-        $ cd /srv/scratch/zID/SRR306844chr1_chr3/
+        $ cd /srv/scratch/zID/data/SRR306844chr1_chr3/
         $ ls abundance.tsv
       
-This is the file you will transfer to your local computer. 
+This file contains the counts of one sample. For input into DEGUST, you will have to form a count matrix table.  
+
+Please download this [script](https://github.com/theheking/babs-rna-seq/blob/gh-pages/metadatafiles/merge_abundance_files.sh) using `wget`. In the main folder that you have your kallisto results.
+
+        $ cd /srv/scratch/zID/data/
+        $ wget https://github.com/theheking/babs-rna-seq/blob/gh-pages/metadatafiles/merge_abundance_files.sh
+        $ bash merge_abundance_files.sh
+        This scripts is to concatenate all abundance tsv to form count matrix table
+        *** Please be in the main directory which contains /samplename/abundance.tsv****
+        
+ This should output one file called `transcript_counts.csv`. Please check that it is:
+ 1) comma seperated using `head -n 3`
+ 2) the number of samples should equal the number of columns + 1
+ 3) has the 205541 lines using `wc -l`
+    
+  
+This `transcript_counts.csv` is the file you will transfer to your local computer. 
 
 2. Transferring locally
 ------------------------
 
 You will now be transferring your file to your local computer. First move into a directory that you can access. 
    
-    $ scp zID@katana.restech.unsw.edu.au:"/srv/scratch/zID/output/abundance.tsv" .
+    $ scp zID@katana.restech.unsw.edu.au:"/srv/scratch/zID/data/transcript_counts.csv" .
     
 
-3. Uploading to DEGUST metadata and Kallisto output
+3. Uploading metadata and counts table to DEGUST 
 ----------------------------------------------------
+Open the [DEGUST homepage](https://degust.erc.monash.edu/). This is where you will upload your counts file and have a internet-based interface to understand the DEGs in your samples. Usually this would be performed manually through R analysis using DESeq2 or limma (the package that is automated on this website). 
+
+a. Click **Upload your counts file**
+b. Click **Choose file** and select your `transcripts_counts.csv` file and select **Upload**.
+c. Now we must configure the correct settings.
+        - Write in the name of your project
+        - Input type as RNA-seq counts
+        - Select Comma seperated
+        - Choose the info column to contain the transcripts
+        
+ ![DEGUST](../assets/img/degust_screenshot1.png)
+
+d. Continue to configure settings. 
+        - Min Gene Count to 2 and min sample number to 2. As you are only looking at a subset of chromosomes then, you need to remove the noise.
+        - Select the replicates for each condition. This is what will be in the original metadata file found in Practical Overview --> Sample Datasets --> SraRunTable File.
+        - For each condition, choose the relevant samples. At the moment, please just select the control and test conditions. In section 5, you can also include confounding effects.  
+        
+ ![DEGUST](../assets/img/degust_screenshot2.png)
 
 
-
+ 
 4. Understanding the output 
 ----------------------------
 
+There are four tabs present - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
+
+1) The MDS in MDS plot stands for multidimension scaling. It is a method to visualise the similarity or dissimalarity between each sample. We would expect the samples to cluster based on tissue. This is because we would expect the cerebellum samples to be more similar to each other than heart samples. If not clustering well, that could be an indicator of contaminated sample or confounding factor not taken into account. 
+
+ ![DEGUST](../assets/img/mdsplot.png)
 
 
-Edited from [Training-modules](https://github.com/hbctraining/Training-modules) is maintained by [hbctraining](https://github.com/hbctraining)
+The elbow plot to the right hand side of the screen displays the percentage of variance that is displayed in the MDS plot. If 1 is 100% it would mean that 100% of biological variation is described on one axis. In our sample, 
+ ![DEGUST](../assets/img/elbowplot.png)
+
+
+2)Volcano plot
+
+ ![DEGUST](../assets/img/volcanoplot.png)
+
+
+3)  ![DEGUST](../assets/img/maplot.png)
+4)  ![DEGUST](../assets/img/parallelcoordinates.png)
+
+
+5. Taking into account confounding effects such as sex
+-------------------------------------------------------
+
+
+Beginning section Edited from [Training-modules](https://github.com/hbctraining/Training-modules) 
