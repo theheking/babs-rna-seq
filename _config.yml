@@ -21,7 +21,7 @@ author: Helen King
 
 navbar-links:
   Course Structure: "course_structure"
-  Practical Overview W1-5:
+  Practical W1-5:
     - Sample Datasets: "practical_overview/sample_datasets"
     - Week 1A Setting Up on Katana: "practical_overview/Week1A_SettingUpOnKatana"
     - Week 1B 1) Introducing the Shell: "practical_overview/Week1B_1_Introducing_the_Shell"
@@ -33,7 +33,7 @@ navbar-links:
     - Week 3 Using FASTQC For Data Quality Report: "practical_overview/Week3_FASTQC"
     - Week 4 Using Trimmomatic for Trimming and Filtering: "practical_overview/Week4_Trimming"
     - Week 5 Student Talks: "practical_overview/talks"
-  Practical Overview W6-10:
+  Practical W6-10:
     - Week 6 Flexibility Week: "practical_overview/flex_week"
     - Week 7 Ramachotti Tour: "practical_overview/ramachotti_tour"
     - Week 8 Using Kallisto for Pseudoalignment: "practical_overview/Week5_Alignment"
