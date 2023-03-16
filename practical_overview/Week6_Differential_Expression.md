@@ -49,7 +49,7 @@ We will be using the online method  (https://degust.erc.monash.edu/).
 2. Transferring locally
 3. Uploading metadata and counts table  to DEGUST 
 4. Understanding the output 
-
+5. Taking into account confounding effects
 
 
 Preparing DEGUST Compatible Data
@@ -117,9 +117,9 @@ You will see a screen similar to the screen shot below.
  ![DEGUST](../assets/img/degust_screenshot3.png)
 
 On the LHS is a small box containing the:
-- FDR (False discovery rate cut-off)
-- abs logFC (absolute log fold change) 
-- FC relative to
+- ** FDR (False discovery rate cut-off)** - Due to probability, there is a small chance that an event will occur by chance. This is a filter to remove the background noise of events. For us the event, is differentially expressed genes, so this removes DE genes that are likely to be due to chance, and not as a result of actual biological differences between control and test samples. 
+- **abs logFC (absolute log fold change)** - this is the metric to calculate the difference between counts. Please see the theory lesson for a more indepth understanding of how this is calculated. In essense the larger the abs logFC, the larger the difference between expression of a transcript between heart and cerebellum. If abslogFC = 0, there is no difference in expression.
+- **FC relative to** - control of which condition is the *baseline*.
 
 
 There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
@@ -129,23 +129,35 @@ There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MD
  ![DEGUST](../assets/img/mdsplot.png)
 
 
-
 2. The elbow plot to the right hand side of the screen displays the percentage of variance that is displayed in the MDS plot. If 1 is 100% it would mean that 100% of biological variation is described with dimension 1. In our sample, 55% of biological variance is found in dimension 1, and 15% in dimension 2. Therefore around 70% of biological variation is being displayed in the MDS plot above. 
  ![DEGUST](../assets/img/elbowplot.png)
 
-3. The volcano plot shows on the y-axis 
- ![DEGUST](../assets/img/volcanoplot.png)
+3. The volcano plot shows on the shows the -log10FDR against the logFC.  The higher the value of the -log10 FDR, the greater the confidence in the log FC being not random. The larger the logFC 
+
+![DEGUST](../assets/img/volcanoplot.png)
+
+Every dot represents an isoform (not a gene). This is because we are using the transcriptome as the reference and each transcript name begins with "ENST". An example of a transcript that has a negative log FC due to being highly expressed in cerebellum, relative to the `control` heart sample. It codes for a transcript of the gene [ZIC1](http://asia.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000152977;r=3:147393422-147510293) which is a member of the transcription factor C2H2-type zinc finger family that are key during developement. has been documented in medulloblastoma, a chldhood brain tumour.  
+
+![DEGUST](../assets/img/degust_volc.png)
 
 
-4.  ![DEGUST](../assets/img/degust_screenshot4.png)
+4.  
 
 
 
-5. ![DEGUST](../assets/img/degust_screenshot5.png)
+![DEGUST](../assets/img/degust_screenshot4.png)
 
 
-Taking into account confounding effects such as sex
-----------------------------------------------------
+
+5. 
+
+
+
+![DEGUST](../assets/img/degust_screenshot5.png)
+
+
+Taking into account confounding effects
+-----------------------------------------
 
 
 
