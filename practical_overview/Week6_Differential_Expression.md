@@ -52,8 +52,8 @@ We will be using the online method  (https://degust.erc.monash.edu/).
 
 
 
-1. Prepare data
-------------------
+Preparing DEGUST Compatible Data
+--------------------------------
 
 Log onto katana. Change directory into the location that contains your aligned kallisto output `abundance.tsv`.
 
@@ -79,16 +79,18 @@ Please download this [script](https://github.com/theheking/babs-rna-seq/blob/gh-
   
 This `transcript_counts.csv` is the file you will transfer to your local computer. 
 
-2. Transferring locally
-------------------------
+Transferring to local computer
+------------------------------
 
 You will now be transferring your file to your local computer. First move into a directory that you can access. 
    
     $ scp zID@katana.restech.unsw.edu.au:"/srv/scratch/zID/data/transcript_counts.csv" .
     
 
-3. Uploading metadata and counts table to DEGUST 
-----------------------------------------------------
+Uploading metadata and counts table to DEGUST 
+-----------------------------------------------
+
+
 Open the [DEGUST homepage](https://degust.erc.monash.edu/). This is where you will upload your counts file and have a internet-based interface to understand the DEGs in your samples. Usually this would be performed manually through R analysis using DESeq2 or limma (the package that is automated on this website). 
 
 a. Click **Upload your counts file**
@@ -109,11 +111,13 @@ d. Continue to configure settings.
  ![DEGUST](../assets/img/degust_screenshot2.png)
 
 
- 
-4. Understanding the output 
+Understanding the output 
 ----------------------------
 
-There are four tabs present - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
+There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
+
+ ![DEGUST](../assets/img/degust_screenshot3.png)
+
 
 1) The MDS in MDS plot stands for multidimension scaling. It is a method to visualise the similarity or dissimalarity between each sample. We would expect the samples to cluster based on tissue. This is because we would expect the cerebellum samples to be more similar to each other than heart samples. If not clustering well, that could be an indicator of contaminated sample or confounding factor not taken into account. 
 
@@ -125,7 +129,7 @@ The elbow plot to the right hand side of the screen displays the percentage of v
 
 
 2)Volcano plot
-
+The volcano plot shows on the y-axis 
  ![DEGUST](../assets/img/volcanoplot.png)
 
 
