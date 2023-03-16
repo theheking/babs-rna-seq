@@ -67,7 +67,7 @@ Please download this [script](https://github.com/theheking/babs-rna-seq/blob/gh-
         $ wget https://github.com/theheking/babs-rna-seq/blob/gh-pages/metadatafiles/merge_abundance_files.sh
         $ bash merge_abundance_files.sh
         This scripts is to concatenate all abundance tsv to form count matrix table
-        *** Please be in the main directory which contains /samplename/abundance.tsv****
+        ***Please be in the main directory which contains /samplename/abundance.tsv***
         
  This should output one file called `transcript_counts.csv`. Please check that it is:
  1) comma seperated using `head -n 3`
@@ -115,7 +115,7 @@ You will see a screen similar to the screen shot below.
  ![DEGUST](../assets/img/degust_screenshot3.png)
 
 On the LHS is a small box containing the:
-- ** FDR (False discovery rate cut-off)** - Due to probability, there is a small chance that an event will occur by chance. This is a filter to remove the background noise of events. For us the event, is differentially expressed genes, so this removes DE genes that are likely to be due to chance, and not as a result of actual biological differences between control and test samples. 
+- **FDR (False discovery rate cut-off)** - Due to probability, there is a small chance that an event will occur by chance. This is a filter to remove the background noise of events. For us the event, is differentially expressed genes, so this removes DE genes that are likely to be due to chance, and not as a result of actual biological differences between control and test samples. 
 - **abs logFC (absolute log fold change)** - this is the metric to calculate the difference between counts. Please see the theory lesson for a more indepth understanding of how this is calculated. In essense the larger the abs logFC, the larger the difference between expression of a transcript between heart and cerebellum. If abslogFC = 0, there is no difference in expression.
 - **FC relative to** - control of which condition is the *baseline*.
 
@@ -147,16 +147,39 @@ Please select the ~100 genes and then download this csv. This will be used for f
 
 
 
-Gene Ontology 
------------------------------------------
-1. Create a list of transcript IDs 
-After selecting download csv, you should open your csv in google sheets or excel. 
-Please remove the final decimal points from every transcriptID by selecting Data to Columns and using "." as the delimiter. 
-2. Convert transcript IDs to GeneIDs using https://biit.cs.ut.ee/gprofiler/convert
+Exploring Gene Ontology Analysis
+-----------------------------------
+Gene ontology is a tool used to understand the molecular function, biological process and cellular components of the genes that are differentially expressed across conditions. 
+
+1. Create a list of transcript IDs. 
+After selecting download csv, you should open your csv in either Google Sheets or Microsoft Excel. 
+![DEGUST](../assets/img/excel.png)
+Please remove the final decimal points from every transcriptID by selecting Data to Columns and using "." as the delimiter. I will show you how remove the decimal points in Excel as that is my system default. 
+1. Select Text to Columns
+2. Select delimited 
+3. Select other and enter in a fulls-stop (.) 
+4. Select finish
+5. Ignore the alert 
+6. Copy the list of transcripts that now should be formatted to from a list of transcript IDs such as ENST00000497275.5 to ENST00000497275. 
+
+2. Convert transcript IDs to GeneIDs using [GO Convert Website](https://biit.cs.ut.ee/gprofiler/convert).
 Copy and paste the transcript IDs to the gene conversion. This will output genes that match isoforms of interest.
-Select ENSG as the output to convert to. 
-3. Find gene ontology profile using https://biit.cs.ut.ee/gprofiler/gost
-Then finally use this list of geneIDs as input into gene ontology enrichment website. 
+
+Select ENSG as the Target Namespace
+![DEGUST](../assets/img/goconvert.png)
+Click the little clipboard logo next to `converted alias`. This will copy all the gene names to your clipboard. 
+
+3. Find gene ontology profile using [GO ontology profile](https://biit.cs.ut.ee/gprofiler/gost).
+![DEGUST](../assets/img/goprofiler.png)
+
+Paste this list of geneIDs as input into gene ontology enrichment website and select run query. 
+The top most enriched GO terms will be displayed in an assortment of figures. For example, one of the top enriched processes is circulatory system development, which is unsuprising as we are looking at genes that are DE in heart samples vs cerebellum. 
+![DEGUST](../assets/img/goprofileroutput.png)
+
+
+Please explore all of the different figures. Depending on your samples and your biological question the results could be interesting or not... 
+
+
 
 
 Beginning section Edited from [Training-modules](https://github.com/hbctraining/Training-modules) 
