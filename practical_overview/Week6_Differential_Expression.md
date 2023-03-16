@@ -46,7 +46,8 @@ We will be using the online method  (https://degust.erc.monash.edu/).
 2. Transferring locally
 3. Uploading metadata and counts table  to DEGUST 
 4. Understanding the output 
-5. Taking into account confounding effects
+5. Gene ontology output
+6. Taking into account confounding effects **(Extra found in tutorial)**
 
 
 Preparing DEGUST Compatible Data
@@ -119,7 +120,7 @@ On the LHS is a small box containing the:
 - **FC relative to** - control of which condition is the *baseline*.
 
 
-There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
+There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all, so we are going to skip the MA plot. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
 
 
 1. The MDS in MDS plot stands for multidimension scaling. It is a method to visualise the similarity or dissimalarity between each sample. We would expect the samples to cluster based on tissue. This is because we would expect the cerebellum samples to be more similar to each other than heart samples. In our MDS plot, we can see SRR306844chr1_chr3 clustering distinctly from all other samples. If not clustering well, it is an indicator of contaminated sample or confounding factor not taken into account. 
@@ -138,25 +139,24 @@ Every dot represents an isoform (not a gene). This is because we are using the t
 ![DEGUST](../assets/img/degust_volc.png)
 
 
-4.  
+4. Parallel coordinates tab is fairly self explanatory. Each line represents an isoform, each line represents the logFC. All isoforms in the control with have a absLogFC of 0 as it is the baseline, where expression is relative to. The most useful section for this is the drag and drop to highlight transcripts of interest that are then visualised in the heatmap below, and in the csv below. 
 
-
+Please select the ~100 genes and then download this csv. This will be used for further gene ontology visualisations (see Gene Ontology section). 
 
 ![DEGUST](../assets/img/degust_screenshot4.png)
 
 
 
-5. 
-
-
-
-![DEGUST](../assets/img/degust_screenshot5.png)
-
-
-Taking into account confounding effects
+Gene Ontology 
 -----------------------------------------
-
-
+1. Create a list of transcript IDs 
+After selecting download csv, you should open your csv in google sheets or excel. 
+Please remove the final decimal points from every transcriptID by selecting Data to Columns and using "." as the delimiter. 
+2. Convert transcript IDs to GeneIDs using https://biit.cs.ut.ee/gprofiler/convert
+Copy and paste the transcript IDs to the gene conversion. This will output genes that match isoforms of interest.
+Select ENSG as the output to convert to. 
+3. Find gene ontology profile using https://biit.cs.ut.ee/gprofiler/gost
+Then finally use this list of geneIDs as input into gene ontology enrichment website. 
 
 
 Beginning section Edited from [Training-modules](https://github.com/hbctraining/Training-modules) 
