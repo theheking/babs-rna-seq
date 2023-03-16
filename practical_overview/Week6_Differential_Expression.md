@@ -113,32 +113,41 @@ d. Continue to configure settings.
 
 Understanding the output 
 ----------------------------
+You will see a screen similar to the screen shot below. 
+ ![DEGUST](../assets/img/degust_screenshot3.png)
+
+On the LHS is a small box containing the:
+- FDR (False discovery rate cut-off)
+- abs logFC (absolute log fold change) 
+- FC relative to
+
 
 There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MDS plot and Volcano plot. There is too many user configured settings and output graphs  to explain all. So, I will highlight the purpose the most pertinent graphs. For the practical writeup, you need to investigate any disease specific patterns and research the role of the most DEGs idenitfied in these figures.
 
- ![DEGUST](../assets/img/degust_screenshot3.png)
 
-
-1) The MDS in MDS plot stands for multidimension scaling. It is a method to visualise the similarity or dissimalarity between each sample. We would expect the samples to cluster based on tissue. This is because we would expect the cerebellum samples to be more similar to each other than heart samples. If not clustering well, that could be an indicator of contaminated sample or confounding factor not taken into account. 
-
+1. The MDS in MDS plot stands for multidimension scaling. It is a method to visualise the similarity or dissimalarity between each sample. We would expect the samples to cluster based on tissue. This is because we would expect the cerebellum samples to be more similar to each other than heart samples. In our MDS plot, we can see SRR306844chr1_chr3 clustering distinctly from all other samples. If not clustering well, it is an indicator of contaminated sample or confounding factor not taken into account. 
  ![DEGUST](../assets/img/mdsplot.png)
 
 
-The elbow plot to the right hand side of the screen displays the percentage of variance that is displayed in the MDS plot. If 1 is 100% it would mean that 100% of biological variation is described on one axis. In our sample, 
+
+2. The elbow plot to the right hand side of the screen displays the percentage of variance that is displayed in the MDS plot. If 1 is 100% it would mean that 100% of biological variation is described with dimension 1. In our sample, 55% of biological variance is found in dimension 1, and 15% in dimension 2. Therefore around 70% of biological variation is being displayed in the MDS plot above. 
  ![DEGUST](../assets/img/elbowplot.png)
 
-
-2)Volcano plot
-The volcano plot shows on the y-axis 
+3. The volcano plot shows on the y-axis 
  ![DEGUST](../assets/img/volcanoplot.png)
 
 
-3)  ![DEGUST](../assets/img/maplot.png)
-4)  ![DEGUST](../assets/img/parallelcoordinates.png)
+4.  ![DEGUST](../assets/img/maplot.png)
 
 
-5. Taking into account confounding effects such as sex
--------------------------------------------------------
+
+5. ![DEGUST](../assets/img/parallelcoordinates.png)
+
+
+Taking into account confounding effects such as sex
+----------------------------------------------------
+
+
 
 
 Beginning section Edited from [Training-modules](https://github.com/hbctraining/Training-modules) 
