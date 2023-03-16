@@ -102,7 +102,7 @@ For example, in the table above, SampleA has a greater proportion of counts asso
 Log normalisation reduces or removes skewness from counts data and forms a normal distribution which is needed to utilise statistical tests later in the analysis.
 
 ![](../assets/img/lognorm.png)
-
+Taken from [kyawsawhtoon](https://medium.com/@kyawsawhtoon/log-transformation-purpose-and-interpretation-9444b4b049c9)
 
 
 Quality Control
