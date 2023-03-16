@@ -97,6 +97,12 @@ For example, in the table above, SampleA has a greater proportion of counts asso
 > _NOTE:_ [This video by StatQuest](http://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/) shows in more detail why TPM should be used in place of RPKM/FPKM if needing to normalize for sequencing depth and gene length.
 
 
+***Why do we use log for normalisation?***
+
+Log normalisation reduces or removes skewness from counts data and forms a normal distribution which is needed to utilise statistical tests later in the analysis.
+
+![](../assets/img/lognorm.png)
+
 
 
 Quality Control
