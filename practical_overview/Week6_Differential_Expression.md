@@ -137,11 +137,11 @@ There are four tabs at the top of the screen - Parallel Coordinates, MA plot, MD
  ![DEGUST](../assets/img/volcanoplot.png)
 
 
-4.  ![DEGUST](../assets/img/maplot.png)
+4.  ![DEGUST](../assets/img/degust_screenshot4.png)
 
 
 
-5. ![DEGUST](../assets/img/parallelcoordinates.png)
+5. ![DEGUST](../assets/img/degust_screenshot5.png)
 
 
 Taking into account confounding effects such as sex
