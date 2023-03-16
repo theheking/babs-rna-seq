@@ -38,7 +38,7 @@ navbar-links:
     - Week 7 Ramachotti Tour: "practical_overview/ramachotti_tour"
     - Week 8 Using Kallisto for Pseudoalignment: "practical_overview/Week5_Alignment"
     - Week 9A Using DEGUST for Differential Expression Analysis: "practical_overview/Week9_Differential_Expression"
-    - Week 9B Understanding the Theory Behind Differential Expression Analysis: "practical_overview/"
+    - Week 9B Understanding the Theory Behind Differential Expression Analysis: "practical_overview/Week9_Differential_Expression_Theory"
     
   Tutorial Overview:
     - Week 1: "tutorial_overview_1/week1"
