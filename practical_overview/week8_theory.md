@@ -1,7 +1,6 @@
-
 ---
 layout: page
-title: Week 6 DE Analysis
+title: Week 8 Theory Behind DE Analysis
 ---
 
 Differential gene expression (DGE) analysis
@@ -22,17 +21,15 @@ Differential gene expression (DGE) analysis
 
 ---------------------------------------
 
-The next step in the RNA-seq workflow is the differential expression analysis. The goal of differential expression testing is to determine which genes are expressed at different levels between conditions. These genes can offer biological insight into the processes affected by the condition(s) of interest.
+**The differential expression analysis steps are shown in the flowchart below in green**. 
 
-The steps outlined in the gray box below we have already discussed, and we will now continue to describe the steps in an **end-to-end gene-level RNA-seq differential expression workflow**.
+**These are automatically calculated by inputing our gene count matrix into DEGUST**
 
-![](../assets/img/de_workflow2019.png)
+1. First, the count data needs to be normalized to account for differences in library sizes and RNA composition between samples. 
 
-So what does the count data actually represent? The count data used for differential expression analysis represents the number of sequence reads that originated from a particular gene. The higher the number of counts, the more reads associated with that gene, and the assumption that there was a higher level of expression of that gene in the sample.
+2. Then, we will use the normalized counts to make some plots for QC at the gene and sample level. 
 
-![](../assets/img/deseq_counts_overview.png)
-
-**The differential expression analysis steps are shown in the flowchart below in green**. First, the count data needs to be normalized to account for differences in library sizes and RNA composition between samples. Then, we will use the normalized counts to make some plots for QC at the gene and sample level. Finally, the differential expression analysis is performed using your tool of interest.
+3. Finally, the differential expression analysis is performed using your tool of interest.
 
 ![](../assets/img/deseq_workflow_almost_full.png)
 
