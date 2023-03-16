@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Week 8 Theory Behind DE Analysis
+title: Week 9B - Theory Behind DE Analysis
 ---
 
-Differential gene expression (DGE) analysis
-===========================================
+ Week 9B - Theory of Differential gene expression (DGE) analysis
+================================================================
 
 > Overview
 > --------
@@ -64,6 +64,8 @@ The main factors often considered during normalization are:
 
 ### Common normalization methods
 
+For DEGUST, we had to use CPM as gene length is unknown for the input. This is one of the many reasons why doing manual analysis with R programming is superior to using DEGUST, however takes more time and experience to get to grips with!  
+
 Several common normalization methods exist to account for these differences:
 
 
@@ -94,6 +96,9 @@ For example, in the table above, SampleA has a greater proportion of counts asso
 
 > _NOTE:_ [This video by StatQuest](http://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/) shows in more detail why TPM should be used in place of RPKM/FPKM if needing to normalize for sequencing depth and gene length.
 
+
+
+
 Quality Control
 ===============
 
@@ -110,7 +115,7 @@ A useful initial step in an RNA-seq analysis is often to assess overall similari
 *   Does this fit to the expectation from the experiment’s design?
 *   What are the major sources of variation in the dataset?
 
-Log2-transformed normalized counts are used to assess similarity between samples using Principal Component Analysis (PCA) and hierarchical clustering. Using log2 transformation, tools aim to moderate the variance across the mean, thereby improving the distances/clustering for these visualization methods.
+Log2-transformed normalized counts are used to assess similarity between samples using the most common of which is Principal Component Analysis (PCA) and hierarchical clustering. PCA is analogous to the multidimension scaling used in DEGUST. Using log2 transformation, tools aim to moderate the variance across the mean, thereby improving the distances/clustering for these visualization methods.
 
 ![](../assets/img/rlog_transformation.png)
 
@@ -118,90 +123,6 @@ Sample-level QC allows us to see how well our replicates cluster together, as we
 
 ![](../assets/img/sample_qc.png)
 
-### [Principal Component Analysis (PCA)](https://hbctraining.github.io/DGE_workshop/lessons/principal_component_analysis.html)
-
-Principal Component Analysis (PCA) is a dimensionality reduction technique that finds the greatest amounts of variation in a dataset and assigns it to principal components. The principal component (PC) explaining the greatest amount of variation in the dataset is PC1, while the PC explaining the second greatest amount is PC2, and so on and so forth. For a more detailed explanation, please see additional materials [here](https://hbctraining.github.io/DGE_workshop/lessons/principal_component_analysis.html).
-
-Generally, we focus on PC1 and PC2 (which explain the largest amounts of variation in the data) and plot them against each other. In an ideal experiment, we would expect all replicates for each sample group to cluster together and the sample groups to cluster apart in the PCA plot as shown below.
-
-![](../assets/img/wt_pca.png)
-
-#### Example PCA
-
-In this example, the metadata for the experiment is displayed below. The main condition of interest is `treatment`.
-
-![](../assets/img/example_metadata.png)
-
-When visualizing on PC1 and PC2, we don’t see the samples separate by `treatment`, so we decide to explore other sources of variation present in the data. We hope that we have included all possible known sources of variation in our metadata table, and we can use these factors to color the PCA plot.
-
-![](../assets/img/example_PCA_treatmentPC1.png)
-
-We start with the factor `cage`, but the `cage` factor does not seem to explain the variation on PC1 or PC2.
-
-![](../assets/img/example_PCA_cage.png)
-
-Then, we color by the `sex` factor, which appears to separate samples on PC2. This is good information to take note of, as we can use it downstream to account for the variation due to sex in the model and regress it out.
-
-![](../assets/img/example_PCA_sex.png)
-
-Next we explore the `strain` factor and find that it explains the variation on PC1.
-
-![](../assets/img/example_PCA_strain.png)
-
-It’s great that we have been able to identify the sources of variation for both PC1 and PC2. By accounting for it in our model, we should be able to detect more genes differentially expressed due to `treatment`.
-
-Worrisome about this plot is that we see two samples that do not cluster with the correct strain. This would indicate a likely **sample swap** and should be investigated to determine whether these samples are indeed the labeled strains. If we found there was a switch, we could swap the samples in the metadata. However, if we think they are labeled correctly or are unsure, we could just remove the samples from the dataset.
-
-Still we haven’t found if `treatment` is a major source of variation after `strain` and `sex`. So, we explore PC3 and PC4 to see if `treatment` is driving the variation represented by either of these PCs.
-
-![](../assets/img/example_PCA_treatmentPC3.png)
-
-We find that the samples separate by `treatment` on PC3, and are optimistic about our DE analysis since our condition of interest, `treatment`, is separating on PC3 and we can regress out the variation driving PC1 and PC2.
-
-Even if your samples do not separate by PC1 or PC2 or you can’t identify the sources of variation, you may still get biologically relevant results from the DE analysis, just don’t be surprised if you do not get a large number of DE genes. To give more power to the tool for detecting DE genes, it is **best to account for major, known sources of variation** in your model if you can identify them; this includes **batch effects**.
-
-For details regarding the calculations performed for PCA, we encourage you to explore [StatQuest’s video](https://www.youtube.com/watch?v=_UVHneBUBW0).
-
-* * *
-
-**Exercise**
-
-The figure below was generated from a time course experiment with sample groups, _Ctrl_ and _Sci_ and the following timepoints: _0h_, _2h_, _8h_, and _16h_.
-
-*   Determine the sources explaining the variation represented by PC1 and PC2.
-*   Do the sample groups separate well?
-*   Do the replicates cluster together for each sample group?
-*   Are there any outliers in the data?
-*   Should we have any other concerns regarding the samples in the dataset?
-
-![](../assets/img/PCA_example3.png)
-
-* * *
-
-### Hierarchical Clustering Heatmap
-
-Similar to PCA, hierarchical clustering is another, complementary method for identifying strong patterns in a dataset and potential outliers. The heatmap displays **the correlation of gene expression for all pairwise combinations of samples** in the dataset. Since the majority of genes are not differentially expressed, samples generally have high correlations with each other (values higher than 0.80). Samples below 0.80 may indicate an outlier in your data and/or sample contamination.
-
-The hierarchical tree can indicate which samples are more similar to each other based on the normalized gene expression values. The color blocks indicate substructure in the data, and you would expect to see your replicates cluster together as a block for each sample group. Additionally, we expect to see samples clustered similar to the groupings observed in a PCA plot.
-
-In the plot below, we would be a bit concerned about ‘Wt\_3’ and ‘KO\_3’ samples not clustering with the other replicates. We would want to explore the PCA to see if we see the same clustering of samples.
-
-![](../assets/img/heatmap_example.png)
-
-* * *
-
-**Exercise**
-
-The figure below was generated from an experiment with sample groups ‘Mov10\_oe’, ‘Irrel\_kd’ and ‘Mov10\_kd’.
-
-*   Do the sample groups separate well?
-*   Do the replicates cluster together for each sample group?
-*   Are there any outliers in the data?
-*   Should we have any other concerns regarding the samples in the dataset?
-
-![heatmap1](../assets/img/pheatmap-1.png)
-
-* * *
 
 Gene-level QC
 -------------
@@ -214,6 +135,6 @@ In addition to examining how well the samples/replicates cluster together, there
 
 ![](../assets/img/gene_filtering.png)
 
-**DESeq2 will perform this filtering by default; however other DE tools, such as EdgeR will not.** Filtering is a necessary step, even if you are using limma-voom and/or edgeR’s quasi-likelihood methods. Be sure to follow pre-filtering steps when using these tools, as outlined in their user guides found on Bioconductor as they generally perform much better.
+Filtering is a necessary step, even if you are using limma-voom. 
 
-[Training-modules](https://github.com/hbctraining/Training-modules) is maintained by [hbctraining](https://github.com/hbctraining). This page was generated by [GitHub Pages](https://pages.github.com).
+[Training-modules](https://github.com/hbctraining/Training-modules) 
