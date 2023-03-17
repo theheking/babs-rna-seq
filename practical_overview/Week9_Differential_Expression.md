@@ -33,12 +33,12 @@ So what does the count data actually represent? The count data used for differen
 ![](../assets/img/deseq_counts_overview.png)
 
 ***Note: We are using features that are transcripts, not genes***
-Usually you would sum all the transcript expression for a given gene. This would change a transcript x count matrix toform a gene x count matrix. To make the pipeline simple- we will not be doing this. 
+Usually you would sum all the transcript expression for a given gene. This would change a transcript x count matrix to form a gene x count matrix. To make the pipeline simple- we will not be doing this. 
 
 
 Counts and CPM
 ---------------
-Kallisto counts the number of reads that align to one transcript. This is the *raw count*, however normalisation is needed to make accurate comparisons of gene expression between samples. Normalisation is used to scale the *raw counts* to account for background noise. The default in DEGUST is *Counts per million (CPM)*. CPM accounts for sequencing depth. This is not the best normalisation method for differential expression analysis between samples. However, we are not going to learn R in this course so have to work with what we have. 
+Kallisto counts the number of reads that align to one transcript. This is the *raw count*, however normalisation is needed to make accurate comparisons of gene expression between samples. Normalisation is used to account for variabilities between or within *raw counts* due to technical differences such as read depth. The default in DEGUST is *Counts per million (CPM)*. CPM accounts for sequencing depth. This is not the best normalisation method for differential expression analysis between samples. However, we are not going to learn R in this course so have to work with what we have. 
 
 Using DEGUST
 -------------
@@ -67,7 +67,7 @@ This file contains the counts of one sample. For input into DEGUST, you will hav
 Please download this [script](https://github.com/theheking/babs-rna-seq/blob/gh-pages/metadatafiles/merge_abundance_files.sh) using `wget`. In the main folder that you have your kallisto results.
 
         $ cd /srv/scratch/zID/data/
-        $ wget https://github.com/theheking/babs-rna-seq/blob/gh-pages/metadatafiles/merge_abundance_files.sh
+        $ wget https://github.com/theheking/babs-rna-seq/raw/gh-pages/metadatafiles/merge_abundance_files.sh 
         $ bash merge_abundance_files.sh
         This scripts is to concatenate all abundance tsv to form count matrix table
         ***Please be in the main directory which contains /samplename/abundance.tsv***
@@ -111,6 +111,7 @@ d. Continue to configure settings.
         
  ![DEGUST](../assets/img/degust_screenshot2.png)
 
+***Extension Task: Why is it not recommended to have only one replicate? If you put only one replicate in a condition does DEGUST output an error message or have a change in output?***
 
 Understanding the output 
 ----------------------------
@@ -178,6 +179,12 @@ Click the little clipboard logo next to `converted alias`. This will copy all th
 Paste this list of geneIDs as input into gene ontology enrichment website and select run query. 
 The top most enriched GO terms will be displayed in an assortment of figures. For example, one of the top enriched processes is circulatory system development, which is unsuprising as we are looking at genes that are DE in heart samples vs cerebellum. 
 ![DEGUST](../assets/img/goprofileroutput.png)
+
+
+
+Note the choice of background set is key for getting accurate results. This is because frequency of genes annotated to a GO term is relative to the entire background set. [Gene Ontology Website](http://geneontology.org/docs/go-enrichment-analysis/) explains this articulately:
+**"For example, if the input list contains 10 genes and the enrichment is done for biological process in S. cerevisiae whose background set contains 6442 genes, then if 5 out of the 10 input genes are annotated to the GO term: DNA repair, then the sample frequency for DNA repair will be 5/10. Whereas if there are 100 genes annotated to DNA repair in all of the S. cerevisiae genome, then the background frequency will be 100/6442." **
+
 
 
 Please explore all of the different figures. Depending on your samples and your biological question the results could be interesting or not... 
