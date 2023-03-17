@@ -68,7 +68,7 @@ If we move things around we can find the match:
 >
 >                       |||| |||||||
 >
->       Read:                 AAATTTCCCGGG
+>       Read:           AAATTTCCCGGG
 >  
  
   
