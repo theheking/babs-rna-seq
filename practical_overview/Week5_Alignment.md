@@ -55,18 +55,21 @@ To try and reduce this problem to its most basic, the Leo Pachter Lab used an an
 
 In the traditional case, when software does alignment, it tries to match a read to the genome.
  
-  
-> Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
 >
-> Read:   AAATTTCCCGGG
+>       Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
+>
+>       Read:   AAATTTCCCGGG
+>       
   
 If we move things around we can find the match:
 
-
-> Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
+>
+>       Genome: ACTACGTAGCCGTCAAATATCCCGGGTATCGTACGATCGACGT
+>
 >                       |||| |||||||
-> Read:                 AAATTTCCCGGG
-  
+>
+>       Read:                 AAATTTCCCGGG
+>  
  
   
 In this example a “|” appears when there is a match, and we have one mismatch. Although finding this match was simple, the genome is far more complex.
@@ -144,9 +147,9 @@ Pseudoalignment is just one approach to aligning RNA-Seq reads. Other software w
 
 Step 1 Genome indexing for Kallisto
 ===================================
-There are a few files we need perform the first step of Kallisto
+There are a few files we need to perform the first step of Kallisto
 
-- Reference transcriptome: A file of all the known trasncripts of the mouse genome
+- Reference transcriptome: A file of all the known trasncripts of the human genome
 - Reference annotations: A file with information on the location and structure of the genes in the human genome and a file with chromosome details.
   
   
@@ -170,6 +173,9 @@ Also, must unzip the gtf above. This will take the gtf from being compressed to 
         
         $ gunzip Homo_sapiens.GRCh38.109.gtf.gz 
       
+First we must load kallisto to our session using `module load` as this is not installed.
+
+        $ module load kallisto
 
 Next run the indexing command. This prepares the transcriptome so that we can pseudoalign reads to it.
   
