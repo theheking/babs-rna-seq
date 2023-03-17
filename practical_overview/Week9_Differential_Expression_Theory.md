@@ -64,7 +64,7 @@ The main factors often considered during normalization are:
 
 ### Common normalization methods
 
-For DEGUST, we had to use CPM as gene length is unknown for the input. This is one of the many reasons why doing manual analysis with R programming is superior to using DEGUST, however takes more time and experience to get to grips with!  
+For DEGUST, we had to use CPM. This is not a good method for between sample comparisons. Manual analysis with R programming is superior to using DEGUST, however takes more time and experience to get to grips with!  
 
 Several common normalization methods exist to account for these differences:
 
