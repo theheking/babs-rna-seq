@@ -30,7 +30,7 @@ cat .transcript_counts_raw.tsv  | tail -n+2>> transcript_counts.csv
 
 #reformatting
 sed -e 's/\s\+/,/g' transcript_counts.csv > .transcript_counts.new.tsv
-sed 's/.$//' .transcript_counts.new.tsv > transcript_counts.csv
+sed '2,$s/.$//' .transcript_counts.new.tsv > transcript_counts.csv 
 
 rm .transcript_counts_raw.tsv .counts_only.tsv .transcript_id.tsv .transcript_counts.new.tsv
 
