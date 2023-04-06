@@ -20,8 +20,8 @@ Alignment With Kallisto
 > *  Select the correct parameters for kallisto for your sample
 >     
 > *  Submit your job to the cluster
->     
-=====================
+
+
 
 Introduction
 ==============
@@ -72,7 +72,7 @@ If we move things around we can find the match:
 >  
  
   
-In this example a “|” appears when there is a match, and we have one mismatch. Although finding this match was simple, the genome is far more complex.
+In this example a | appears when there is a match, and we have one mismatch. Although finding this match was simple, the genome is far more complex.
 
 In the word search below is the word “DNA”. Can you find it? It may take you a while. Searching for words is a process similar to taking sequencing reads and trying to match them to the genome. Computers are fast, but just as matching a small word (3 letters) in a large (1639 letter) word puzzle is time-intensive, it take a long time to match millions of short reads against genomes of billions of nucleotides.
 
@@ -125,15 +125,19 @@ There is no “D” in this line. True, We don’t know that until we read the e
 
 
 >Transcript 1: CUSVFVMAASJFHUTMNCCQMBVXOLBEETYHSRBWOSEY
+>
 >Transcript 2: MOBJEYXAZMPMFENZHQKMHHSCZUXUQYEBQONJVYWH
+>
 >Transcript 3: LCMIFVSPNMAGIJAOOFCWNYYDETTLMGCDOBSLOPXO
+>
 >Transcript 4: ZAUSKOGLCYOIKIXZSHOXHLYGZJLRLZMRGHRFRJWN
+>
 >Transcript 5: ZNEQDNAHXMPBLRVDEBJRJFTDOIWUPFLSIYOOHNQH
 
 We can immediately eliminate transcripts that don’t contain the letter D:
 
 >Transcript 3: LCMIFVSPNMAGIJAOOFCWNYYDETTLMGCDOBSLOPXO
->Transcript 4:
+>
 >Transcript 5: ZNEQDNAHXMPBLRVDEBJRJFTDOIWUPFLSIYOOHNQH
 
 
@@ -153,21 +157,30 @@ There are a few files we need to perform the first step of Kallisto
 - Reference annotations: A file with information on the location and structure of the genes in the human genome and a file with chromosome details.
   
   
+  
 
 We will now use Kallisto's indexing function to prepare the transcriptome for analysis. The "Index" is a lookup table for the transcriptome that allows it to be more easily searched by Kallisto. First let's organize our files by creating a new directory to hold our kallisto work.
 
-    $ mkdir -p [yourscratch]/kallisto_human_ref
+    $ mkdir -p /srv/scratch/[your_zID]/kallisto_human_ref/
  
 First, we must download the reference files from (https://asia.ensembl.org/info/data/ftp/index.html) using `wget`
 
-1) We will need the FASTA file of the cDNA sequence
+1. We will need the FASTA file of the cDNA sequence
 (https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz)
 
       $ wget https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
       
-2) We also will need the human GTF file, a file containing coordinates and descriptions for all gene names and locations - we will also download this from Ensembl. (https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)  **not needed for index command**
+ OR, if the expected download time is ages please copy from the communal folder.
+ 
+      $ scp /srv/scratch/babs3291/references/Homo_sapiens.GRCh38.cdna.all.fa.gz /srv/scratch/[your_zID]/kallisto_human_ref/
+      
+2. We also will need the human GTF file, a file containing coordinates and descriptions for all gene names and locations - we will also download this from Ensembl. (https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)  **not needed for index command**
   
         $ wget https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz 
+        
+ OR, if the expected download time is large, please copy from the communal folder.
+ 
+        $ scp  /srv/scratch/babs3291/references/Homo_sapiens.GRCh38.109.gtf.gz /srv/scratch/[your_zID]/kallisto_human_ref/
         
 Also, must unzip the gtf above. This will take the gtf from being compressed to human readable.
         
@@ -188,13 +201,14 @@ In this final step, we will run Kallisto on all of our files to quantify the rea
 
 Using your trimmed reads
 
-    $ cd [yourscratch]/trimmed_fastq/
+    $ cd /srv/scratch/[your_zID]/trimmed_fastq/
   
 All instructions for the commands we are using are in the Kallisto manual: https://pachterlab.github.io/kallisto/manual. Since we are using single read data, we need to provide information on the fragment length used for the library (200) and an estimate of the standard deviation for this value - here we will have to guess (20). 
 
 We need to run Kallisto on all of your files. Run the command below on one of your files. 
 
 Single-end:
+
 
     $ INPUT_FASTA="[yourscratch]/data/SRR306844chr1_chr3.trimmed.fastq.gz"
  
