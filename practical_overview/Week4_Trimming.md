@@ -233,7 +233,7 @@ If you have a paired end sequence the for loop with be different...
     >   trimmed_2="${base}_2.trimmed.fastq.gz"
     >   untrimmed_1="${base}_1.untrimmed.fastq.gz"
     >   untrimmed_2="${base}_2.untrimmed.fastq.gz
-    >   trimmomatic PE -threads 4 ${infile} ${infile_2} \
+    >   trimmomatic PE -phred33 -threads 4 ${infile} ${infile_2} \
                   ${trimmed_1} ${untrimmed_1} \
                   ${trimmed_2} ${untrimmed_2} \
                   ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36  
@@ -250,12 +250,11 @@ If you have a paired end sequence the for loop with be different...
 >
     
 
-We have now completed the trimming and filtering steps of our quality control process! Before we move on, let’s move our trimmed FASTQ files to a new subdirectory within our `data/` directory.
+We have now completed the trimming and filtering steps of our quality control process! Before we move on, let’s move our trimmed FASTQ files to a new subdirectory within our `data` directory.
 
-    $ cd ~/[yourscratch]/data/
-    $ mkdir ../trimmed_fastq
-    $ mv *.trim* ../trimmed_fastq
-    $ cd ../trimmed_fastq
+    $ cd /srv/scratch/z5342988/data/
+    $ mkdir TRIMMED_FASTQ
+    $ mv ./UNTRIMMED_FASTQ/*.trim* TRIMMED_FASTQ
     $ ls
     
 
