@@ -72,7 +72,7 @@ If we move things around we can find the match:
 >  
  
   
-In this example a | appears when there is a match, and we have one mismatch. Although finding this match was simple, the genome is far more complex.
+In this example, we have one mismatch. Although finding this match was simple, the genome is far more complex.
 
 In the word search below is the word “DNA”. Can you find it? It may take you a while. Searching for words is a process similar to taking sequencing reads and trying to match them to the genome. Computers are fast, but just as matching a small word (3 letters) in a large (1639 letter) word puzzle is time-intensive, it take a long time to match millions of short reads against genomes of billions of nucleotides.
 
@@ -224,17 +224,14 @@ Single-end:
      --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
  
  
-
-Paired-end:
+For paired-end reads, you need two files as input.
 
     $ INPUT_FASTA="[yourscratch]/data/SRR306844*.trimmed.fastq.gz"
  
     $ kallisto quant \
      --threads=8\
-     --index=[insert_location_your transcriptome]\
-     --bootstrap-samples=25\
-     --fragment-length=200\
-     --sd=20\
+     --index=[insert_location_your_transcriptome] \
+     --bootstrap-samples=25 \
      --output-dir=output\
      --genomebam\
      --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
@@ -285,12 +282,10 @@ If you have paired-end reads.
           outdir="${base}"
           infiles="${base}*trimmed.fastq.gz"
           kallisto quant \
-           --threads=8\
-           --index=/srv/scratch/z5342988/transcriptome_Homo_sapiens_GRCh38\
-           --bootstrap-samples=25\
-           --fragment-length=200\
-           --sd=20\
-           --output-dir=${outdir}\
+           --threads=8 \
+           --index=/srv/scratch/z5342988/transcriptome_Homo_sapiens_GRCh38 \
+           --bootstrap-samples=25 \
+           --output-dir=${outdir} \
            --gtf=Homo_sapiens.GRCh38.109.gtf ${infiles}
 
       done
