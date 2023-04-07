@@ -7,8 +7,6 @@ Welcome to the bioinformatics practical for BABS3291 Genes, Genome and Evolution
 
 
 
- Outer pipes  Cell padding 
-No sorting
 | Name                   | Groups  | Chromosome  |
 | ---------------------- | ------- | ----------- |
 | Hugh Benz              | Group 1 | chr1_chr3   |
