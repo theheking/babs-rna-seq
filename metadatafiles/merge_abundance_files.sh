@@ -8,7 +8,7 @@ abundance_tsv=`ls */abundance.tsv`
 
 #echo "concatenate them"
 #first create a concatenated file
-paste -d' ' ${abundance_tsv} | awk 'NR>1' | awk '{for(i=5;i<=51;i+=5) printf "%s ",$i ;for(i=52;i<=119;i++) {printf "%s ",$i} ;print ""}' > .counts_only.tsv
+paste -d' ' ${abundance_tsv} | awk 'NR>1' | awk '{for(i=5;i<=101;i+=5) printf "%s ",$i ;for(i=102;i<=119;i++) {printf "%s ",$i} ;print ""}' > .counts_only.tsv
 
 #get the first abundance file 
 first_abundance_tsv=`echo ${abundance_tsv} | cut --delimiter " " --fields 1`
