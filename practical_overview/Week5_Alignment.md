@@ -258,7 +258,7 @@ If you have single-end reads.
 
     $ for infile in *.trimmed.fastq.gz
           do
-          base=$(basename ${infile} .fastq.gz)
+          base=$(basename ${infile} trimmed.fastq.gz)
           outdir="${base}"
           kallisto quant \
            --single\
@@ -274,11 +274,11 @@ If you have single-end reads.
 
 
 
-If you have paired-end reads.
+If you have paired-end reads. **Hint: check the string provided as the second part of the basename command matches the prefix of your infile**
 
      $ for infile in *_1.trimmed.fastq.gz
           do
-          base=$(basename ${infile} _1.fastq.gz)
+          base=$(basename ${infile} _1.trimmed.fastq.gz)
           outdir="${base}"
           infiles="${base}*trimmed.fastq.gz"
           kallisto quant \
