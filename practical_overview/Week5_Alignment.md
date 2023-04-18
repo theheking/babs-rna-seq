@@ -234,7 +234,7 @@ For paired-end reads, you need two files as input.
      --bootstrap-samples=25 \
      --output-dir=output\
      --genomebam\
-     --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA]
+     --gtf=Homo_sapiens.GRCh38.109.gtf ${INPUT_FASTA}
      
      
      
