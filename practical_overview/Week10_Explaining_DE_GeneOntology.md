@@ -57,4 +57,11 @@ Again in my experiment, I expect the isoforms that regulate neuronal-related pro
 These neuronal processes would be reflected in the GO terms enriched in my Manhattan plot outputted by GO: Profiler.
 
 
-
+The other acronyms of database found on the x-axis of the manhatten plot are different, complementary databases or resources of molecular function:  
+- KEGG - (Kyoto encyclopedia of genes and genomes), which is useful to map the pathways usually to do with metabolism, human diseases, cellular processes. 
+- REAC- represents Reactome another database for biological pathways. 
+- HPA - the human protein atlas. 
+- MIRNA is miRTarBase
+- WP is Wikipathways
+- CORUM- comprehensive of mammalian protein complexes. Usually, the terms that are enriched are self-explanatory, e.g. CORUM:7586 FOXO1-ESR1 complex. This would represent an enrichment of genes that code for proteins within this complex. 
+- HP stands for Human Phenotype Ontology which is a database of disease related phenotypic abnormalities. So for each disease e.g. Marfan Syndrome you would have different annotations including HP:0001519 for disproportionate tall stature ect. 
