@@ -20,11 +20,13 @@ title: Week 10 - Comparing Test and Control Groups
 The schema above represents what has been calculated by Kallisto (except with transcripts). To summarise, the number of reads that map to a transcript in every sample across replciates in control (heart) and test (brain) groups. 
 However, we need to calculate the comparisons between the two groups and determine which transcripts change significantly between conditions e.g. Gene A and Gene B, or not, e.g. Gene C.
 
-This process is differential expression analysis. What is calculated at each stage is se
+This process is differential expression analysis. What is calculated at each stage includes:
 1. Reads 
 2. CPM - counts per million
 3. Log fold change, p-value, FDR (false discovery rate)
 
+
+This is performed by:
 1. Kallisto counts the number of reads that align to one transcript. This is the raw count, however, normalisation is needed to make accurate comparisons of gene expression between samples.
 2. Normalisation accounts for variabilities between or within raw counts due to technical differences such as read depth. The default in DEGUST is Counts per million (CPM). CPM accounts for sequencing depth. There are better normalisation methods for differential expression analysis between samples. However, we will not learn R in this course, so we must work with what we have. CPM (Counts Per Million) are obtained by dividing counts by the number of counts in the entire sample and multiplying the results by a million
 3. Fold change is the change in CPM between conditions. Log Fold change is the logarithm of the fold change calculated.
