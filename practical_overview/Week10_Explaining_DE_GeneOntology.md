@@ -8,17 +8,12 @@ title: Week 10 - Comparing Test and Control Groups
 
 > Overview
 > --------
-> **Questions**
+> **Aims**
 > 
-> *   Understand differential expression
-> *   Understand gene ontology
+> *   Understand how differential expression is calculte
+> *   Understand what isoforms are being used as input to gene ontology analysis
 > 
->
-> **Objectives**
-> 
-> *   Understanding how DEGUST is calculating the top differentially expressed genes  
->  
-> *   
+
 
 ![](../assets/img/expressed_genes.png)
 
