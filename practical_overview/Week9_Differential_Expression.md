@@ -145,7 +145,13 @@ Every dot represents an isoform (not a gene). This is because we are using the t
 
 4. Parallel coordinates tab is fairly self explanatory. Each line represents an isoform, each line represents the logFC. All isoforms in the control with have a absLogFC of 0 as it is the baseline, where expression is relative to. The most useful section for this is the drag and drop to highlight transcripts of interest that are then visualised in the heatmap below, and in the csv below. 
 
-Please select the ~100 genes and then download this csv. This will be used for further gene ontology visualisations (see Gene Ontology section). 
+For example, I select the top ~100 isoforms and then download the csv. This csv will be used for further gene ontology visualisations (see Gene Ontology section). 
+
+
+These isoforms are the most upregulated genes in cerebellum relative to heart. Therefore the gene ontology results represent processes enriched in the genes found to be upregulated in the cerebellum. 
+
+For your own analysis you can choose more/less isoforms and, upregulated or downregulated. 
+
 
 ![DEGUST](../assets/img/degust_screenshot4.png)
 
