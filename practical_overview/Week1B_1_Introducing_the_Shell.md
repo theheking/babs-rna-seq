@@ -38,7 +38,7 @@ A _shell_ is a computer program that presents a command line interface which all
 
 There are many reasons to learn about the shell:
 
-*   Bioinformatics team can only be used through command line, or have more features compared to the GUI.
+*   Bioinformatics tools can only be used through command line, or have more features compared to the GUI.
 *   Used for boring, repetitive tasks.
 *   Ensures error-free output.
 *   More reproducible output. 
@@ -190,6 +190,20 @@ Tab completion can also fill in the names of programs, which can be useful if yo
     
 
 Displays the name of every program that starts with `pw`.
+
+
+> Safety Warnings 
+> ----------------------------------------------------------
+
+There is little that you can do wrong, with one important caveat:
+**READ THIS IF YOU DON'T READ ANYTHING ELSE!**
+ Unix has  **no undo**  function. If you  **delete or overwrite**  a file, it will be gone forever! As a result, you should:
+ 1.    Keep  **backup copies**  of important files.
+ 2.    Be  **very careful**  with the command rm ("remove", i.e. delete) and any commands to move/create files that might over-write something important (mv, cp and redirecting output with \> and \>\>).
+ 3.    Use  **rm -i**  to provide an additional safety check against rogue deletion.
+ 4.     Make sure that you keep good notes. Ultimately, it should be fairly straight-forward to regenerate anything from the starting data, provided you have adequate records of how you made it in the first place. This is one of the primary goals of keeping a lab book.
+
+
 
 
 
