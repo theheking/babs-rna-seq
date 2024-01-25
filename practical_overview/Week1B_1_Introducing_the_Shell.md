@@ -36,7 +36,7 @@ What is a shell and why should I care?
 
 A _shell_ is a computer program that presents a command line interface which allows you to control your computer using commands entered with a keyboard instead of controlling graphical user interfaces (GUIs) with a mouse/keyboard/touchscreen combination.
 
-There are many reasons to learn about the shell:
+Advantages of using the shell:
 
 *   Bioinformatics tools can only be used through command line, or have more features compared to the GUI.
 *   Used for boring, repetitive tasks.
@@ -44,6 +44,9 @@ There are many reasons to learn about the shell:
 *   More reproducible output. 
 *   Large amount of computational power and memory space is better. 
 
+
+> Question:
+>>  What would be the advantages of using a GUI?
 
 In this lesson you will learn how to use the command line interface to move around in your file system.
 
